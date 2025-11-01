@@ -2,6 +2,8 @@ import Hero from "./components/hero";
 import About from "./components/about";
 import Benefits from "./components/benefits";
 import Portfolio from "./components/portfolio";
+import { FAQSection } from "./components/faq-section";
+import End from "./components/end";
 
 export default function Home() {
   return (
@@ -10,6 +12,8 @@ export default function Home() {
       <About />
       <Benefits />
       <Portfolio />
+      <FAQSection />
+      <End />
     </div>
   );
 }
