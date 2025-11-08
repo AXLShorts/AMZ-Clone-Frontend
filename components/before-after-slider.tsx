@@ -47,13 +47,13 @@ export const BeforeAfterSlider: React.FC<BeforeAfterSliderProps> = ({
   return (
     <div
       ref={containerRef}
-      className={`relative w-full h-full overflow-hidden cursor-ew-resize ${className}`}
+      className={`relative w-full h-full overflow-hidden md:cursor-ew-resize ${className}`}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       role="img"
       aria-label="Before and after comparison"
     >
-      {/* After Image (Bottom Layer) */}
+      {/* After Image (Always visible - shows on all screen sizes) */}
       <div className="absolute inset-0 w-full h-full">
         <Image
           src={afterImage}
@@ -65,9 +65,9 @@ export const BeforeAfterSlider: React.FC<BeforeAfterSliderProps> = ({
         />
       </div>
 
-      {/* Before Image (Top Layer with clip) */}
+      {/* Before Image (Top Layer with clip - Hidden on mobile, visible on md+) */}
       <div
-        className="absolute inset-0 w-full h-full"
+        className="hidden md:block absolute inset-0 w-full h-full"
         style={{
           clipPath: `inset(0 ${100 - sliderPosition}% 0 0)`,
         }}
@@ -82,16 +82,16 @@ export const BeforeAfterSlider: React.FC<BeforeAfterSliderProps> = ({
         />
       </div>
 
-      {/* Slider Line and Handle */}
+      {/* Slider Line and Handle - Hidden on mobile, visible on md+ */}
       <div
-        className="absolute top-0 bottom-0 w-1 bg-white shadow-lg"
+        className="hidden md:block absolute top-0 bottom-0 w-1 bg-white"
         style={{
           left: `${sliderPosition}%`,
           transform: "translateX(-50%)",
         }}
       >
         {/* Slider Handle */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 bg-white rounded-full shadow-xl flex items-center justify-center">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 bg-white rounded-full flex items-center justify-center">
           {/* Left Arrow */}
           <svg
             className="w-4 h-4 absolute left-2"
@@ -123,11 +123,11 @@ export const BeforeAfterSlider: React.FC<BeforeAfterSliderProps> = ({
         </div>
       </div>
 
-      {/* Labels */}
-      <div className="absolute top-4 left-4 bg-black/60 backdrop-blur-sm text-white px-3 py-1 rounded-full text-sm font-semibold">
+      {/* Labels - Hidden on mobile, visible on md+ */}
+      <div className="hidden md:block absolute top-4 left-4 bg-black/60 backdrop-blur-sm text-white px-3 py-1 rounded-full text-sm font-semibold">
         Before
       </div>
-      <div className="absolute top-4 right-4 bg-black/60 backdrop-blur-sm text-white px-3 py-1 rounded-full text-sm font-semibold">
+      <div className="hidden md:block absolute top-4 right-4 bg-black/60 backdrop-blur-sm text-white px-3 py-1 rounded-full text-sm font-semibold">
         After
       </div>
     </div>

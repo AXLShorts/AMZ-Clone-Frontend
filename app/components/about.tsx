@@ -17,30 +17,25 @@ const About = () => {
   ];
 
   return (
-    <section
-      className="w-full bg-white py-16 lg:py-24"
-      aria-labelledby="about-heading"
-    >
-      <div className="container mx-auto px-4 sm:px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+    <section className="w-full py-16 lg:py-24" aria-labelledby="about-heading">
+      <div className="container mx-auto px-4 sm:px-6 flex flex-col items-center">
+        <h2
+          id="about-heading"
+          className="text-center text-3xl sm:text-4xl lg:text-5xl xl:text-6xl text-black leading-tight font-display"
+        >
+          Stop guessing why your{" "}
+          <span className="relative inline-block bg-[url('/assets/homepage/portfolio/orange-line.png')] bg-no-repeat bg-bottom-right bg-size-[250px_20px] pb-2!">
+            Amazon sales plateaued.
+          </span>
+        </h2>
+        <p className="text-center text-base sm:text-lg lg:text-[22px] leading-relaxed text-gray-700">
+          If your listings look great but your numbers don&apos;t — you&apos;re
+          not alone.
+        </p>
+        <div className="flex flex-col lg:flex-row-reverse gap-8 lg:gap-12 items-center mt-4 lg:mt-8">
           {/* Left Column - Text Content */}
-          <div className="space-y-6 lg:space-y-8">
-            <h2
-              id="about-heading"
-              className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl text-black leading-tight font-display"
-            >
-              Stop guessing why your{" "}
-              <span className="relative inline-block bg-[url('/assets/homepage/portfolio/orange-line.png')] bg-no-repeat bg-bottom bg-contain pb-2">
-                Amazon sales plateaued.
-              </span>
-            </h2>
-
-            <div className="text-gray-700 space-y-4">
-              <p className="text-base sm:text-lg lg:text-[22px] leading-relaxed">
-                If your listings look great but your numbers don&apos;t —
-                you&apos;re not alone.
-              </p>
-
+          <div className="space-y-4">
+            <div className="text-gray-700">
               <p className="text-base sm:text-lg lg:text-[22px] leading-relaxed font-semibold">
                 Most brands are losing conversions because they optimize for{" "}
                 <span className="italic">looks</span>, not{" "}
@@ -49,11 +44,11 @@ const About = () => {
             </div>
 
             {/* Pain Points */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 py-6">
+            <div className="grid grid-cols-1 gap-4">
               {painPoints.map((point, index) => (
                 <div
                   key={index}
-                  className="flex items-start gap-3 p-4 bg-red-50 border border-red-100 rounded-lg"
+                  className="flex items-start gap-3 p-2 bg-red-50 border border-red-100 rounded-lg"
                 >
                   <point.icon className="w-5 h-5 text-red-500 mt-1 shrink-0" />
                   <span className="text-gray-800 text-sm sm:text-base font-medium">
@@ -61,28 +56,6 @@ const About = () => {
                   </span>
                 </div>
               ))}
-            </div>
-
-            <div className="bg-emerald-50 border-l-4 border-emerald-500 p-6 rounded-r-lg">
-              <p className="text-base sm:text-lg lg:text-xl text-gray-800 font-semibold">
-                The good news: these aren&apos;t permanent problems —
-                they&apos;re fixable in days, not months.
-              </p>
-            </div>
-
-            <div className="pt-4">
-              <Link
-                href="/audit"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-orange-500 text-white rounded-full text-base lg:text-lg hover:bg-orange-600 transition-all duration-300 group shadow-lg hover:shadow-xl hover:scale-105"
-                aria-label="Get a Free Conversion Audit"
-              >
-                Get a Free Conversion Audit & See Where You&apos;re Leaking
-                Revenue
-                <ArrowRight
-                  className="w-5 h-5 group-hover:translate-x-1 transition-transform"
-                  aria-hidden="true"
-                />
-              </Link>
             </div>
           </div>
 
@@ -111,6 +84,27 @@ const About = () => {
               </video>
             </div>
           </div>
+        </div>
+
+        <div className="bg-emerald-50 p-6 rounded-r-lg mt-4 lg:mt-8">
+          <p className="text-base sm:text-lg lg:text-xl text-gray-800 font-semibold">
+            The good news: these aren&apos;t permanent problems — they&apos;re
+            fixable in days, not months.
+          </p>
+        </div>
+
+        <div className="pt-4">
+          <Link
+            href="/audit"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-orange-500 text-white rounded-full text-base lg:text-lg hover:bg-orange-600 transition-all duration-300 group shadow-lg hover:shadow-xl hover:scale-105"
+            aria-label="Get a Free Conversion Audit"
+          >
+            Get a Free Conversion Audit & See Where You&apos;re Leaking Revenue
+            <ArrowRight
+              className="w-5 h-5 group-hover:translate-x-1 transition-transform"
+              aria-hidden="true"
+            />
+          </Link>
         </div>
       </div>
     </section>

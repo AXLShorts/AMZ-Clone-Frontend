@@ -93,7 +93,7 @@ const PortfolioModal: React.FC<PortfolioModalProps> = ({
           animate={{ scale: 1, opacity: 1 }}
           exit={{ scale: 0.8, opacity: 0 }}
           transition={{ type: "spring", damping: 25, stiffness: 300 }}
-          className="relative max-w-6xl w-full mx-4 flex gap-8"
+          className="relative max-w-6xl w-full mx-4 flex gap-8 items-center"
           onClick={(e) => e.stopPropagation()}
         >
           {/* Image */}
@@ -115,18 +115,16 @@ const PortfolioModal: React.FC<PortfolioModalProps> = ({
             initial={{ x: 50, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ delay: 0.2 }}
-            className="bg-white rounded-2xl p-8 w-96 shadow-2xl max-h-[70vh]"
+            className="bg-white rounded-2xl p-8 w-96 shadow-2xl max-h-[70vh] h-fit"
           >
-            <div className="space-y-6">
+            <div className="space-y-2">
               {/* Category Badge */}
               <div className="inline-block px-4 py-2 bg-orange-100 text-orange-600 rounded-full text-sm font-semibold">
                 {item.category}
               </div>
 
               {/* Title */}
-              <h2 className="text-3xl font-display text-black">
-                {item.title}
-              </h2>
+              <h2 className="text-3xl font-display text-black">{item.title}</h2>
 
               {/* Description */}
               <p className="text-gray-600 leading-relaxed">
@@ -135,12 +133,10 @@ const PortfolioModal: React.FC<PortfolioModalProps> = ({
 
               {/* Metrics */}
               {item.metrics && (
-                <div className="border-t border-gray-200 pt-6">
-                  <div className="flex items-center gap-2 mb-4">
+                <div className="border-t border-gray-200 py-2">
+                  <div className="flex items-center gap-2 mb-2">
                     <TrendingUp className="w-5 h-5 text-emerald-600" />
-                    <h3 className="font-bold text-black">
-                      Conversion Impact
-                    </h3>
+                    <h3 className="font-bold text-black">Conversion Impact</h3>
                   </div>
                   <div className="grid grid-cols-2 gap-4">
                     <div className="bg-red-50 rounded-lg p-4">
@@ -160,8 +156,8 @@ const PortfolioModal: React.FC<PortfolioModalProps> = ({
               )}
 
               {/* CTA */}
-              <div className="border-t border-gray-200 pt-6">
-                <p className="text-sm text-gray-600 mb-4">
+              <div className="border-t border-gray-200 pt-4">
+                <p className="text-sm text-gray-600 mb-4!">
                   Want similar results for your Amazon listings?
                 </p>
                 <a
@@ -195,7 +191,7 @@ const PortfolioModal: React.FC<PortfolioModalProps> = ({
         {/* Content - Mobile */}
         <div className="relative min-h-screen">
           {/* Image Container */}
-          <div className="relative h-[70vh] bg-gray-100">
+          <div className="relative h-[50vh]">
             <Image
               src={item.image}
               alt={item.title}
@@ -231,23 +227,17 @@ const PortfolioModal: React.FC<PortfolioModalProps> = ({
             </div>
 
             {/* Title */}
-            <h2 className="text-2xl font-display text-black">
-              {item.title}
-            </h2>
+            <h2 className="text-2xl font-display text-black">{item.title}</h2>
 
             {/* Description */}
-            <p className="text-gray-600 leading-relaxed">
-              {item.description}
-            </p>
+            <p className="text-gray-600 leading-relaxed">{item.description}</p>
 
             {/* Metrics */}
             {item.metrics && (
               <div className="border-t border-gray-200 pt-6">
                 <div className="flex items-center gap-2 mb-4">
                   <TrendingUp className="w-5 h-5 text-emerald-600" />
-                  <h3 className="font-bold text-black">
-                    Conversion Impact
-                  </h3>
+                  <h3 className="font-bold text-black">Conversion Impact</h3>
                 </div>
                 <div className="grid grid-cols-2 gap-4">
                   <div className="bg-red-50 rounded-lg p-4">
@@ -268,7 +258,7 @@ const PortfolioModal: React.FC<PortfolioModalProps> = ({
 
             {/* CTA */}
             <div className="border-t border-gray-200 pt-6 pb-8">
-              <p className="text-sm text-gray-600 mb-4">
+              <p className="text-sm text-gray-600 mb-4!">
                 Want similar results for your Amazon listings?
               </p>
               <a

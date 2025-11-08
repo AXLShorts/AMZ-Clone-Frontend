@@ -1,9 +1,9 @@
 "use client";
 
 import React from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Pagination } from "swiper/modules";
-import { Star, TrendingUp, DollarSign, Award } from "lucide-react";
+import Image from "next/image";
+import { Star, TrendingUp, DollarSign, Award, Quote } from "lucide-react";
+import SimpleMarquee from "@/components/fancy/blocks/simple-marquee";
 
 const testimonials = [
   {
@@ -13,6 +13,7 @@ const testimonials = [
     author: "Sarah Johnson",
     role: "DTC Owner, Pet Supplies",
     rating: 5,
+    avatar: "https://i.pravatar.cc/150?img=1",
   },
   {
     id: 2,
@@ -21,6 +22,7 @@ const testimonials = [
     author: "Michael Chen",
     role: "Private Label Founder",
     rating: 5,
+    avatar: "https://i.pravatar.cc/150?img=13",
   },
   {
     id: 3,
@@ -29,6 +31,7 @@ const testimonials = [
     author: "Emily Rodriguez",
     role: "E-commerce Manager",
     rating: 5,
+    avatar: "https://i.pravatar.cc/150?img=5",
   },
   {
     id: 4,
@@ -37,6 +40,52 @@ const testimonials = [
     author: "David Thompson",
     role: "Brand Owner, Home & Kitchen",
     rating: 5,
+    avatar: "https://i.pravatar.cc/150?img=12",
+  },
+  {
+    id: 5,
+    quote:
+      "Their attention to detail in A+ Content design helped us stand out. Conversion rate up 45%.",
+    author: "Jessica Lee",
+    role: "Marketing Director",
+    rating: 5,
+    avatar: "https://i.pravatar.cc/150?img=9",
+  },
+  {
+    id: 6,
+    quote:
+      "From listing optimization to brand strategy, they deliver. ROI speaks for itself.",
+    author: "Marcus Williams",
+    role: "CEO, Health & Wellness",
+    rating: 5,
+    avatar: "https://i.pravatar.cc/150?img=14",
+  },
+  {
+    id: 7,
+    quote:
+      "Best agency we've worked with. Clear communication, measurable results, honest pricing.",
+    author: "Amanda Foster",
+    role: "Operations Manager",
+    rating: 5,
+    avatar: "https://i.pravatar.cc/150?img=10",
+  },
+  {
+    id: 8,
+    quote:
+      "They transformed our struggling listings into top performers. Sales tripled in 3 months.",
+    author: "Robert Kim",
+    role: "Brand Founder",
+    rating: 5,
+    avatar: "https://i.pravatar.cc/150?img=15",
+  },
+  {
+    id: 9,
+    quote:
+      "The team's expertise in Amazon's algorithm is unmatched. Our visibility skyrocketed.",
+    author: "Lisa Martinez",
+    role: "Growth Lead",
+    rating: 5,
+    avatar: "https://i.pravatar.cc/150?img=16",
   },
 ];
 
@@ -64,80 +113,95 @@ const metrics = [
   },
 ];
 
+// Testimonial Card Component
+const TestimonialCard = ({
+  testimonial,
+}: {
+  testimonial: (typeof testimonials)[0];
+}) => {
+  return (
+    <div className="bg-white p-6 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 border border-gray-100 w-[300px] h-80 flex flex-col group mx-2 sm:mx-3">
+      {/* Quote Icon */}
+      <div className="mb-3">
+        <Quote className="w-8 h-8 text-orange-500 opacity-50" />
+      </div>
+
+      {/* Stars */}
+      <div className="flex gap-1 mb-3">
+        {[...Array(testimonial.rating)].map((_, i) => (
+          <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+        ))}
+      </div>
+
+      {/* Quote - fixed height with overflow handling */}
+      <blockquote className="text-gray-700 text-sm leading-relaxed mb-4 h-[120px] overflow-hidden">
+        &ldquo;{testimonial.quote}&rdquo;
+      </blockquote>
+
+      {/* Author - always at the same position */}
+      <div className="flex items-center gap-3 pt-4 border-t border-gray-200 mt-auto">
+        <div className="relative shrink-0">
+          <div className="w-12 h-12 rounded-full overflow-hidden ring-2 ring-orange-500 ring-offset-2">
+            <Image
+              src={testimonial.avatar}
+              alt={`${testimonial.author} avatar`}
+              width={48}
+              height={48}
+              className="w-full h-full object-cover"
+              loading="lazy"
+            />
+          </div>
+        </div>
+        <div className="min-w-0">
+          <p className="font-bold text-gray-900 text-sm truncate">
+            {testimonial.author}
+          </p>
+          <p className="text-xs text-gray-600 truncate">{testimonial.role}</p>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 const SocialProof = () => {
   return (
     <section
-      className="w-full bg-linear-to-b from-white to-gray-50 py-16 lg:py-24"
+      className="w-full overflow-hidden"
       aria-labelledby="social-proof-heading"
     >
       <div className="container mx-auto px-4 sm:px-6">
         {/* Heading */}
-        <div className="text-center mb-12 lg:mb-16">
+        <div className="text-center mb-8 lg:mb-12 flex flex-col items-center">
           <h2
             id="social-proof-heading"
             className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl text-black leading-tight font-display mb-4"
           >
-            Trusted by Amazon brands that stopped{" "}
-            <span className="relative inline-block bg-[url('/assets/homepage/portfolio/orange-line.png')] bg-no-repeat bg-bottom bg-contain pb-2">
-              guessing and started scaling.
-            </span>
+            Trusted by Amazon brands that stopped guessing and started scaling.
           </h2>
+          <p className="text-gray-600 text-center text-lg sm:text-xl max-w-3xl mx-auto">
+            Join the brands experiencing real, measurable growth with our
+            data-driven strategies.
+          </p>
         </div>
 
-        {/* Testimonials Carousel */}
+        {/* Testimonials Marquee - Single Row */}
         <div className="mb-16">
-          <Swiper
-            modules={[Autoplay, Pagination]}
-            spaceBetween={30}
-            slidesPerView={1}
-            loop={true}
-            autoplay={{
-              delay: 5000,
-              disableOnInteraction: false,
-            }}
-            pagination={{ clickable: true }}
-            breakpoints={{
-              640: {
-                slidesPerView: 1,
-              },
-              768: {
-                slidesPerView: 2,
-              },
-              1024: {
-                slidesPerView: 2,
-              },
-            }}
-            className="testimonials-carousel pb-12"
+          <SimpleMarquee
+            className="w-full"
+            baseVelocity={2}
+            repeat={2}
+            direction="left"
+            slowdownOnHover={true}
+            slowDownFactor={0.2}
+            draggable={true}
+            dragSensitivity={0.1}
+            dragAwareDirection={true}
+            grabCursor={true}
           >
             {testimonials.map((testimonial) => (
-              <SwiperSlide key={testimonial.id}>
-                <div className="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow h-full border border-gray-100">
-                  {/* Stars */}
-                  <div className="flex gap-1 mb-4">
-                    {[...Array(testimonial.rating)].map((_, i) => (
-                      <Star
-                        key={i}
-                        className="w-5 h-5 fill-yellow-400 text-yellow-400"
-                      />
-                    ))}
-                  </div>
-
-                  {/* Quote */}
-                  <blockquote className="text-gray-700 text-base sm:text-lg leading-relaxed mb-6 italic">
-                    &ldquo;{testimonial.quote}&rdquo;
-                  </blockquote>
-
-                  {/* Author */}
-                  <div className="border-t border-gray-200 pt-4">
-                    <p className="font-bold text-gray-900">
-                      {testimonial.author}
-                    </p>
-                    <p className="text-sm text-gray-600">{testimonial.role}</p>
-                  </div>
-                </div>
-              </SwiperSlide>
+              <TestimonialCard key={testimonial.id} testimonial={testimonial} />
             ))}
-          </Swiper>
+          </SimpleMarquee>
         </div>
 
         {/* Metrics */}
@@ -174,17 +238,6 @@ const SocialProof = () => {
           </p>
         </div>
       </div>
-
-      <style jsx global>{`
-        .testimonials-carousel .swiper-pagination-bullet {
-          background: #94a3b8;
-          opacity: 1;
-        }
-
-        .testimonials-carousel .swiper-pagination-bullet-active {
-          background: #f97316;
-        }
-      `}</style>
     </section>
   );
 };

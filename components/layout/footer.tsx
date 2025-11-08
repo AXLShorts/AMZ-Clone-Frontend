@@ -32,11 +32,11 @@ const Footer = () => {
       <div className="border-b border-gray-700">
         <div className="container mx-auto px-4 sm:px-6 py-16 lg:py-20">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display mb-4">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display mb-4!">
               Ready to engineer your next{" "}
               <span className="text-orange-500">29% growth?</span>
             </h2>
-            <p className="text-lg sm:text-xl text-gray-300 mb-8">
+            <p className="text-lg sm:text-xl text-gray-300 mb-8!">
               Don&apos;t leave conversions to chance — let&apos;s fix your
               listing leaks today.
             </p>
@@ -56,7 +56,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
           {/* Left - Contact Form */}
           <div>
-            <h3 className="text-2xl font-display mb-6">Get In Touch</h3>
+            <h3 className="text-2xl font-display mb-6!">Get In Touch</h3>
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>
                 <label
@@ -150,7 +150,7 @@ const Footer = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
             {/* Quick Links */}
             <div>
-              <h3 className="text-xl font-display mb-4">Quick Links</h3>
+              <h3 className="text-xl font-display mb-4!">Quick Links</h3>
               <ul className="space-y-3">
                 <li>
                   <Link
@@ -197,7 +197,7 @@ const Footer = () => {
 
             {/* Contact Info */}
             <div>
-              <h3 className="text-xl font-display mb-4">Contact Info</h3>
+              <h3 className="text-xl font-display mb-4!">Contact Info</h3>
               <ul className="space-y-4">
                 <li className="flex items-start gap-3">
                   <Mail className="w-5 h-5 text-orange-500 mt-0.5 shrink-0" />

@@ -2,7 +2,11 @@
 
 import React, { useState, useMemo } from "react";
 import { motion } from "framer-motion";
-import { portfolioItems, categories, PortfolioItem } from "@/lib/portfolio-data";
+import {
+  portfolioItems,
+  categories,
+  PortfolioItem,
+} from "@/lib/portfolio-data";
 import { useMousePosition } from "@/hooks/use-mouse-position";
 import PortfolioColumn from "./components/portfolio-column";
 import PortfolioModal from "./components/portfolio-modal";
@@ -56,7 +60,7 @@ const PortfolioPage = () => {
   };
 
   return (
-    <main className="relative bg-white min-h-screen overflow-hidden">
+    <main className="relative bg-white min-h-screen">
       {/* Mouse-Following Glow Effect */}
       <div
         className="fixed pointer-events-none z-0 transition-opacity duration-300"
@@ -71,7 +75,7 @@ const PortfolioPage = () => {
       />
 
       {/* Hero Section */}
-      <section className="relative z-10 bg-[#142337] text-white -mt-20 pt-28 sm:pt-32 pb-12 sm:pb-16 lg:pb-20">
+      <section className="relative z-20 bg-[#142337] text-white -mt-20 pt-28 sm:pt-32 pb-12 sm:pb-16 lg:pb-20 rounded-b-[50px]">
         <div className="container mx-auto px-4 sm:px-6">
           <div className="max-w-5xl mx-auto text-center space-y-4 sm:space-y-6">
             <motion.h1
@@ -100,7 +104,7 @@ const PortfolioPage = () => {
       </section>
 
       {/* Filter Section */}
-      <section className="z-10 bg-white/90 border-b border-gray-200 sticky top-20 backdrop-blur-lg">
+      <section className="z-20 bg-white/90 border-b border-gray-200 sticky top-20 backdrop-blur-lg">
         <div className="container mx-auto px-4 sm:px-6 py-4 sm:py-6">
           <div className="flex flex-wrap justify-center gap-2 sm:gap-3">
             {categories.map((category) => (
@@ -157,8 +161,8 @@ const PortfolioPage = () => {
               <span className="text-orange-500">Your Brand?</span>
             </h2>
             <p className="text-base sm:text-lg lg:text-xl text-gray-300">
-              Get a free Amazon Conversion Audit and discover exactly what&apos;s
-              holding your listings back.
+              Get a free Amazon Conversion Audit and discover exactly
+              what&apos;s holding your listings back.
             </p>
             <a
               href="/audit"

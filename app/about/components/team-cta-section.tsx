@@ -11,12 +11,12 @@ const TeamCTASection = () => {
   ];
 
   return (
-    <section className="w-full bg-linear-to-b from-white to-gray-50 py-16 lg:py-24">
+    <section className="w-full bg-linear-to-b from-white to-gray-50 py-8">
       <div className="container mx-auto px-4 sm:px-6">
         <div className="max-w-5xl mx-auto">
           {/* Who We Work With */}
           <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl text-black leading-tight font-display mb-8">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl text-black leading-tight font-display mb-8!">
               Who We Work With
             </h2>
             <div className="grid md:grid-cols-3 gap-6 text-left">
@@ -52,12 +52,12 @@ const TeamCTASection = () => {
 
           {/* CTA Card */}
           <div className="bg-[#142337] text-white rounded-3xl p-8 lg:p-12 shadow-2xl">
-            <div className="text-center mb-8">
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display mb-4">
+            <div className="text-center mb-8 flex flex-col items-center">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display mb-4!">
                 Ready to Stop Guessing and Start{" "}
                 <span className="text-orange-500">Scaling?</span>
               </h2>
-              <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+              <p className="text-xl text-gray-300 max-w-2xl mx-auto!">
                 Get a free Amazon Conversion Audit and see exactly where
                 you&apos;re losing sales — and how to fix it.
               </p>
@@ -82,7 +82,7 @@ const TeamCTASection = () => {
                 Claim Your Free Audit Now
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Link>
-              <p className="text-sm text-gray-400 mt-4">
+              <p className="text-sm text-gray-400 mt-4!">
                 Only 3 audit slots available this month • No credit card
                 required
               </p>

@@ -21,14 +21,14 @@ const Offer = () => {
     >
       <div className="container mx-auto px-4 sm:px-6">
         {/* Heading */}
-        <div className="text-center mb-12 lg:mb-16">
+        <div className="text-center mb-4 lg:mb-8">
           <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl xl:text-6xl leading-tight tracking-[-2px] mb-4">
             Introducing the{" "}
-            <span className="relative inline-block bg-[url('/assets/homepage/portfolio/orange-line.png')] bg-no-repeat bg-bottom bg-contain pb-2">
+            <span className="relative inline-block">
               Merxpert Brand Conversion System™
             </span>
           </h2>
-          <p className="text-lg sm:text-xl lg:text-2xl text-gray-300 mt-6">
+          <p className="text-lg sm:text-xl lg:text-2xl text-gray-300">
             Full-service, done-for-you brand transformation.
           </p>
         </div>
@@ -37,7 +37,7 @@ const Offer = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left Column - Text */}
           <div className="space-y-8">
-            <p className="text-base sm:text-lg lg:text-xl text-gray-200 leading-relaxed">
+            <p className="text-base sm:text-lg lg:text-xl text-gray-200 mb-6! leading-relaxed">
               Our done-for-you system rebuilds your Amazon brand from the ground
               up — every word, every visual, every keyword — scientifically
               designed to convert.
@@ -45,7 +45,7 @@ const Offer = () => {
 
             {/* Deliverables */}
             <div>
-              <h3 className="text-2xl sm:text-3xl font-display mb-6 text-emerald-400">
+              <h3 className="text-2xl sm:text-3xl font-display mb-6! text-emerald-400">
                 What You Get:
               </h3>
               <div className="space-y-4">
@@ -63,14 +63,14 @@ const Offer = () => {
             </div>
 
             {/* CTA */}
-            <div className="pt-6">
+            <div>
               <Link
                 href="/audit"
                 className="inline-block w-full sm:w-auto py-4 px-8 bg-orange-500 text-white text-center rounded-full font-bold hover:bg-orange-600 transition-all duration-300 text-base lg:text-lg shadow-lg hover:shadow-xl hover:scale-105"
               >
                 Book My Free Amazon Conversion Audit →
               </Link>
-              <p className="text-sm text-gray-400 mt-4 text-center sm:text-left">
+              <p className="text-sm text-gray-400 mt-4! text-center sm:text-left">
                 Only 3 free spots this month — closes in 48h
               </p>
             </div>
@@ -104,7 +104,7 @@ const MacBookMockup = () => {
             className="h-full overflow-y-auto custom-scrollbar"
           >
             <Image
-              src="/assets/homepage/offer/dashboard-mockup.png"
+              src="/assets/homepage/hero/header-bg.png"
               alt="Merxpert Dashboard and Listing Preview"
               width={1200}
               height={750}

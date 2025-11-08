@@ -35,13 +35,13 @@ const Hero = () => {
           externalSliderPosition={sliderPosition}
         />
         {/* Overlay for text readability */}
-        {/* <div className="absolute inset-0 bg-[#142337]/80"></div> */}
+        <div className="absolute inset-0 bg-[#142337]/50"></div>
       </div>
 
       <div className="relative z-10 container mx-auto px-4 sm:px-6 pt-8 lg:pt-16">
-        <div className="mx-auto text-center space-y-6 lg:space-y-8 max-w-5xl">
+        <div className="mx-auto text-center space-y-6 lg:space-y-8 max-w-5xl flex flex-col items-center">
           <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl xl:text-[80px] leading-tight tracking-[-2px] mb-0">
-            Your Amazon listings don&apos;t have a traffic problem —{" "}
+            Your Amazon listings don&apos;t have a traffic problem{" "}
             <span className="text-orange-500 relative inline-block bg-[url('/assets/homepage/hero/orange-line.png')] bg-no-repeat bg-bottom bg-contain pb-2">
               they have a conversion problem.
             </span>

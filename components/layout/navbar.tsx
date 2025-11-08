@@ -13,18 +13,27 @@ interface NavItem {
 }
 
 // Mock CMS API function
-async function fetchServices(): Promise<string[]> {
+async function fetchServices(): Promise<Array<{ name: string; slug: string }>> {
   return new Promise((resolve) => {
     setTimeout(() => {
       resolve([
-        "Amazon Product Photography",
-        "Amazon Product Videography",
-        "Amazon Listing Optimization",
-        "Amazon PPC Management",
-        "A+ Content/EBC Service",
-        "Amazon Account Management",
-        "Amazon 3D Rendering",
-        "Amazon Keyword Ranking",
+        {
+          name: "Full Listing Optimization",
+          slug: "full-listing-optimization",
+        },
+        { name: "Keyword Ranking", slug: "keyword-ranking" },
+        { name: "A+/EBC Content", slug: "a-ebc-content" },
+        { name: "Account Management", slug: "account-management" },
+        { name: "PPC Management", slug: "ppc-management" },
+        { name: "Brand Storefronts", slug: "brand-storefronts" },
+        {
+          name: "Product Packaging Print Ready Files",
+          slug: "product-packaging-print-ready-files",
+        },
+        {
+          name: "CTR Image Creation/Optimization",
+          slug: "ctr-image-creation-optimization",
+        },
       ]);
     }, 1000);
   });
@@ -50,7 +59,9 @@ export default function Navbar() {
   const pathname = usePathname();
   const navRef = useRef<HTMLElement>(null);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
-  const [services, setServices] = useState<string[]>([]);
+  const [services, setServices] = useState<
+    Array<{ name: string; slug: string }>
+  >([]);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [mobileDropdown, setMobileDropdown] = useState<string | null>(null);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -180,15 +191,13 @@ export default function Navbar() {
                   <ul className="py-2">
                     {item.label === "Services"
                       ? services.map((service) => (
-                          <li key={service}>
+                          <li key={service.slug}>
                             <Link
-                              href={`/services/${service
-                                .toLowerCase()
-                                .replace(/\s+/g, "-")}`}
+                              href={`/services/${service.slug}`}
                               className="block w-full text-left px-4 py-2 hover:bg-gray-100 transition-colors"
                               role="menuitem"
                             >
-                              {service}
+                              {service.name}
                             </Link>
                           </li>
                         ))
@@ -251,15 +260,13 @@ export default function Navbar() {
                       <ul className="mt-2 ml-4 space-y-2 border-l-2 border-orange-500 pl-4">
                         {item.label === "Services"
                           ? services.map((service) => (
-                              <li key={service}>
+                              <li key={service.slug}>
                                 <Link
-                                  href={`/services/${service
-                                    .toLowerCase()
-                                    .replace(/\s+/g, "-")}`}
+                                  href={`/services/${service.slug}`}
                                   className="text-left text-gray-300 hover:text-orange-500 transition-colors text-sm"
                                   onClick={() => setMobileMenuOpen(false)}
                                 >
-                                  {service}
+                                  {service.name}
                                 </Link>
                               </li>
                             ))

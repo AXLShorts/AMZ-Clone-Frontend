@@ -2,7 +2,7 @@
 
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination } from "swiper/modules";
+import { Pagination, Autoplay } from "swiper/modules";
 import { BeforeAfterSlider } from "@/components/before-after-slider";
 import { Check } from "lucide-react";
 
@@ -41,7 +41,7 @@ const features = [
 const Transformation = () => {
   return (
     <section
-      className="w-full bg-linear-to-b from-gray-50 to-white py-16 lg:py-24"
+      className="w-full pb-16 lg:pb-24"
       aria-labelledby="transformation-heading"
     >
       <div className="container mx-auto px-4 sm:px-6">
@@ -59,12 +59,17 @@ const Transformation = () => {
         </div>
 
         {/* Carousel with Before/After Sliders */}
-        <div className="mb-12">
+        <div className="mb-8">
           <Swiper
-            modules={[Navigation, Pagination]}
+            modules={[Pagination, Autoplay]}
             spaceBetween={30}
             slidesPerView={1}
             navigation
+            autoplay={{
+              delay: 4000,
+              disableOnInteraction: true,
+            }}
+            loop
             pagination={{ clickable: true }}
             className="transformation-carousel rounded-xl"
           >
@@ -76,7 +81,7 @@ const Transformation = () => {
                     afterImage={transformation.afterImage}
                     beforeAlt={`Before - ${transformation.title}`}
                     afterAlt={`After - ${transformation.title}`}
-                    className="rounded-xl shadow-2xl"
+                    className="rounded-xl"
                   />
                   {/* Metric Overlay */}
                   <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/80 backdrop-blur-md text-white px-6 py-3 rounded-full font-bold text-sm sm:text-base lg:text-lg">
@@ -96,16 +101,6 @@ const Transformation = () => {
               high-converting brand systems
             </span>{" "}
             that transform your Amazon presence into a performance engine.
-          </p>
-
-          <p className="text-base sm:text-lg lg:text-xl text-gray-600">
-            We optimize{" "}
-            <span className="font-semibold text-black">
-              every lever that impacts conversions
-            </span>{" "}
-            — visuals, copy, listings, storefront, and ranking architecture —
-            engineered to <span className="italic">convert</span>, not just{" "}
-            <span className="italic">impress</span>.
           </p>
 
           {/* Features List */}
@@ -135,32 +130,6 @@ const Transformation = () => {
           </div>
         </div>
       </div>
-
-      <style jsx global>{`
-        .transformation-carousel .swiper-button-next,
-        .transformation-carousel .swiper-button-prev {
-          color: #f97316;
-          background: white;
-          width: 48px;
-          height: 48px;
-          border-radius: 50%;
-          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        .transformation-carousel .swiper-button-next:after,
-        .transformation-carousel .swiper-button-prev:after {
-          font-size: 20px;
-        }
-
-        .transformation-carousel .swiper-pagination-bullet {
-          background: #94a3b8;
-          opacity: 1;
-        }
-
-        .transformation-carousel .swiper-pagination-bullet-active {
-          background: #f97316;
-        }
-      `}</style>
     </section>
   );
 };

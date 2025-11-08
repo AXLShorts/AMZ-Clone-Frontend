@@ -35,10 +35,10 @@ const StatsSection = () => {
   ];
 
   return (
-    <section className="w-full bg-linear-to-b from-gray-50 to-white py-16 lg:py-24">
+    <section className="w-full pb-8">
       <div className="container mx-auto px-4 sm:px-6">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl text-black leading-tight font-display mb-12 text-center">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl text-black leading-tight font-display mb-12! text-center">
             Merxpert By The Numbers
           </h2>
 
@@ -66,7 +66,7 @@ const StatsSection = () => {
             ))}
           </div>
 
-          <p className="text-sm text-gray-500 text-center mt-8">
+          <p className="text-sm text-gray-500 text-center mt-8!">
             *Based on client data from January 2023 - December 2024. Individual
             results may vary based on market conditions, competition, and
             implementation speed.

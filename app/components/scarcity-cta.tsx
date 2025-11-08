@@ -11,24 +11,21 @@ const ScarcityCTA = () => {
 
   return (
     <section
-      className="w-full bg-white py-16 lg:py-24"
+      className="w-full bg-white py-8 lg:py-16"
       aria-labelledby="scarcity-heading"
     >
       <div className="container mx-auto px-4 sm:px-6">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-5xl mx-auto">
           {/* Heading */}
-          <div className="text-center mb-12">
+          <div className="text-center mb-12 flex flex-col items-center">
             <h2
               id="scarcity-heading"
               className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl text-black leading-tight font-display mb-6"
             >
-              We Only Work with{" "}
-              <span className="relative inline-block bg-[url('/assets/homepage/portfolio/orange-line.png')] bg-no-repeat bg-bottom bg-contain pb-2">
-                3 New Brands Each Month
-              </span>
+              We Only Work with 3 New Brands Each Month
             </h2>
 
-            <p className="text-lg sm:text-xl text-gray-700 leading-relaxed max-w-2xl mx-auto">
+            <p className="text-lg sm:text-xl text-gray-700 leading-relaxed mx-auto">
               We keep our client pool intentionally small to deliver deep
               performance and one-on-one focus.
             </p>
@@ -96,7 +93,7 @@ const ScarcityCTA = () => {
               <span className="font-bold text-gray-900">
                 50+ brands scaling
               </span>{" "}
-              with Merxpert&apos;s Brand Conversion System™ —
+              with Merxpert&apos;s Brand Conversion System™
               <br />
               <span className="text-emerald-600 font-semibold">
                 Where growth isn&apos;t guessed. It&apos;s engineered.

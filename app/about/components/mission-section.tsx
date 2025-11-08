@@ -24,14 +24,14 @@ const MissionSection = () => {
   ];
 
   return (
-    <section className="w-full bg-white py-16 lg:py-24">
+    <section className="w-full py-8 lg:py-16">
       <div className="container mx-auto px-4 sm:px-6">
         <div className="max-w-6xl mx-auto">
           {/* Main Content */}
           <div className="mb-16">
             <h2 className="text-3xl sm:text-4xl lg:text-5xl text-black leading-tight font-display mb-8">
               Our Mission: Fix the Amazon{" "}
-              <span className="relative inline-block bg-[url('/assets/homepage/portfolio/orange-line.png')] bg-no-repeat bg-bottom bg-contain pb-2">
+              <span className="relative inline-block bg-[url('/assets/homepage/portfolio/orange-line.png')] bg-no-repeat bg-bottom bg-size-[200px] lg:bg-size-[300px] pb-3!">
                 Conversion Crisis
               </span>
             </h2>
@@ -43,9 +43,10 @@ const MissionSection = () => {
               </p>
               <p className="text-base sm:text-lg lg:text-xl leading-relaxed">
                 We saw brands burning thousands on traffic while their
-                conversion rates stayed flat. Agencies selling "premium design"
-                without measuring what actually drives sales. Sellers stuck in a
-                cycle of tweaking images and hoping for results.
+                conversion rates stayed flat. Agencies selling &quot;premium
+                design&quot; without measuring what actually drives sales.
+                Sellers stuck in a cycle of tweaking images and hoping for
+                results.
               </p>
               <p className="text-base sm:text-lg lg:text-xl leading-relaxed font-semibold">
                 So we built Merxpert to do what others won&apos;t: optimize for

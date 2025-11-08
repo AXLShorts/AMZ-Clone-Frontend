@@ -34,17 +34,14 @@ const MethodologySection = () => {
   ];
 
   return (
-    <section className="w-full bg-white py-16 lg:py-24 border-t border-gray-200">
+    <section className="w-full py-8">
       <div className="container mx-auto px-4 sm:px-6">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl text-black leading-tight font-display mb-4">
-              Our{" "}
-              <span className="relative inline-block bg-[url('/assets/homepage/portfolio/green-line.png')] bg-no-repeat bg-bottom bg-contain pb-2">
-                Brand Conversion System™
-              </span>
+          <div className="text-center mb-4 flex flex-col items-center">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl text-black leading-tight font-display mb-4!">
+              Our Brand Conversion System™
             </h2>
-            <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto mt-6">
+            <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto mt-6!">
               The proven 4-step process that transformed over 200 Amazon brands
               from plateaued to profitable.
             </p>
