@@ -17,7 +17,6 @@ export default function Home() {
       <LeadMagnet />
       <SocialProof />
       <ScarcityCTA />
-      {/* <End /> */}
     </div>
   );
 }

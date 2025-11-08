@@ -1,0 +1,33 @@
+import React from "react";
+
+const AboutHero = () => {
+  return (
+    <section
+      className="relative w-full bg-[#142337] text-white -mt-20 pt-32 pb-16 lg:pb-24"
+      aria-label="About hero section"
+    >
+      {/* Background Pattern */}
+      <div className="absolute inset-0 opacity-10">
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-size-[64px_64px]"></div>
+      </div>
+
+      <div className="relative z-10 container mx-auto px-4 sm:px-6">
+        <div className="max-w-5xl mx-auto text-center space-y-6 lg:space-y-8 flex flex-col items-center">
+          <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl xl:text-[80px] leading-tight tracking-[-2px]">
+            We&apos;re not just another{" "}
+            <span className="text-orange-500 relative inline-block bg-[url('/assets/homepage/hero/orange-line.png')] bg-no-repeat bg-bottom bg-contain pb-2">
+              Amazon agency.
+            </span>
+          </h1>
+
+          <p className="text-xl sm:text-2xl lg:text-3xl text-gray-200 max-w-4xl mx-auto leading-relaxed">
+            We&apos;re the team that turns underperforming listings into revenue
+            machines — using data, not guesswork.
+          </p>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default AboutHero;
