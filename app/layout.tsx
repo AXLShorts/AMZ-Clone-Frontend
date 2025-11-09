@@ -1,20 +1,20 @@
 import type { Metadata } from "next";
-import { Kumbh_Sans } from "next/font/google";
-import localFont from "next/font/local";
+import { Space_Grotesk, Kanit } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/layout/navbar";
 import Footer from "@/components/layout/footer";
 
-const kumbhSans = Kumbh_Sans({
+const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
   display: "swap",
-  variable: "--font-kumbh-sans",
+  variable: "--font-space-grotesk",
 });
 
-const bebas = localFont({
-  src: "./fonts/Bebas-Regular.ttf",
+const kanit = Kanit({
+  subsets: ["latin"],
   display: "swap",
-  variable: "--font-bebas",
+  variable: "--font-kanit",
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
 });
 
 export const metadata: Metadata = {
@@ -29,7 +29,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${bebas.variable} ${kumbhSans.variable}`}>
+    <html lang="en" className={`${spaceGrotesk.variable} ${kanit.variable}`}>
       <body className="antialiased mx-auto font-sans">
         <Navbar />
         <main className="pt-20">{children}</main>

@@ -19,7 +19,7 @@ export default function ServiceProcess({ service }: { service: Service }) {
             {service.processSteps.map((step, idx) => (
               <div key={idx} className="relative">
                 <div className="flex flex-col items-center">
-                  <div className="w-20 h-20 rounded-full bg-orange-500 text-white flex items-center justify-center font-bold text-2xl mb-4 shrink-0 shadow-xl font-display">
+                  <div className="w-20 h-20 rounded-full bg-brand-primary text-white flex items-center justify-center font-bold text-2xl mb-4 shrink-0 shadow-xl font-display">
                     {idx + 1}
                   </div>
                   <h3 className="font-bold text-black text-center mb-2 text-lg">
@@ -32,7 +32,7 @@ export default function ServiceProcess({ service }: { service: Service }) {
 
                 {idx < service.processSteps.length - 1 && (
                   <div className="hidden md:flex absolute top-10 left-[calc(2.5rem)] right-[calc(-100%+2.5rem)] items-center justify-center">
-                    <ArrowRight className="w-6 h-6 text-orange-500" />
+                    <ArrowRight className="w-6 h-6 text-brand-primary" />
                   </div>
                 )}
               </div>

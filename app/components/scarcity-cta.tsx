@@ -20,7 +20,7 @@ const ScarcityCTA = () => {
           <div className="text-center mb-12 flex flex-col items-center">
             <h2
               id="scarcity-heading"
-              className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl text-black leading-tight font-display mb-6"
+              className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl text-black leading-tight font-display mb-6! uppercase font-medium"
             >
               We Only Work with 3 New Brands Each Month
             </h2>
@@ -37,17 +37,17 @@ const ScarcityCTA = () => {
           </div>
 
           {/* Urgency Card */}
-          <div className="bg-linear-to-br from-orange-50 to-red-50 border-2 border-orange-200 rounded-2xl p-8 sm:p-10 shadow-xl mb-8">
+          <div className="bg-linear-to-br from-blue-50 to-purple-50 border-2 border-brand-primary rounded-2xl p-8 sm:p-10 shadow-xl mb-8">
             {/* Progress Bar */}
             <div className="mb-8">
               <div className="flex items-center justify-between mb-3">
                 <div className="flex items-center gap-2">
-                  <Users className="w-5 h-5 text-orange-600" />
+                  <Users className="w-5 h-5 text-brand-primary" />
                   <span className="font-bold text-gray-900">
                     Spots Available This Month
                   </span>
                 </div>
-                <span className="font-bold text-orange-600">
+                <span className="font-bold text-brand-primary">
                   {spotsFilled} of {totalSpots} filled
                 </span>
               </div>
@@ -55,8 +55,11 @@ const ScarcityCTA = () => {
               {/* Progress Bar Visual */}
               <div className="relative w-full h-6 bg-gray-200 rounded-full overflow-hidden">
                 <div
-                  className="absolute top-0 left-0 h-full bg-linear-to-r from-orange-500 to-red-500 transition-all duration-500 ease-out"
-                  style={{ width: `${progressPercentage}%` }}
+                  className="absolute top-0 left-0 h-full transition-all duration-500 ease-out"
+                  style={{
+                    width: `${progressPercentage}%`,
+                    background: "linear-gradient(to right, #043299, #6d2cf8)",
+                  }}
                 ></div>
                 <div className="absolute inset-0 flex items-center justify-center">
                   <span className="text-xs font-bold text-white drop-shadow-md">
@@ -79,7 +82,7 @@ const ScarcityCTA = () => {
             <div className="text-center">
               <Link
                 href="/audit"
-                className="inline-block w-full sm:w-auto py-5 px-10 bg-orange-500 text-white text-center rounded-full font-bold hover:bg-orange-600 transition-all duration-300 text-lg lg:text-xl shadow-lg hover:shadow-xl hover:scale-105"
+                className="inline-block w-full sm:w-auto py-5 px-10 bg-brand-primary text-white text-center rounded-full font-bold hover:bg-brand-accent transition-all duration-300 text-lg lg:text-xl shadow-lg hover:shadow-xl hover:scale-105"
               >
                 Claim My Free Conversion Audit Now →
               </Link>
@@ -95,7 +98,7 @@ const ScarcityCTA = () => {
               </span>{" "}
               with Merxpert&apos;s Brand Conversion System™
               <br />
-              <span className="text-emerald-600 font-semibold">
+              <span className="text-brand-primary font-semibold">
                 Where growth isn&apos;t guessed. It&apos;s engineered.
               </span>
             </p>

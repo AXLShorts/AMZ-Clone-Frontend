@@ -52,7 +52,7 @@ const Benefits = () => {
               >
                 {/* Checkmark Icon */}
                 <div className="shrink-0 pt-1">
-                  <div className="flex items-center justify-center w-8 h-8 lg:w-10 lg:h-10 text-green-400 shrink-0">
+                  <div className="flex items-center justify-center w-8 h-8 lg:w-10 lg:h-10 text-brand-primary shrink-0">
                     <Check className="w-5 h-5 lg:w-6 lg:h-6" strokeWidth={3} />
                   </div>
                 </div>

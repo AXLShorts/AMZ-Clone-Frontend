@@ -16,13 +16,13 @@ const deliverables = [
 const Offer = () => {
   return (
     <section
-      className="w-[96%] mx-auto h-fit bg-[#142337] rounded-[20px] text-white py-16 lg:py-24"
+      className="w-[96%] mx-auto h-fit bg-brand-dark rounded-[20px] text-white py-16 lg:py-24"
       aria-label="Offer section"
     >
       <div className="container mx-auto px-4 sm:px-6">
         {/* Heading */}
         <div className="text-center mb-4 lg:mb-8">
-          <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl xl:text-6xl leading-tight tracking-[-2px] mb-4">
+          <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl xl:text-6xl leading-tight tracking-[-2px] mb-4 uppercase font-medium">
             Introducing the{" "}
             <span className="relative inline-block">
               Merxpert Brand Conversion System™
@@ -66,7 +66,7 @@ const Offer = () => {
             <div>
               <Link
                 href="/audit"
-                className="inline-block w-full sm:w-auto py-4 px-8 bg-orange-500 text-white text-center rounded-full font-bold hover:bg-orange-600 transition-all duration-300 text-base lg:text-lg shadow-lg hover:shadow-xl hover:scale-105"
+                className="inline-block w-full sm:w-auto py-4 px-8 bg-brand-primary text-white text-center rounded-full font-bold hover:bg-brand-accent transition-all duration-300 text-base lg:text-lg shadow-lg hover:shadow-xl hover:scale-105"
               >
                 Book My Free Amazon Conversion Audit →
               </Link>
@@ -122,7 +122,7 @@ const MacBookMockup = () => {
       </div>
 
       {/* Glow Effect */}
-      <div className="absolute inset-0 bg-linear-to-t from-orange-500/20 to-transparent opacity-50 pointer-events-none blur-2xl"></div>
+      <div className="absolute inset-0 bg-linear-to-t from-brand-primary/20 to-transparent opacity-50 pointer-events-none blur-2xl"></div>
 
       <style jsx>{`
         .custom-scrollbar::-webkit-scrollbar {

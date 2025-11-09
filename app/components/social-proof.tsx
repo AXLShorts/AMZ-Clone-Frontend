@@ -174,7 +174,7 @@ const SocialProof = () => {
         <div className="text-center mb-8 lg:mb-12 flex flex-col items-center">
           <h2
             id="social-proof-heading"
-            className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl text-black leading-tight font-display mb-4"
+            className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl text-black leading-tight font-display mb-4! uppercase font-medium"
           >
             Trusted by Amazon brands that stopped guessing and started scaling.
           </h2>

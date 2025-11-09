@@ -1,5 +1,8 @@
+"use client";
+
 import React from "react";
 import { Target, Zap, TrendingUp } from "lucide-react";
+import { Easing, motion } from "framer-motion";
 
 const MissionSection = () => {
   const values = [
@@ -23,57 +26,150 @@ const MissionSection = () => {
     },
   ];
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+      },
+    },
+  };
+
+  const headingVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        ease: [0.25, 0.1, 0.25, 1] as Easing,
+      },
+    },
+  };
+
+  const paragraphVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.5,
+        ease: [0.25, 0.1, 0.25, 1] as Easing,
+      },
+    },
+  };
+
+  const cardVariants = {
+    hidden: { opacity: 0, y: 40 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        ease: [0.25, 0.1, 0.25, 1] as Easing,
+      },
+    },
+  };
+
   return (
     <section className="w-full py-8 lg:py-16">
       <div className="container mx-auto px-4 sm:px-6">
         <div className="max-w-6xl mx-auto">
           {/* Main Content */}
-          <div className="mb-16">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl text-black leading-tight font-display mb-8">
+          <motion.div
+            className="mb-16"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={containerVariants}
+          >
+            <motion.h2
+              className="text-3xl sm:text-4xl lg:text-5xl text-black leading-tight font-display mb-8"
+              variants={headingVariants}
+            >
               Our Mission: Fix the Amazon{" "}
-              <span className="relative inline-block bg-[url('/assets/homepage/portfolio/orange-line.png')] bg-no-repeat bg-bottom bg-size-[200px] lg:bg-size-[300px] pb-3!">
+              <span className="relative inline-block pb-3!">
                 Conversion Crisis
               </span>
-            </h2>
+            </motion.h2>
             <div className="space-y-6 text-gray-700">
-              <p className="text-lg sm:text-xl lg:text-2xl leading-relaxed">
+              <motion.p
+                className="text-lg sm:text-xl lg:text-2xl leading-relaxed"
+                variants={paragraphVariants}
+              >
                 Too many Amazon sellers are bleeding revenue because their
                 listings <span className="font-bold">look good</span> but{" "}
                 <span className="font-bold text-red-600">don&apos;t sell</span>.
-              </p>
-              <p className="text-base sm:text-lg lg:text-xl leading-relaxed">
+              </motion.p>
+              <motion.p
+                className="text-base sm:text-lg lg:text-xl leading-relaxed"
+                variants={paragraphVariants}
+              >
                 We saw brands burning thousands on traffic while their
                 conversion rates stayed flat. Agencies selling &quot;premium
                 design&quot; without measuring what actually drives sales.
                 Sellers stuck in a cycle of tweaking images and hoping for
                 results.
-              </p>
-              <p className="text-base sm:text-lg lg:text-xl leading-relaxed font-semibold">
+              </motion.p>
+              <motion.p
+                className="text-base sm:text-lg lg:text-xl leading-relaxed font-semibold"
+                variants={paragraphVariants}
+              >
                 So we built Merxpert to do what others won&apos;t: optimize for
                 performance first, aesthetics second.
-              </p>
+              </motion.p>
             </div>
-          </div>
+          </motion.div>
 
           {/* Values Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <motion.div
+            className="grid grid-cols-1 md:grid-cols-3 gap-8"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={containerVariants}
+          >
             {values.map((value, index) => (
-              <div
+              <motion.div
                 key={index}
-                className="bg-gray-50 border border-gray-200 rounded-2xl p-6 hover:shadow-lg transition-shadow duration-300"
+                variants={cardVariants}
+                whileHover={{
+                  y: -8,
+                  scale: 1.02,
+                  transition: {
+                    duration: 0.3,
+                    ease: [0.25, 0.1, 0.25, 1] as Easing,
+                  },
+                }}
+                className="relative bg-linear-to-br from-white to-gray-50 border border-gray-200 rounded-2xl p-8 shadow-md hover:shadow-2xl transition-shadow duration-300 overflow-hidden group"
               >
-                <div className="flex items-center justify-center w-14 h-14 bg-orange-100 rounded-full mb-4">
-                  <value.icon className="w-7 h-7 text-orange-600" />
-                </div>
-                <h3 className="text-xl font-bold text-black mb-3">
+                {/* Animated background accent */}
+                <motion.div
+                  className="absolute top-0 right-0 w-32 h-32 bg-blue-100 rounded-full blur-3xl opacity-0 group-hover:opacity-50 transition-opacity duration-500"
+                  initial={{ scale: 0.8 }}
+                  whileHover={{ scale: 1.2 }}
+                />
+
+                <motion.div
+                  className="flex items-center justify-center w-16 h-16 bg-blue-50 rounded-full mb-6 relative z-10"
+                  whileHover={{
+                    rotate: [0, -10, 10, -10, 0],
+                    transition: { duration: 0.5 },
+                  }}
+                >
+                  <value.icon className="w-8 h-8 text-brand-primary" />
+                </motion.div>
+
+                <h3 className="text-xl font-bold text-black mb-4 relative z-10">
                   {value.title}
                 </h3>
-                <p className="text-gray-600 leading-relaxed">
+                <p className="text-gray-600 leading-relaxed relative z-10">
                   {value.description}
                 </p>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

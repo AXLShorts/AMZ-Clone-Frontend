@@ -21,12 +21,10 @@ const About = () => {
       <div className="container mx-auto px-4 sm:px-6 flex flex-col items-center">
         <h2
           id="about-heading"
-          className="text-center text-3xl sm:text-4xl lg:text-5xl xl:text-6xl text-black leading-tight font-display"
+          className="text-center text-3xl sm:text-4xl lg:text-5xl xl:text-6xl text-black leading-tight font-display uppercase font-medium"
         >
           Stop guessing why your{" "}
-          <span className="relative inline-block bg-[url('/assets/homepage/portfolio/orange-line.png')] bg-no-repeat bg-bottom-right bg-size-[250px_20px] pb-2!">
-            Amazon sales plateaued.
-          </span>
+          <span className="relative inline-block">Amazon sales plateaued.</span>
         </h2>
         <p className="text-center text-base sm:text-lg lg:text-[22px] leading-relaxed text-gray-700">
           If your listings look great but your numbers don&apos;t — you&apos;re
@@ -96,7 +94,7 @@ const About = () => {
         <div className="pt-4">
           <Link
             href="/audit"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-orange-500 text-white rounded-full text-base lg:text-lg hover:bg-orange-600 transition-all duration-300 group shadow-lg hover:shadow-xl hover:scale-105"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-brand-primary text-white rounded-full text-base lg:text-lg hover:bg-brand-accent transition-all duration-300 group shadow-lg hover:shadow-xl hover:scale-105"
             aria-label="Get a Free Conversion Audit"
           >
             Get a Free Conversion Audit & See Where You&apos;re Leaking Revenue

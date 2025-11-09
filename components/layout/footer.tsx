@@ -27,14 +27,14 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-[#142337] text-white">
+    <footer className="bg-brand-dark text-white">
       {/* Main CTA Section */}
       <div className="border-b border-gray-700">
         <div className="container mx-auto px-4 sm:px-6 py-16 lg:py-20">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display mb-4!">
               Ready to engineer your next{" "}
-              <span className="text-orange-500">29% growth?</span>
+              <span className="text-brand-primary">29% growth?</span>
             </h2>
             <p className="text-lg sm:text-xl text-gray-300 mb-8!">
               Don&apos;t leave conversions to chance — let&apos;s fix your
@@ -42,7 +42,7 @@ const Footer = () => {
             </p>
             <Link
               href="/audit"
-              className="inline-flex items-center gap-2 py-4 px-8 bg-orange-500 text-white rounded-full font-bold hover:bg-orange-600 transition-all duration-300 text-lg shadow-lg hover:shadow-xl hover:scale-105"
+              className="inline-flex items-center gap-2 py-4 px-8 bg-brand-primary text-white rounded-full font-bold hover:bg-brand-accent transition-all duration-300 text-lg shadow-lg hover:shadow-xl hover:scale-105"
             >
               Book My Free Audit
               <ArrowRight className="w-5 h-5" />
@@ -72,7 +72,7 @@ const Footer = () => {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 bg-white/10 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 text-white placeholder-gray-400"
+                  className="w-full px-4 py-3 bg-white/10 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-primary text-white placeholder-gray-400"
                   placeholder="Your name"
                 />
               </div>
@@ -91,7 +91,7 @@ const Footer = () => {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 bg-white/10 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 text-white placeholder-gray-400"
+                  className="w-full px-4 py-3 bg-white/10 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-primary text-white placeholder-gray-400"
                   placeholder="your@email.com"
                 />
               </div>
@@ -110,7 +110,7 @@ const Footer = () => {
                   onChange={handleChange}
                   required
                   rows={4}
-                  className="w-full px-4 py-3 bg-white/10 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 text-white placeholder-gray-400 resize-none"
+                  className="w-full px-4 py-3 bg-white/10 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-primary text-white placeholder-gray-400 resize-none"
                   placeholder="Tell us about your Amazon business..."
                 ></textarea>
               </div>
@@ -124,7 +124,7 @@ const Footer = () => {
                   href="https://calendly.com/merxpert/consultation"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-emerald-400 hover:text-emerald-300 font-medium text-sm"
+                  className="inline-flex items-center gap-2 text-brand-accent hover:text-brand-primary font-medium text-sm"
                 >
                   <svg
                     className="w-5 h-5"
@@ -139,7 +139,7 @@ const Footer = () => {
 
               <button
                 type="submit"
-                className="w-full py-3 px-6 bg-emerald-500 text-white rounded-lg font-semibold hover:bg-emerald-600 transition-colors"
+                className="w-full py-3 px-6 bg-brand-primary text-white rounded-lg font-semibold hover:bg-brand-accent transition-colors"
               >
                 Send Message
               </button>
@@ -155,7 +155,7 @@ const Footer = () => {
                 <li>
                   <Link
                     href="/about"
-                    className="text-gray-300 hover:text-orange-500 transition-colors"
+                    className="text-gray-300 hover:text-brand-accent transition-colors"
                   >
                     About Us
                   </Link>
@@ -163,7 +163,7 @@ const Footer = () => {
                 <li>
                   <Link
                     href="/services"
-                    className="text-gray-300 hover:text-orange-500 transition-colors"
+                    className="text-gray-300 hover:text-brand-accent transition-colors"
                   >
                     Services
                   </Link>
@@ -171,7 +171,7 @@ const Footer = () => {
                 <li>
                   <Link
                     href="/portfolio"
-                    className="text-gray-300 hover:text-orange-500 transition-colors"
+                    className="text-gray-300 hover:text-brand-accent transition-colors"
                   >
                     Portfolio
                   </Link>
@@ -179,7 +179,7 @@ const Footer = () => {
                 <li>
                   <Link
                     href="/audit"
-                    className="text-gray-300 hover:text-orange-500 transition-colors"
+                    className="text-gray-300 hover:text-brand-accent transition-colors"
                   >
                     Free Audit
                   </Link>
@@ -187,7 +187,7 @@ const Footer = () => {
                 <li>
                   <Link
                     href="/contact"
-                    className="text-gray-300 hover:text-orange-500 transition-colors"
+                    className="text-gray-300 hover:text-brand-accent transition-colors"
                   >
                     Contact
                   </Link>
@@ -200,25 +200,25 @@ const Footer = () => {
               <h3 className="text-xl font-display mb-4!">Contact Info</h3>
               <ul className="space-y-4">
                 <li className="flex items-start gap-3">
-                  <Mail className="w-5 h-5 text-orange-500 mt-0.5 shrink-0" />
+                  <Mail className="w-5 h-5 text-brand-primary mt-0.5 shrink-0" />
                   <a
                     href="mailto:hello@merxpert.com"
-                    className="text-gray-300 hover:text-orange-500 transition-colors"
+                    className="text-gray-300 hover:text-brand-accent transition-colors"
                   >
                     hello@merxpert.com
                   </a>
                 </li>
                 <li className="flex items-start gap-3">
-                  <Phone className="w-5 h-5 text-orange-500 mt-0.5 shrink-0" />
+                  <Phone className="w-5 h-5 text-brand-primary mt-0.5 shrink-0" />
                   <a
                     href="tel:+1234567890"
-                    className="text-gray-300 hover:text-orange-500 transition-colors"
+                    className="text-gray-300 hover:text-brand-accent transition-colors"
                   >
                     +1 (234) 567-890
                   </a>
                 </li>
                 <li className="flex items-start gap-3">
-                  <MapPin className="w-5 h-5 text-orange-500 mt-0.5 shrink-0" />
+                  <MapPin className="w-5 h-5 text-brand-primary mt-0.5 shrink-0" />
                   <span className="text-gray-300">
                     123 Amazon Street
                     <br />

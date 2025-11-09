@@ -49,12 +49,10 @@ const Transformation = () => {
         <div className="text-center mb-12 lg:mb-16">
           <h2
             id="transformation-heading"
-            className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl text-black leading-tight font-display mb-6"
+            className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl text-black leading-tight font-display mb-6! uppercase font-medium"
           >
             Imagine listings that turn browsers into buyers —{" "}
-            <span className="relative inline-block bg-[url('/assets/homepage/portfolio/green-line.png')] bg-no-repeat bg-bottom bg-contain pb-2">
-              automatically.
-            </span>
+            <span className="text-brand-accent">automatically.</span>
           </h2>
         </div>
 

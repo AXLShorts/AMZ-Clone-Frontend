@@ -48,11 +48,9 @@ const navItems: NavItem[] = [
 ];
 
 const resourcesItems = [
-  "Blog",
-  "Documentation",
-  "Case Studies",
-  "Guides",
-  "FAQ",
+  { name: "Blog", href: "/blog" },
+  { name: "Case Studies", href: "/case-study" },
+  { name: "FAQ", href: "/faq" },
 ];
 
 export default function Navbar() {
@@ -126,7 +124,7 @@ export default function Navbar() {
     <nav
       ref={navRef}
       className={`fixed top-0 left-0 right-0 z-50 text-white px-6 py-4 transition-all duration-300 ${
-        isScrolled ? "bg-[#223145] shadow-lg" : "bg-transparent"
+        isScrolled ? "bg-brand-dark shadow-lg" : "bg-transparent"
       }`}
       role="navigation"
       aria-label="Main navigation"
@@ -152,10 +150,10 @@ export default function Navbar() {
               {item.dropdown ? (
                 <button
                   onClick={() => toggleDropdown(item.label)}
-                  className={`flex items-center gap-2 px-4 py-1 rounded-full font-semibold hover:bg-orange-600 transition-colors text-sm lg:text-base ${
+                  className={`flex items-center gap-2 px-4 py-1 rounded-full font-semibold hover:bg-brand-accent transition-colors text-sm lg:text-base ${
                     openDropdown === item.label
-                      ? "bg-orange-500 text-black"
-                      : "text-white hover:text-orange-500"
+                      ? "bg-brand-primary text-white"
+                      : "text-white"
                   }`}
                   aria-expanded={openDropdown === item.label}
                   aria-haspopup="true"
@@ -173,8 +171,8 @@ export default function Navbar() {
                   href={item.href || "#"}
                   className={`inline-flex items-center gap-2 px-4 py-1 rounded-full font-semibold transition-colors text-sm lg:text-base ${
                     isActive(item.href, item.label)
-                      ? "bg-orange-500 text-black"
-                      : "text-white hover:text-orange-500"
+                      ? "bg-brand-primary text-white"
+                      : "text-white hover:text-brand-accent"
                   }`}
                 >
                   {item.label}
@@ -202,13 +200,13 @@ export default function Navbar() {
                           </li>
                         ))
                       : resourcesItems.map((resource) => (
-                          <li key={resource}>
+                          <li key={resource.name}>
                             <Link
-                              href={`/resources/${resource.toLowerCase()}`}
+                              href={resource.href}
                               className="block w-full text-left px-4 py-2 hover:bg-gray-100 transition-colors"
                               role="menuitem"
                             >
-                              {resource}
+                              {resource.name}
                             </Link>
                           </li>
                         ))}
@@ -221,7 +219,7 @@ export default function Navbar() {
 
         {/* Desktop CTA Button */}
         <div className="flex gap-4 items-center">
-          <button className="hidden sm:block bg-orange-500 text-black px-6 py-2 rounded-full font-semibold hover:bg-orange-600 transition-colors">
+          <button className="hidden sm:block bg-brand-primary text-white px-6 py-2 rounded-full font-semibold hover:bg-brand-accent transition-colors">
             Start a Project
           </button>
 
@@ -237,7 +235,7 @@ export default function Navbar() {
       </div>
 
       {mobileMenuOpen && (
-        <div className="lg:hidden fixed inset-0 top-16 right-0 w-full bg-[#142337] bg-opacity-95 z-40">
+        <div className="lg:hidden fixed inset-0 top-16 right-0 w-full bg-brand-dark bg-opacity-95 z-40">
           <div className="flex flex-col p-6 space-y-4">
             {navItems.map((item) => (
               <div key={item.label}>
@@ -245,7 +243,7 @@ export default function Navbar() {
                   <>
                     <button
                       onClick={() => toggleMobileDropdown(item.label)}
-                      className="flex items-center gap-2 w-full px-4 py-2 rounded-lg bg-orange-500 text-black font-semibold hover:bg-orange-600 transition-colors"
+                      className="flex items-center gap-2 w-full px-4 py-2 rounded-lg bg-brand-primary text-white font-semibold hover:bg-brand-accent transition-colors"
                       aria-expanded={mobileDropdown === item.label}
                     >
                       {item.label}
@@ -257,13 +255,13 @@ export default function Navbar() {
                       />
                     </button>
                     {mobileDropdown === item.label && (
-                      <ul className="mt-2 ml-4 space-y-2 border-l-2 border-orange-500 pl-4">
+                      <ul className="mt-2 ml-4 space-y-2 border-l-2 border-brand-primary pl-4">
                         {item.label === "Services"
                           ? services.map((service) => (
                               <li key={service.slug}>
                                 <Link
                                   href={`/services/${service.slug}`}
-                                  className="text-left text-gray-300 hover:text-orange-500 transition-colors text-sm"
+                                  className="text-left text-gray-300 hover:text-brand-accent transition-colors text-sm"
                                   onClick={() => setMobileMenuOpen(false)}
                                 >
                                   {service.name}
@@ -271,13 +269,13 @@ export default function Navbar() {
                               </li>
                             ))
                           : resourcesItems.map((resource) => (
-                              <li key={resource}>
+                              <li key={resource.name}>
                                 <Link
-                                  href={`/resources/${resource.toLowerCase()}`}
-                                  className="text-left text-gray-300 hover:text-orange-500 transition-colors text-sm"
+                                  href={resource.href}
+                                  className="text-left text-gray-300 hover:text-brand-accent transition-colors text-sm"
                                   onClick={() => setMobileMenuOpen(false)}
                                 >
-                                  {resource}
+                                  {resource.name}
                                 </Link>
                               </li>
                             ))}
@@ -287,7 +285,7 @@ export default function Navbar() {
                 ) : (
                   <Link
                     href={item.href || "#"}
-                    className="block px-4 py-2 rounded-lg hover:bg-orange-500 hover:text-black transition-colors"
+                    className="block px-4 py-2 rounded-lg hover:bg-brand-primary hover:text-white transition-colors"
                     onClick={() => setMobileMenuOpen(false)}
                   >
                     {item.label}
@@ -295,7 +293,7 @@ export default function Navbar() {
                 )}
               </div>
             ))}
-            <button className="w-full bg-orange-500 text-black px-6 py-2 rounded-full font-semibold hover:bg-orange-600 transition-colors mt-4">
+            <button className="w-full bg-brand-primary text-white px-6 py-2 rounded-full font-semibold hover:bg-brand-accent transition-colors mt-4">
               Start a Project
             </button>
           </div>

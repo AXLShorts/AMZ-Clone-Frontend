@@ -18,7 +18,7 @@ export default function ServiceFeatures({ service }: { service: Service }) {
             {service.features.map((feature, idx) => (
               <div
                 key={idx}
-                className="bg-gray-50 rounded-2xl p-8 border border-gray-200 hover:border-orange-300 hover:shadow-xl transition-all duration-300 group"
+                className="bg-gray-50 rounded-2xl p-8 border border-gray-200 hover:border-brand-accent hover:shadow-xl transition-all duration-300 group"
               >
                 <div className="text-5xl mb-4 group-hover:scale-110 transition-transform duration-300">
                   {feature.icon}

@@ -54,7 +54,7 @@ const MethodologySection = () => {
                 className="flex flex-col md:flex-row gap-6 p-8 bg-gray-50 rounded-2xl hover:shadow-xl transition-all duration-300 group"
               >
                 <div className="shrink-0">
-                  <div className="flex items-center justify-center w-20 h-20 bg-orange-500 rounded-2xl group-hover:scale-110 transition-transform duration-300">
+                  <div className="flex items-center justify-center w-20 h-20 bg-brand-primary rounded-2xl group-hover:scale-110 transition-transform duration-300">
                     <method.icon className="w-10 h-10 text-white" />
                   </div>
                 </div>

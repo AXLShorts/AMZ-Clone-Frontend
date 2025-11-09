@@ -119,7 +119,7 @@ const PortfolioModal: React.FC<PortfolioModalProps> = ({
           >
             <div className="space-y-2">
               {/* Category Badge */}
-              <div className="inline-block px-4 py-2 bg-orange-100 text-orange-600 rounded-full text-sm font-semibold">
+              <div className="inline-block px-4 py-2 bg-blue-100 text-brand-primary rounded-full text-sm font-semibold">
                 {item.category}
               </div>
 
@@ -162,7 +162,7 @@ const PortfolioModal: React.FC<PortfolioModalProps> = ({
                 </p>
                 <a
                   href="/audit"
-                  className="block w-full text-center px-6 py-3 bg-orange-500 text-white rounded-full font-bold hover:bg-orange-600 transition-colors"
+                  className="block w-full text-center px-6 py-3 bg-brand-primary text-white rounded-full font-bold hover:bg-brand-accent transition-colors"
                 >
                   Get Your Free Audit →
                 </a>
@@ -222,7 +222,7 @@ const PortfolioModal: React.FC<PortfolioModalProps> = ({
           {/* Details Section - Mobile */}
           <div className="px-4 py-6 space-y-6">
             {/* Category Badge */}
-            <div className="inline-block px-4 py-2 bg-orange-100 text-orange-600 rounded-full text-sm font-semibold">
+            <div className="inline-block px-4 py-2 bg-blue-100 text-brand-primary rounded-full text-sm font-semibold">
               {item.category}
             </div>
 
@@ -263,7 +263,7 @@ const PortfolioModal: React.FC<PortfolioModalProps> = ({
               </p>
               <a
                 href="/audit"
-                className="block w-full text-center px-6 py-3 bg-orange-500 text-white rounded-full font-bold hover:bg-orange-600 transition-colors"
+                className="block w-full text-center px-6 py-3 bg-brand-primary text-white rounded-full font-bold hover:bg-brand-accent transition-colors"
               >
                 Get Your Free Audit →
               </a>

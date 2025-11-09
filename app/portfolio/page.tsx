@@ -70,22 +70,22 @@ const PortfolioPage = () => {
           width: 500,
           height: 500,
           background:
-            "radial-gradient(circle, rgba(249, 115, 22, 0.08) 0%, transparent 70%)",
+            "radial-gradient(circle, rgba(4, 50, 153, 0.08) 0%, transparent 70%)",
         }}
       />
 
       {/* Hero Section */}
-      <section className="relative z-20 bg-[#142337] text-white -mt-20 pt-28 sm:pt-32 pb-12 sm:pb-16 lg:pb-20 rounded-b-[50px]">
+      <section className="relative z-20 bg-brand-dark text-white -mt-20 pt-28 sm:pt-32 pb-12 sm:pb-16 lg:pb-20 rounded-b-[50px]">
         <div className="container mx-auto px-4 sm:px-6">
-          <div className="max-w-5xl mx-auto text-center space-y-4 sm:space-y-6">
+          <div className="container mx-auto text-center space-y-4 sm:space-y-6">
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-[80px] leading-tight tracking-[-2px]"
+              className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl leading-tight tracking-[-2px] uppercase font-medium"
             >
               See What&apos;s Possible When You{" "}
-              <span className="text-orange-500 relative inline-block bg-[url('/assets/homepage/hero/orange-line.png')] bg-no-repeat bg-bottom bg-contain pb-2">
+              <span className="text-brand-primary relative inline-block bg-[url('/assets/homepage/hero/orange-line.png')] bg-no-repeat bg-bottom bg-contain pb-2">
                 Optimize for Performance
               </span>
             </motion.h1>
@@ -94,7 +94,7 @@ const PortfolioPage = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-lg sm:text-xl lg:text-2xl text-gray-200 max-w-3xl mx-auto"
+              className="text-lg sm:text-xl lg:text-2xl text-gray-200 max-w-3xl mx-auto!"
             >
               Real Amazon listings. Real results. Every project shows the
               conversion impact.
@@ -113,7 +113,7 @@ const PortfolioPage = () => {
                 onClick={() => setSelectedCategory(category)}
                 className={`px-4 sm:px-6 py-2 sm:py-2.5 rounded-full text-sm sm:text-base font-semibold transition-all duration-300 ${
                   selectedCategory === category
-                    ? "bg-orange-500 text-white shadow-lg scale-105"
+                    ? "bg-brand-primary text-white shadow-lg scale-105"
                     : "bg-gray-100 text-gray-700 hover:bg-gray-200"
                 }`}
               >
@@ -153,12 +153,12 @@ const PortfolioPage = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="relative z-10 bg-[#142337] text-white py-12 sm:py-16 lg:py-24">
+      <section className="relative z-10 bg-brand-dark text-white py-12 sm:py-16 lg:py-24">
         <div className="container mx-auto px-4 sm:px-6">
           <div className="max-w-4xl mx-auto text-center space-y-6 sm:space-y-8">
             <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-display">
               Ready to See These Results for{" "}
-              <span className="text-orange-500">Your Brand?</span>
+              <span className="text-brand-primary">Your Brand?</span>
             </h2>
             <p className="text-base sm:text-lg lg:text-xl text-gray-300">
               Get a free Amazon Conversion Audit and discover exactly
@@ -166,7 +166,7 @@ const PortfolioPage = () => {
             </p>
             <a
               href="/audit"
-              className="inline-block px-6 sm:px-8 py-3 sm:py-4 bg-orange-500 text-white rounded-full text-base sm:text-lg font-bold hover:bg-orange-600 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105"
+              className="inline-block px-6 sm:px-8 py-3 sm:py-4 bg-brand-primary text-white rounded-full text-base sm:text-lg font-bold hover:bg-brand-accent transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105"
             >
               Claim Your Free Audit →
             </a>

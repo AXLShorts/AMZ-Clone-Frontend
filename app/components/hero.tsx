@@ -35,21 +35,21 @@ const Hero = () => {
           externalSliderPosition={sliderPosition}
         />
         {/* Overlay for text readability */}
-        <div className="absolute inset-0 bg-[#142337]/50"></div>
+        <div className="absolute inset-0 bg-brand-dark/50"></div>
       </div>
 
       <div className="relative z-10 container mx-auto px-4 sm:px-6 pt-8 lg:pt-16">
-        <div className="mx-auto text-center space-y-6 lg:space-y-8 max-w-5xl flex flex-col items-center">
-          <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl xl:text-[80px] leading-tight tracking-[-2px] mb-0">
+        <div className="mx-auto text-center space-y-6 lg:space-y-8 container flex flex-col items-center">
+          <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl xl:text-7xl leading-tight tracking-[-2px] uppercase font-medium">
             Your Amazon listings don&apos;t have a traffic problem{" "}
-            <span className="text-orange-500 relative inline-block bg-[url('/assets/homepage/hero/orange-line.png')] bg-no-repeat bg-bottom bg-contain pb-2">
+            <span className="text-brand-primary relative inline-block bg-[url('/assets/homepage/hero/orange-line.png')] bg-no-repeat bg-bottom bg-contain pb-2">
               they have a conversion problem.
             </span>
           </h1>
 
           <p className="font-sans text-xl sm:text-2xl lg:text-3xl text-gray-200 mx-auto max-w-4xl">
             See how brands using{" "}
-            <span className="font-bold text-emerald-400">
+            <span className="font-bold text-brand-accent">
               Merxpert&apos;s Brand Conversion System™
             </span>{" "}
             are driving{" "}
@@ -60,7 +60,7 @@ const Hero = () => {
           <div className="flex flex-col items-center justify-center gap-4 pt-4 lg:pt-6">
             <Link
               href="/audit"
-              className="font-sans w-full sm:w-auto py-4 px-8 bg-orange-500 text-white rounded-full font-bold hover:bg-orange-600 transition-all duration-300 text-lg lg:text-xl shadow-lg hover:shadow-xl hover:scale-105"
+              className="font-sans w-full sm:w-auto py-4 px-8 bg-brand-primary text-white rounded-full font-bold hover:bg-brand-accent transition-all duration-300 text-lg lg:text-xl shadow-lg hover:shadow-xl hover:scale-105"
             >
               Claim Your Free Amazon Conversion Audit →
             </Link>

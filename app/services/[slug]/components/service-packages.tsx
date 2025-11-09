@@ -21,14 +21,14 @@ export default function ServicePackages({ service }: { service: Service }) {
               key={idx}
               className={`rounded-2xl overflow-hidden transition-all ${
                 pkg.highlighted
-                  ? "ring-2 ring-orange-500 shadow-2xl md:scale-105"
-                  : "border border-slate-200 hover:border-orange-300 hover:shadow-lg"
+                  ? "ring-2 ring-brand-primary shadow-2xl md:scale-105"
+                  : "border border-slate-200 hover:border-brand-accent hover:shadow-lg"
               }`}
             >
               <div
                 className={`${
                   pkg.highlighted
-                    ? "bg-linear-to-r from-orange-500 to-orange-600"
+                    ? "bg-linear-to-r from-brand-primary to-brand-accent"
                     : "bg-slate-100"
                 } px-6 py-4`}
               >
@@ -45,7 +45,7 @@ export default function ServicePackages({ service }: { service: Service }) {
                 <div className="mb-6">
                   <p
                     className={`text-3xl font-bold mb-2 ${
-                      pkg.highlighted ? "text-orange-600" : "text-slate-900"
+                      pkg.highlighted ? "text-brand-primary" : "text-slate-900"
                     }`}
                   >
                     {pkg.price}
@@ -60,7 +60,9 @@ export default function ServicePackages({ service }: { service: Service }) {
                     <li key={fidx} className="flex gap-3 items-start">
                       <Check
                         className={`w-5 h-5 ${
-                          pkg.highlighted ? "text-orange-500" : "text-slate-400"
+                          pkg.highlighted
+                            ? "text-brand-primary"
+                            : "text-slate-400"
                         } shrink-0`}
                       />
                       <span className="text-sm text-slate-700">{feature}</span>
@@ -71,8 +73,8 @@ export default function ServicePackages({ service }: { service: Service }) {
                 <Button
                   className={`w-full rounded-lg ${
                     pkg.highlighted
-                      ? "bg-orange-500 hover:bg-orange-600 text-white"
-                      : "border border-orange-500 text-orange-500 hover:bg-orange-50"
+                      ? "bg-brand-primary hover:bg-brand-accent text-white"
+                      : "border border-brand-primary text-brand-primary hover:bg-blue-50"
                   }`}
                 >
                   Get Started

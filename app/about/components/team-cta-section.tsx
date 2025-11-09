@@ -1,6 +1,9 @@
+"use client";
+
 import React from "react";
 import Link from "next/link";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
+import { Easing, motion } from "framer-motion";
 
 const TeamCTASection = () => {
   const benefits = [
@@ -10,52 +13,146 @@ const TeamCTASection = () => {
     "No commitment required — see the potential first",
   ];
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.15,
+      },
+    },
+  };
+
+  const cardVariants = {
+    hidden: { opacity: 0, y: 40 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        ease: [0.25, 0.1, 0.25, 1] as Easing,
+      },
+    },
+  };
+
   return (
     <section className="w-full bg-linear-to-b from-white to-gray-50 py-8">
       <div className="container mx-auto px-4 sm:px-6">
         <div className="max-w-5xl mx-auto">
           {/* Who We Work With */}
           <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl text-black leading-tight font-display mb-8!">
+            <motion.h2
+              className="text-3xl sm:text-4xl lg:text-5xl text-black leading-tight font-display mb-8!"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{
+                duration: 0.6,
+                ease: [0.25, 0.1, 0.25, 1] as Easing,
+              }}
+            >
               Who We Work With
-            </h2>
-            <div className="grid md:grid-cols-3 gap-6 text-left">
-              <div className="bg-white border border-gray-200 rounded-xl p-6">
-                <h3 className="text-xl font-bold text-black mb-3">
+            </motion.h2>
+            <motion.div
+              className="grid md:grid-cols-3 gap-6 text-left"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-100px" }}
+              variants={containerVariants}
+            >
+              <motion.div
+                variants={cardVariants}
+                whileHover={{
+                  y: -8,
+                  scale: 1.03,
+                  transition: {
+                    duration: 0.3,
+                    ease: [0.25, 0.1, 0.25, 1] as Easing,
+                  },
+                }}
+                className="relative bg-linear-to-br from-white to-gray-50 border border-gray-200 rounded-xl p-6 shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden group"
+              >
+                <motion.div
+                  className="absolute top-0 left-0 w-full h-1 bg-linear-to-r from-brand-primary to-brand-accent"
+                  initial={{ scaleX: 0 }}
+                  whileInView={{ scaleX: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: 0.2 }}
+                />
+                <div className="absolute top-0 right-0 w-24 h-24 bg-blue-100 rounded-full blur-2xl opacity-0 group-hover:opacity-40 transition-opacity duration-500" />
+                <h3 className="text-xl font-bold text-black mb-3 relative z-10">
                   Established Brands
                 </h3>
-                <p className="text-gray-600">
+                <p className="text-gray-600 relative z-10">
                   You&apos;re doing $50K+ monthly but conversion rates have
                   plateaued. We optimize and scale.
                 </p>
-              </div>
-              <div className="bg-white border border-gray-200 rounded-xl p-6">
-                <h3 className="text-xl font-bold text-black mb-3">
+              </motion.div>
+              <motion.div
+                variants={cardVariants}
+                whileHover={{
+                  y: -8,
+                  scale: 1.03,
+                  transition: {
+                    duration: 0.3,
+                    ease: [0.25, 0.1, 0.25, 1] as Easing,
+                  },
+                }}
+                className="relative bg-linear-to-br from-white to-emerald-50/30 border border-gray-200 rounded-xl p-6 shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden group"
+              >
+                <motion.div
+                  className="absolute top-0 left-0 w-full h-1 bg-linear-to-r from-emerald-500 to-emerald-600"
+                  initial={{ scaleX: 0 }}
+                  whileInView={{ scaleX: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: 0.35 }}
+                />
+                <div className="absolute top-0 right-0 w-24 h-24 bg-emerald-100 rounded-full blur-2xl opacity-0 group-hover:opacity-40 transition-opacity duration-500" />
+                <h3 className="text-xl font-bold text-black mb-3 relative z-10">
                   Private Label Sellers
                 </h3>
-                <p className="text-gray-600">
+                <p className="text-gray-600 relative z-10">
                   Your product is great, but sales aren&apos;t reflecting it. We
                   fix the disconnect.
                 </p>
-              </div>
-              <div className="bg-white border border-gray-200 rounded-xl p-6">
-                <h3 className="text-xl font-bold text-black mb-3">
+              </motion.div>
+              <motion.div
+                variants={cardVariants}
+                whileHover={{
+                  y: -8,
+                  scale: 1.03,
+                  transition: {
+                    duration: 0.3,
+                    ease: [0.25, 0.1, 0.25, 1] as Easing,
+                  },
+                }}
+                className="relative bg-linear-to-br from-white to-blue-50/30 border border-gray-200 rounded-xl p-6 shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden group"
+              >
+                <motion.div
+                  className="absolute top-0 left-0 w-full h-1 bg-linear-to-r from-blue-500 to-blue-600"
+                  initial={{ scaleX: 0 }}
+                  whileInView={{ scaleX: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: 0.5 }}
+                />
+                <div className="absolute top-0 right-0 w-24 h-24 bg-blue-100 rounded-full blur-2xl opacity-0 group-hover:opacity-40 transition-opacity duration-500" />
+                <h3 className="text-xl font-bold text-black mb-3 relative z-10">
                   DTC Brands on Amazon
                 </h3>
-                <p className="text-gray-600">
+                <p className="text-gray-600 relative z-10">
                   You&apos;ve nailed your website, but Amazon is different. We
                   translate DTC success to Amazon.
                 </p>
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
           </div>
 
           {/* CTA Card */}
-          <div className="bg-[#142337] text-white rounded-3xl p-8 lg:p-12 shadow-2xl">
+          <div className="bg-brand-dark text-white rounded-3xl p-8 lg:p-12 shadow-2xl">
             <div className="text-center mb-8 flex flex-col items-center">
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display mb-4!">
                 Ready to Stop Guessing and Start{" "}
-                <span className="text-orange-500">Scaling?</span>
+                <span className="text-brand-primary">Scaling?</span>
               </h2>
               <p className="text-xl text-gray-300 max-w-2xl mx-auto!">
                 Get a free Amazon Conversion Audit and see exactly where
@@ -77,7 +174,7 @@ const TeamCTASection = () => {
             <div className="text-center">
               <Link
                 href="/audit"
-                className="inline-flex items-center gap-2 px-8 py-4 bg-orange-500 text-white rounded-full text-lg lg:text-xl font-bold hover:bg-orange-600 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 group"
+                className="inline-flex items-center gap-2 px-8 py-4 bg-brand-primary text-white rounded-full text-lg lg:text-xl font-bold hover:bg-brand-accent transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 group"
               >
                 Claim Your Free Audit Now
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />

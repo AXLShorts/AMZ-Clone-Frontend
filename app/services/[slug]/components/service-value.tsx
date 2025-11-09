@@ -37,7 +37,7 @@ export default function ServiceValue({ service }: { service: Service }) {
           <div className="text-center mb-8 flex flex-col items-center">
             <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl text-black leading-tight font-display mb-6!">
               You&apos;re Not Buying a Service,{" "}
-              <span className="relative inline-block bg-[url('/assets/homepage/portfolio/green-line.png')] bg-no-repeat bg-bottom-right bg-size-[200px]">
+              <span className="relative inline-block text-brand-accent">
                 You&apos;re Investing in Growth
               </span>
             </h2>
@@ -53,11 +53,11 @@ export default function ServiceValue({ service }: { service: Service }) {
             {valuePoints.map((point, index) => (
               <div
                 key={index}
-                className="bg-white rounded-2xl p-8 border border-gray-200 hover:border-orange-300 hover:shadow-xl transition-all duration-300 group"
+                className="bg-white rounded-2xl p-8 border border-gray-200 hover:border-brand-accent hover:shadow-xl transition-all duration-300 group"
               >
                 <div className="flex items-start gap-6">
                   <div className="shrink-0">
-                    <div className="flex items-center justify-center w-16 h-16 bg-orange-500 rounded-2xl group-hover:scale-110 transition-transform duration-300">
+                    <div className="flex items-center justify-center w-16 h-16 bg-brand-primary rounded-2xl group-hover:scale-110 transition-transform duration-300">
                       <point.icon className="w-8 h-8 text-white" />
                     </div>
                   </div>
@@ -76,11 +76,11 @@ export default function ServiceValue({ service }: { service: Service }) {
 
           {/* Stats Banner */}
           {service.stats && (
-            <div className="bg-[#142337] rounded-2xl p-8 lg:p-12 text-white">
+            <div className="bg-brand-dark rounded-2xl p-8 lg:p-12 text-white">
               <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
                 {service.stats.map((stat, index) => (
                   <div key={index} className="text-center">
-                    <div className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-2 text-orange-400 font-display">
+                    <div className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-2 text-brand-accent font-display">
                       {stat.value}
                     </div>
                     <p className="text-sm sm:text-base text-gray-300">
@@ -99,7 +99,7 @@ export default function ServiceValue({ service }: { service: Service }) {
             </p>
             <a
               href="/audit"
-              className="inline-block py-4 px-8 bg-orange-500 text-white rounded-full font-bold hover:bg-orange-600 transition-all duration-300 text-lg shadow-lg hover:shadow-xl hover:scale-105"
+              className="inline-block py-4 px-8 bg-brand-primary text-white rounded-full font-bold hover:bg-brand-accent transition-all duration-300 text-lg shadow-lg hover:shadow-xl hover:scale-105"
             >
               Schedule Your Free Consultation →
             </a>

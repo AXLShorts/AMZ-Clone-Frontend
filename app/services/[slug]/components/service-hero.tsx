@@ -5,7 +5,7 @@ import { Check } from "lucide-react";
 export default function ServiceHero({ service }: { service: Service }) {
   return (
     <section
-      className="relative w-full bg-[#142337] text-white -mt-20 pt-32 pb-16 lg:pb-24"
+      className="relative w-full bg-brand-dark text-white -mt-20 pt-32 pb-16 lg:pb-24"
       aria-label="Service hero section"
     >
       {/* Background Pattern */}
@@ -15,16 +15,16 @@ export default function ServiceHero({ service }: { service: Service }) {
 
       {/* Gradient Blobs */}
       <div className="absolute inset-0 overflow-hidden opacity-20">
-        <div className="absolute top-20 right-10 w-96 h-96 bg-orange-500 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-emerald-500 rounded-full blur-3xl"></div>
+        <div className="absolute top-20 right-10 w-96 h-96 bg-brand-primary rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-brand-accent rounded-full blur-3xl"></div>
       </div>
 
       <div className="relative z-10 container mx-auto px-4 sm:px-6">
         <div className="max-w-5xl mx-auto">
           {/* Category Badge */}
           <div className="flex justify-center mb-6">
-            <div className="inline-block px-6 py-2 bg-orange-500/20 rounded-full border border-orange-500/40">
-              <span className="text-orange-400 text-sm font-semibold uppercase tracking-wider">
+            <div className="inline-block px-6 py-2 bg-brand-primary/20 rounded-full border border-brand-primary/40">
+              <span className="text-brand-primary text-sm font-semibold uppercase tracking-wider">
                 {service.category}
               </span>
             </div>
@@ -34,7 +34,7 @@ export default function ServiceHero({ service }: { service: Service }) {
           <div className="text-center space-y-6 lg:space-y-8 flex flex-col items-center">
             <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl xl:text-[80px] leading-tight tracking-[-2px]">
               {service.heroTitle.split(" ").slice(0, -2).join(" ")}{" "}
-              <span className="text-orange-500 relative inline-block bg-[url('/assets/homepage/hero/orange-line.png')] bg-no-repeat bg-bottom bg-contain pb-2">
+              <span className="text-brand-primary relative inline-block bg-[url('/assets/homepage/hero/orange-line.png')] bg-no-repeat bg-bottom bg-contain pb-2">
                 {service.heroTitle.split(" ").slice(-2).join(" ")}
               </span>
             </h1>
@@ -59,7 +59,7 @@ export default function ServiceHero({ service }: { service: Service }) {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-6">
               <Link
                 href="/audit"
-                className="font-sans w-full sm:w-auto py-4 px-8 bg-orange-500 text-white rounded-full font-bold hover:bg-orange-600 transition-all duration-300 text-lg shadow-lg hover:shadow-xl hover:scale-105 text-center"
+                className="font-sans w-full sm:w-auto py-4 px-8 bg-brand-primary text-white rounded-full font-bold hover:bg-brand-accent transition-all duration-300 text-lg shadow-lg hover:shadow-xl hover:scale-105 text-center"
               >
                 Get Started Today →
               </Link>

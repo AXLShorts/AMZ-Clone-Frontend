@@ -8,7 +8,7 @@ import Image from "next/image";
 const Portfolio = () => {
   return (
     <section
-      className="w-[96%] mx-auto h-fit bg-[#142337] rounded-[20px] text-white"
+      className="w-[96%] mx-auto h-fit bg-brand-dark rounded-[20px] text-white"
       aria-label="Portfolio section"
     >
       <div className="container mx-auto px-4 sm:px-6 pt-8 lg:pt-16">
