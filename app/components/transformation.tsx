@@ -70,7 +70,7 @@ const Transformation = ({ data }: TransformationProps) => {
                       beforeAlt={`Before - ${slide.title}`}
                       afterAlt={`After - ${slide.title}`}
                       className="rounded-xl"
-                      imgClassName="object-contain"
+                      imgClassName="object-contain!"
                     />
                     {/* Metric Overlay */}
                     {slide.showStats && slide.statType && slide.beforeValue && slide.afterValue && (
