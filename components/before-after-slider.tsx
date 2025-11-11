@@ -61,7 +61,7 @@ export const BeforeAfterSlider: React.FC<BeforeAfterSliderProps> = ({
           src={afterImage}
           alt={afterAlt}
           fill
-          className={`object-contain ${imgClassName}`}
+          className={`object-cover ${imgClassName}`}
           priority
           sizes="100vw"
         />
@@ -78,7 +78,7 @@ export const BeforeAfterSlider: React.FC<BeforeAfterSliderProps> = ({
           src={beforeImage}
           alt={beforeAlt}
           fill
-          className={`object-contain ${imgClassName}`}
+          className={`object-cover ${imgClassName}`}
           priority
           sizes="100vw"
         />
