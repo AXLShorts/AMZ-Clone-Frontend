@@ -5,30 +5,8 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay } from "swiper/modules";
 import { BeforeAfterSlider } from "@/components/before-after-slider";
 import { Check } from "lucide-react";
-
-const transformations = [
-  {
-    id: 1,
-    beforeImage: "/assets/homepage/hero/header-bg.png",
-    afterImage: "/assets/homepage/hero/header-bg-c.png",
-    metric: "Before: 2.4% CTR → After: 6.7% CTR",
-    title: "Performance Listing Redesign",
-  },
-  {
-    id: 2,
-    beforeImage: "/assets/homepage/transformation/before-2.jpg",
-    afterImage: "/assets/homepage/transformation/after-2.jpg",
-    metric: "Before: 8% Conversion → After: 15.2% Conversion",
-    title: "Visual & Copy Optimization",
-  },
-  {
-    id: 3,
-    beforeImage: "/assets/homepage/transformation/before-3.jpg",
-    afterImage: "/assets/homepage/transformation/after-3.jpg",
-    metric: "Before: Page 3 Ranking → After: Page 1 Ranking",
-    title: "SEO & Keyword Architecture",
-  },
-];
+import { TransformationSection } from "@/lib/types";
+import { urlFor } from "@/lib/sanity.client";
 
 const features = [
   "Performance-driven listing redesigns",
@@ -38,7 +16,15 @@ const features = [
   "Continuous improvement reports",
 ];
 
-const Transformation = () => {
+interface TransformationProps {
+  data: TransformationSection;
+}
+
+const Transformation = ({ data }: TransformationProps) => {
+  const {
+    slides,
+  } = data;
+
   return (
     <section
       className="w-full pb-16 lg:pb-24"
@@ -71,23 +57,31 @@ const Transformation = () => {
             pagination={{ clickable: true }}
             className="transformation-carousel rounded-xl"
           >
-            {transformations.map((transformation) => (
-              <SwiperSlide key={transformation.id}>
-                <div className="relative w-full aspect-video lg:aspect-21/9 mb-12">
-                  <BeforeAfterSlider
-                    beforeImage={transformation.beforeImage}
-                    afterImage={transformation.afterImage}
-                    beforeAlt={`Before - ${transformation.title}`}
-                    afterAlt={`After - ${transformation.title}`}
-                    className="rounded-xl"
-                  />
-                  {/* Metric Overlay */}
-                  <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/80 backdrop-blur-md text-white px-6 py-3 rounded-full font-bold text-sm sm:text-base lg:text-lg">
-                    {transformation.metric}
+            {slides.map((slide) => {
+              const beforeImageUrl = urlFor(slide.beforeImage).url();
+              const afterImageUrl = urlFor(slide.afterImage).url();
+              
+              return (
+                <SwiperSlide key={slide._key}>
+                  <div className="relative w-full aspect-video lg:aspect-21/9 mb-12">
+                    <BeforeAfterSlider
+                      beforeImage={beforeImageUrl}
+                      afterImage={afterImageUrl}
+                      beforeAlt={`Before - ${slide.title}`}
+                      afterAlt={`After - ${slide.title}`}
+                      className="rounded-xl"
+                      imgClassName="object-contain"
+                    />
+                    {/* Metric Overlay */}
+                    {slide.showStats && slide.statType && slide.beforeValue && slide.afterValue && (
+                      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/80 backdrop-blur-md text-white px-6 py-3 rounded-full font-bold text-sm sm:text-base lg:text-lg">
+                        Before: {slide.beforeValue} {slide.statType} → After: {slide.afterValue} {slide.statType}
+                      </div>
+                    )}
                   </div>
-                </div>
-              </SwiperSlide>
-            ))}
+                </SwiperSlide>
+              );
+            })}
           </Swiper>
         </div>
 

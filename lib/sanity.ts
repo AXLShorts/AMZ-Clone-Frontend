@@ -1,5 +1,44 @@
 import { client, urlFor } from "./sanity.client";
-import type { CaseStudy } from "./types";
+import type { CaseStudy, Homepage } from "./types";
+
+// GROQ query for fetching homepage content
+const HOMEPAGE_QUERY = `*[_type == "homepage"][0] {
+  _id,
+  _type,
+  title,
+  transformationSection {
+    heading,
+    accentText,
+    description,
+    slides[] {
+      _key,
+      title,
+      beforeImage,
+      afterImage,
+      showStats,
+      statType,
+      beforeValue,
+      afterValue
+    },
+    features,
+    proofStatement
+  },
+  offerSection {
+    heading,
+    subheading,
+    description,
+    deliverables,
+    ctaText,
+    ctaUrl,
+    ctaSubtext,
+    sliderImages[] {
+      _key,
+      image,
+      caption,
+      altText
+    }
+  }
+}`;
 
 // GROQ query for fetching all case studies
 const CASE_STUDIES_QUERY = `*[_type == "caseStudy"] | order(publishedAt desc) {
@@ -35,6 +74,19 @@ const CASE_STUDY_BY_SLUG_QUERY = `*[_type == "caseStudy" && slug.current == $slu
   category,
   seoDescription
 }`;
+
+/**
+ * Fetch homepage content from Sanity
+ */
+export async function getHomepage(): Promise<Homepage | null> {
+  try {
+    const homepage = await client.fetch<Homepage>(HOMEPAGE_QUERY);
+    return homepage;
+  } catch (error) {
+    console.error("Error fetching homepage:", error);
+    return null;
+  }
+}
 
 /**
  * Fetch all case studies from Sanity

@@ -10,6 +10,7 @@ interface BeforeAfterSliderProps {
   afterAlt?: string;
   className?: string;
   externalSliderPosition?: number;
+  imgClassName?: string;
 }
 
 export const BeforeAfterSlider: React.FC<BeforeAfterSliderProps> = ({
@@ -19,6 +20,7 @@ export const BeforeAfterSlider: React.FC<BeforeAfterSliderProps> = ({
   afterAlt = "After",
   className = "",
   externalSliderPosition,
+  imgClassName
 }) => {
   const [internalSliderPosition, setInternalSliderPosition] = useState(50);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -59,7 +61,7 @@ export const BeforeAfterSlider: React.FC<BeforeAfterSliderProps> = ({
           src={afterImage}
           alt={afterAlt}
           fill
-          className="object-cover"
+          className={`object-contain ${imgClassName}`}
           priority
           sizes="100vw"
         />
@@ -76,7 +78,7 @@ export const BeforeAfterSlider: React.FC<BeforeAfterSliderProps> = ({
           src={beforeImage}
           alt={beforeAlt}
           fill
-          className="object-cover"
+          className={`object-contain ${imgClassName}`}
           priority
           sizes="100vw"
         />
@@ -84,14 +86,14 @@ export const BeforeAfterSlider: React.FC<BeforeAfterSliderProps> = ({
 
       {/* Slider Line and Handle - Hidden on mobile, visible on md+ */}
       <div
-        className="hidden md:block absolute top-0 bottom-0 w-1 bg-white"
+        className="hidden md:block absolute top-0 bottom-0 w-1 bg-white mix-blend-difference"
         style={{
           left: `${sliderPosition}%`,
           transform: "translateX(-50%)",
         }}
       >
         {/* Slider Handle */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 bg-white rounded-full flex items-center justify-center">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 bg-white rounded-full flex items-center justify-center mix-blend-difference">
           {/* Left Arrow */}
           <svg
             className="w-4 h-4 absolute left-2"

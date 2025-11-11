@@ -92,3 +92,38 @@ export interface CaseStudy {
   category: CaseStudyCategory;
   seoDescription?: string;
 }
+
+// Homepage Types
+export interface TransformationSlide {
+  title: string;
+  beforeImage: SanityImageAsset;
+  afterImage: SanityImageAsset;
+  showStats: boolean;
+  statType?: string;
+  beforeValue?: string;
+  afterValue?: string;
+  _key: string;
+}
+
+export interface TransformationSection {
+  slides: TransformationSlide[];
+}
+
+export interface SliderImage {
+  image: SanityImageAsset;
+  caption: string;
+  altText?: string;
+  _key: string;
+}
+
+export interface OfferSection {
+  sliderImages: SliderImage[];
+}
+
+export interface Homepage {
+  _id: string;
+  _type: "homepage";
+  title: string;
+  transformationSection: TransformationSection;
+  offerSection: OfferSection;
+}

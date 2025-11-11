@@ -1,9 +1,13 @@
 "use client";
 
-import React, { useRef } from "react";
+import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Check } from "lucide-react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Pagination, Autoplay } from "swiper/modules";
+import { OfferSection } from "@/lib/types";
+import { urlFor } from "@/lib/sanity.client";
 
 const deliverables = [
   "Complete Listing Optimization",
@@ -13,7 +17,15 @@ const deliverables = [
   "Conversion Performance Dashboard",
 ];
 
-const Offer = () => {
+interface OfferProps {
+  data: OfferSection;
+}
+
+const Offer = ({ data }: OfferProps) => {
+  const {
+    sliderImages,
+  } = data;
+
   return (
     <section
       className="w-[96%] mx-auto h-fit bg-brand-dark rounded-[20px] text-white py-16 lg:py-24"
@@ -76,9 +88,9 @@ const Offer = () => {
             </div>
           </div>
 
-          {/* Right Column - MacBook Visual */}
+          {/* Right Column - Slider */}
           <div className="relative">
-            <MacBookMockup />
+            <SloganSlider images={sliderImages} />
           </div>
         </div>
       </div>
@@ -86,57 +98,69 @@ const Offer = () => {
   );
 };
 
-const MacBookMockup = () => {
-  const scrollRef = useRef<HTMLDivElement>(null);
+interface SloganSliderProps {
+  images: OfferSection["sliderImages"];
+}
 
+const SloganSlider = ({ images }: SloganSliderProps) => {
   return (
     <div className="relative w-full max-w-2xl mx-auto">
-      {/* MacBook Frame */}
-      <div className="relative bg-gray-900 rounded-t-2xl p-2 shadow-2xl">
-        {/* Notch */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-6 bg-gray-900 rounded-b-2xl z-10"></div>
-
-        {/* Screen */}
-        <div className="relative bg-white rounded-lg overflow-hidden aspect-16/10">
-          {/* Scrollable Content */}
-          <div
-            ref={scrollRef}
-            className="h-full overflow-y-auto custom-scrollbar"
-          >
-            <Image
-              src="/assets/homepage/hero/header-bg.png"
-              alt="Merxpert Dashboard and Listing Preview"
-              width={1200}
-              height={750}
-              className="w-full h-auto"
-              priority
-            />
-          </div>
-        </div>
-      </div>
-
-      {/* MacBook Base */}
-      <div className="relative">
-        <div className="h-2 bg-linear-to-b from-gray-800 to-gray-900"></div>
-        <div className="h-4 bg-linear-to-b from-gray-900 to-gray-950 rounded-b-xl"></div>
-      </div>
+      <Swiper
+        modules={[Pagination, Autoplay]}
+        spaceBetween={0}
+        slidesPerView={1}
+        autoplay={{
+          delay: 3500,
+          disableOnInteraction: false,
+        }}
+        loop
+        pagination={{
+          clickable: true,
+          dynamicBullets: true,
+        }}
+        className="offer-slider"
+      >
+        {images.map((slide) => {
+          const imageUrl = urlFor(slide.image).width(1200).height(800).url();
+          
+          return (
+            <SwiperSlide key={slide._key}>
+              <div className="space-y-6">
+                
+                {/* Image */}
+                <div className="relative w-full aspect-3/2 overflow-hidden  shadow-2xl rounded-2xl">
+                  <Image
+                    src={imageUrl}
+                    alt={slide.altText || slide.caption}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
+                    priority={images.indexOf(slide) === 0}
+                  />
+                </div>
+              </div>
+            </SwiperSlide>
+          );
+        })}
+      </Swiper>
 
       {/* Glow Effect */}
-      <div className="absolute inset-0 bg-linear-to-t from-brand-primary/20 to-transparent opacity-50 pointer-events-none blur-2xl"></div>
+      <div className="absolute inset-0 bg-linear-to-t from-brand-primary/20 to-transparent opacity-50 pointer-events-none blur-3xl -z-10" />
 
       <style jsx>{`
-        .custom-scrollbar::-webkit-scrollbar {
-          width: 8px;
+        :global(.offer-slider .swiper-pagination) {
+          bottom: -30px;
         }
-        .custom-scrollbar::-webkit-scrollbar-track {
-          background: #f1f1f1;
+        :global(.offer-slider .swiper-pagination-bullet) {
+          background: white;
+          opacity: 0.5;
+          width: 10px;
+          height: 10px;
         }
-        .custom-scrollbar::-webkit-scrollbar-thumb {
-          background: #888;
-          border-radius: 4px;
-        }
-        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-          background: #555;
+        :global(.offer-slider .swiper-pagination-bullet-active) {
+          opacity: 1;
+          width: 30px;
+          border-radius: 5px;
         }
       `}</style>
     </div>
