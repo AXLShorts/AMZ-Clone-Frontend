@@ -6,7 +6,8 @@ import LeadMagnet from "./components/lead-magnet";
 import SocialProof from "./components/social-proof";
 import ScarcityCTA from "./components/scarcity-cta";
 import { getHomepage } from "@/lib/sanity";
-// import End from "./components/end";
+
+export const revalidate = 60;
 
 export default async function Home() {
   const homepageData = await getHomepage();

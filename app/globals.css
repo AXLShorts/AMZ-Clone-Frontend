@@ -66,7 +66,8 @@
 
 :root {
   --brand-primary: #043299;
-  --brand-accent: #6d2cf8;
+  --brand-accent: #fbb61e;
+  --brand-accent-secondary: #ee6f28;
   --brand-dark: #121212;
   --brand-light: #ffffff;
   --radius: 0.625rem;

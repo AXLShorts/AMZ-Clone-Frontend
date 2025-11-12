@@ -1,5 +1,20 @@
 import { client, urlFor } from "./sanity.client";
-import type { CaseStudy, Homepage } from "./types";
+import type { CaseStudy, Homepage, PortfolioItem } from "./types";
+
+// GROQ query for fetching portfolio items
+const PORTFOLIO_QUERY = `*[_type == "portfolio"] | order(order asc) {
+  _id,
+  _type,
+  title,
+  image,
+  category,
+  description,
+  showMetrics,
+  metricType,
+  metricBefore,
+  metricAfter,
+  order
+}`;
 
 // GROQ query for fetching homepage content
 const HOMEPAGE_QUERY = `*[_type == "homepage"][0] {
@@ -85,6 +100,19 @@ export async function getHomepage(): Promise<Homepage | null> {
   } catch (error) {
     console.error("Error fetching homepage:", error);
     return null;
+  }
+}
+
+/**
+ * Fetch all portfolio items from Sanity
+ */
+export async function getPortfolioItems(): Promise<PortfolioItem[]> {
+  try {
+    const items = await client.fetch<PortfolioItem[]>(PORTFOLIO_QUERY);
+    return items;
+  } catch (error) {
+    console.error("Error fetching portfolio items:", error);
+    return [];
   }
 }
 

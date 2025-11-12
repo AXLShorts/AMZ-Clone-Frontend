@@ -1,9 +1,9 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay } from "swiper/modules";
-import { BeforeAfterSlider } from "@/components/before-after-slider";
 import { Check } from "lucide-react";
 import { TransformationSection } from "@/lib/types";
 import { urlFor } from "@/lib/sanity.client";
@@ -42,13 +42,12 @@ const Transformation = ({ data }: TransformationProps) => {
           </h2>
         </div>
 
-        {/* Carousel with Before/After Sliders */}
+        {/* Side-by-Side Comparison Carousel */}
         <div className="mb-8">
           <Swiper
             modules={[Pagination, Autoplay]}
-            spaceBetween={30}
+            spaceBetween={16}
             slidesPerView={1}
-            navigation
             autoplay={{
               delay: 4000,
               disableOnInteraction: true,
@@ -56,6 +55,11 @@ const Transformation = ({ data }: TransformationProps) => {
             loop
             pagination={{ clickable: true }}
             className="transformation-carousel rounded-xl"
+            breakpoints={{
+              768: {
+                spaceBetween: 24,
+              },
+            }}
           >
             {slides.map((slide) => {
               const beforeImageUrl = urlFor(slide.beforeImage).url();
@@ -63,19 +67,56 @@ const Transformation = ({ data }: TransformationProps) => {
               
               return (
                 <SwiperSlide key={slide._key}>
-                  <div className="relative w-full aspect-video lg:aspect-21/9 mb-12">
-                    <BeforeAfterSlider
-                      beforeImage={beforeImageUrl}
-                      afterImage={afterImageUrl}
-                      beforeAlt={`Before - ${slide.title}`}
-                      afterAlt={`After - ${slide.title}`}
-                      className="rounded-xl"
-                      imgClassName="object-contain!"
-                    />
+                  <div className="mb-12">
+                    {/* Side-by-Side Container */}
+                    <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:gap-6 mb-6">
+                      {/* Before Column */}
+                      <div className="space-y-2">
+                        <div className="relative w-full aspect-video rounded-lg overflow-hidden bg-gray-100">
+                          <Image
+                            src={beforeImageUrl}
+                            alt={`Before - ${slide.title}`}
+                            fill
+                            className="object-contain"
+                            priority
+                            sizes="(max-width: 768px) 50vw, (max-width: 1024px) 40vw, 35vw"
+                          />
+                        </div>
+                        <div className="text-center">
+                          <span className="inline-block bg-gray-200 text-gray-700 px-3! py-1! rounded-full text-xs sm:text-sm font-semibold">
+                            Before
+                          </span>
+                        </div>
+                      </div>
+
+                      {/* After Column */}
+                      <div className="space-y-2">
+                        <div className="relative w-full aspect-video rounded-lg overflow-hidden bg-gray-100">
+                          <Image
+                            src={afterImageUrl}
+                            alt={`After - ${slide.title}`}
+                            fill
+                            className="object-contain"
+                            priority
+                            sizes="(max-width: 768px) 50vw, (max-width: 1024px) 40vw, 35vw"
+                          />
+                        </div>
+                        <div className="text-center">
+                          <span className="inline-block bg-emerald-100 text-emerald-700 px-3! py-1! rounded-full text-xs sm:text-sm font-semibold">
+                            After
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+
                     {/* Metric Overlay */}
                     {slide.showStats && slide.statType && slide.beforeValue && slide.afterValue && (
-                      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/80 backdrop-blur-md text-white px-6 py-3 rounded-full font-bold text-sm sm:text-base lg:text-lg">
-                        Before: {slide.beforeValue} {slide.statType} → After: {slide.afterValue} {slide.statType}
+                      <div className="flex justify-center">
+                        <div className="bg-black/80 backdrop-blur-md text-white px-4 sm:px-6 py-2 sm:py-3 rounded-full font-bold text-xs sm:text-sm lg:text-base text-center">
+                          <span className="block sm:inline">Before: {slide.beforeValue} {slide.statType}</span>
+                          <span className="hidden sm:inline mx-2!">→</span>
+                          <span className="block sm:inline">After: {slide.afterValue} {slide.statType}</span>
+                        </div>
                       </div>
                     )}
                   </div>

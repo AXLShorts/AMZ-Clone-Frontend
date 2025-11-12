@@ -127,3 +127,18 @@ export interface Homepage {
   transformationSection: TransformationSection;
   offerSection: OfferSection;
 }
+
+// Portfolio Types
+export interface PortfolioItem {
+  _id: string;
+  _type: "portfolio";
+  title: string;
+  image: SanityImageAsset;
+  category: string;
+  description?: string;
+  showMetrics: boolean;
+  metricType?: string;
+  metricBefore?: number;
+  metricAfter?: number;
+  order: number;
+}

@@ -4,7 +4,8 @@ import React, { useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { X, ChevronLeft, ChevronRight, TrendingUp } from "lucide-react";
-import { PortfolioItem } from "@/lib/portfolio-data";
+import { PortfolioItem } from "@/lib/types";
+import { urlFor } from "@/lib/sanity.client";
 
 interface PortfolioModalProps {
   item: PortfolioItem | null;
@@ -44,6 +45,8 @@ const PortfolioModal: React.FC<PortfolioModalProps> = ({
   }, [item]);
 
   if (!item) return null;
+
+  const imageUrl = urlFor(item.image).width(1200).url();
 
   return (
     <AnimatePresence>
@@ -100,10 +103,10 @@ const PortfolioModal: React.FC<PortfolioModalProps> = ({
           <div className="relative flex-1 bg-transparent rounded-2xl overflow-hidden shadow-2xl">
             <div className="relative h-[70vh]">
               <Image
-                src={item.image}
+                src={imageUrl}
                 alt={item.title}
                 fill
-                className="object-contain"
+                className="object-contain rounded-xl"
                 sizes="60vw"
                 priority
               />
@@ -127,12 +130,14 @@ const PortfolioModal: React.FC<PortfolioModalProps> = ({
               <h2 className="text-3xl font-display text-black">{item.title}</h2>
 
               {/* Description */}
-              <p className="text-gray-600 leading-relaxed">
-                {item.description}
-              </p>
+              {item.description && (
+                <p className="text-gray-600 leading-relaxed">
+                  {item.description}
+                </p>
+              )}
 
               {/* Metrics */}
-              {item.metrics && (
+              {item.showMetrics && item.metricType && item.metricBefore && item.metricAfter && (
                 <div className="border-t border-gray-200 py-2">
                   <div className="flex items-center gap-2 mb-2">
                     <TrendingUp className="w-5 h-5 text-emerald-600" />
@@ -142,13 +147,13 @@ const PortfolioModal: React.FC<PortfolioModalProps> = ({
                     <div className="bg-red-50 rounded-lg p-4">
                       <p className="text-xs text-gray-600 mb-1">Before</p>
                       <p className="text-xl font-bold text-red-600">
-                        {item.metrics.before}
+                        {item.metricBefore}% {item.metricType}
                       </p>
                     </div>
                     <div className="bg-emerald-50 rounded-lg p-4">
                       <p className="text-xs text-gray-600 mb-1">After</p>
                       <p className="text-xl font-bold text-emerald-600">
-                        {item.metrics.after}
+                        {item.metricAfter}% {item.metricType}
                       </p>
                     </div>
                   </div>
@@ -193,7 +198,7 @@ const PortfolioModal: React.FC<PortfolioModalProps> = ({
           {/* Image Container */}
           <div className="relative h-[50vh]">
             <Image
-              src={item.image}
+              src={imageUrl}
               alt={item.title}
               fill
               className="object-contain"
@@ -230,10 +235,12 @@ const PortfolioModal: React.FC<PortfolioModalProps> = ({
             <h2 className="text-2xl font-display text-black">{item.title}</h2>
 
             {/* Description */}
-            <p className="text-gray-600 leading-relaxed">{item.description}</p>
+            {item.description && (
+              <p className="text-gray-600 leading-relaxed">{item.description}</p>
+            )}
 
             {/* Metrics */}
-            {item.metrics && (
+            {item.showMetrics && item.metricType && item.metricBefore && item.metricAfter && (
               <div className="border-t border-gray-200 pt-6">
                 <div className="flex items-center gap-2 mb-4">
                   <TrendingUp className="w-5 h-5 text-emerald-600" />
@@ -243,13 +250,13 @@ const PortfolioModal: React.FC<PortfolioModalProps> = ({
                   <div className="bg-red-50 rounded-lg p-4">
                     <p className="text-xs text-gray-600 mb-1">Before</p>
                     <p className="text-xl font-bold text-red-600">
-                      {item.metrics.before}
+                      {item.metricBefore}% {item.metricType}
                     </p>
                   </div>
                   <div className="bg-emerald-50 rounded-lg p-4">
                     <p className="text-xs text-gray-600 mb-1">After</p>
                     <p className="text-xl font-bold text-emerald-600">
-                      {item.metrics.after}
+                      {item.metricAfter}% {item.metricType}
                     </p>
                   </div>
                 </div>

@@ -3,46 +3,46 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { BeforeAfterSlider } from "@/components/before-after-slider";
 
 const Hero = () => {
-  const [sliderPosition, setSliderPosition] = React.useState(50);
   const heroRef = React.useRef<HTMLDivElement>(null);
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!heroRef.current) return;
-    const rect = heroRef.current.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const percentage = (x / rect.width) * 100;
-    setSliderPosition(Math.min(Math.max(percentage, 0), 100));
-  };
 
   return (
     <section
       ref={heroRef}
-      onMouseMove={handleMouseMove}
       className="relative 2xl:max-w-[96%] w-full h-fit mx-auto rounded-b-[50px] text-white -mt-20 pt-20 pb-12 lg:pb-16 overflow-hidden"
       aria-label="Hero section"
     >
-      {/* Interactive Before/After Background */}
+      {/* Video Background */}
       <div className="absolute inset-0 z-0 pointer-events-none">
-        <BeforeAfterSlider
-          beforeImage="/assets/homepage/hero/header-bg.png"
-          afterImage="/assets/homepage/hero/header-bg-c.png"
-          beforeAlt="Amazon store before optimization"
-          afterAlt="Amazon store after optimization"
-          // className="opacity-30"
-          externalSliderPosition={sliderPosition}
-        />
-        {/* Overlay for text readability */}
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="w-full h-full object-cover"
+          aria-label="Hero background video"
+        >
+          <source src="/assets/homepage/hero/hero.mp4" type="video/mp4" />
+        </video>
+        {/* Fallback image for browsers that don't support video */}
+        <div className="absolute inset-0 hidden video-not-supported">
+          <Image
+            src="/assets/homepage/hero/header-bg.png"
+            alt="Amazon store optimization"
+            fill
+            className="object-cover"
+            priority
+          />
+        </div>
         <div className="absolute inset-0 bg-brand-dark/50"></div>
       </div>
 
       <div className="relative z-10 container mx-auto px-4 sm:px-6 pt-8 lg:pt-16">
         <div className="mx-auto text-center space-y-6 lg:space-y-8 container flex flex-col items-center">
-          <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl xl:text-7xl leading-tight tracking-[-2px] uppercase font-medium">
+          <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl xl:text-7xl leading-tight tracking-[-2px] uppercase font-medium z-20">
             Your Amazon listings don&apos;t have a traffic problem{" "}
-            <span className="text-brand-primary relative inline-block bg-[url('/assets/homepage/hero/orange-line.png')] bg-no-repeat bg-bottom bg-contain pb-2">
+            <span className="text-[#0644c9] relative inline-block bg-[url('/assets/homepage/hero/orange-line.png')] bg-no-repeat bg-bottom bg-contain pb-2">
               they have a conversion problem.
             </span>
           </h1>
