@@ -42,7 +42,7 @@ const Hero = () => {
         <div className="mx-auto text-center space-y-6 lg:space-y-8 container flex flex-col items-center">
           <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl xl:text-7xl leading-tight tracking-[-2px] uppercase font-medium z-20">
             Your Amazon listings don&apos;t have a traffic problem{" "}
-            <span className="text-[#0644c9] relative inline-block bg-[url('/assets/homepage/hero/orange-line.png')] bg-no-repeat bg-bottom bg-contain pb-2">
+            <span className="text-brand-primary relative inline-block bg-[url('/assets/homepage/hero/orange-line.png')] bg-no-repeat bg-bottom bg-contain pb-2">
               they have a conversion problem.
             </span>
           </h1>
