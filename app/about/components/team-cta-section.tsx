@@ -42,7 +42,7 @@ const TeamCTASection = () => {
           {/* Who We Work With */}
           <div className="text-center mb-16">
             <motion.h2
-              className="text-3xl sm:text-4xl lg:text-5xl text-black leading-tight font-display mb-8!"
+              className="text-2xl sm:text-3xl lg:text-4xl text-black leading-tight font-display mb-8! font-semibold"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
@@ -80,10 +80,10 @@ const TeamCTASection = () => {
                   transition={{ duration: 0.6, delay: 0.2 }}
                 />
                 <div className="absolute top-0 right-0 w-24 h-24 bg-blue-100 rounded-full blur-2xl opacity-0 group-hover:opacity-40 transition-opacity duration-500" />
-                <h3 className="text-xl font-bold text-black mb-3 relative z-10">
+                <h3 className="text-lg font-bold text-black mb-3 relative z-10">
                   Established Brands
                 </h3>
-                <p className="text-gray-600 relative z-10">
+                <p className="text-sm text-gray-600 relative z-10">
                   You&apos;re doing $50K+ monthly but conversion rates have
                   plateaued. We optimize and scale.
                 </p>
@@ -108,10 +108,10 @@ const TeamCTASection = () => {
                   transition={{ duration: 0.6, delay: 0.35 }}
                 />
                 <div className="absolute top-0 right-0 w-24 h-24 bg-emerald-100 rounded-full blur-2xl opacity-0 group-hover:opacity-40 transition-opacity duration-500" />
-                <h3 className="text-xl font-bold text-black mb-3 relative z-10">
+                <h3 className="text-lg font-bold text-black mb-3 relative z-10">
                   Private Label Sellers
                 </h3>
-                <p className="text-gray-600 relative z-10">
+                <p className="text-sm text-gray-600 relative z-10">
                   Your product is great, but sales aren&apos;t reflecting it. We
                   fix the disconnect.
                 </p>
@@ -136,10 +136,10 @@ const TeamCTASection = () => {
                   transition={{ duration: 0.6, delay: 0.5 }}
                 />
                 <div className="absolute top-0 right-0 w-24 h-24 bg-blue-100 rounded-full blur-2xl opacity-0 group-hover:opacity-40 transition-opacity duration-500" />
-                <h3 className="text-xl font-bold text-black mb-3 relative z-10">
+                <h3 className="text-lg font-bold text-black mb-3 relative z-10">
                   DTC Brands on Amazon
                 </h3>
-                <p className="text-gray-600 relative z-10">
+                <p className="text-sm text-gray-600 relative z-10">
                   You&apos;ve nailed your website, but Amazon is different. We
                   translate DTC success to Amazon.
                 </p>
@@ -150,11 +150,11 @@ const TeamCTASection = () => {
           {/* CTA Card */}
           <div className="bg-brand-dark text-white rounded-3xl p-8 lg:p-12 shadow-2xl">
             <div className="text-center mb-8 flex flex-col items-center">
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display mb-4!">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-display mb-4! font-semibold">
                 Ready to Stop Guessing and Start{" "}
                 <span className="text-brand-primary">Scaling?</span>
               </h2>
-              <p className="text-xl text-gray-300 max-w-2xl mx-auto!">
+              <p className="text-base sm:text-lg text-gray-300 max-w-2xl mx-auto!">
                 Get a free Amazon Conversion Audit and see exactly where
                 you&apos;re losing sales — and how to fix it.
               </p>
@@ -165,7 +165,7 @@ const TeamCTASection = () => {
               {benefits.map((benefit, index) => (
                 <div key={index} className="flex items-start gap-3">
                   <CheckCircle2 className="w-6 h-6 text-emerald-400 shrink-0 mt-1" />
-                  <span className="text-gray-200">{benefit}</span>
+                  <span className="text-sm text-gray-200">{benefit}</span>
                 </div>
               ))}
             </div>
@@ -174,12 +174,12 @@ const TeamCTASection = () => {
             <div className="text-center">
               <Link
                 href="/audit"
-                className="inline-flex items-center gap-2 px-8 py-4 bg-brand-primary text-white rounded-full text-lg lg:text-xl font-bold hover:bg-brand-accent transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 group"
+                className="inline-flex items-center gap-2 px-8 py-4 bg-brand-primary text-white rounded-full text-base lg:text-lg font-bold hover:bg-brand-accent transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 group"
               >
                 Claim Your Free Audit Now
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Link>
-              <p className="text-sm text-gray-400 mt-4!">
+              <p className="text-xs sm:text-sm text-gray-400 mt-4!">
                 Only 3 audit slots available this month • No credit card
                 required
               </p>

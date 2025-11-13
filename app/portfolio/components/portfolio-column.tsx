@@ -3,9 +3,14 @@
 import React, { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, EffectFade } from "swiper/modules";
 import { PortfolioItem } from "@/lib/types";
 import { urlFor } from "@/lib/sanity.client";
 import { useParallaxScroll } from "@/hooks/use-parallax-scroll";
+
+import "swiper/css";
+import "swiper/css/effect-fade";
 
 interface PortfolioColumnProps {
   items: PortfolioItem[];
@@ -61,7 +66,11 @@ const PortfolioColumn: React.FC<PortfolioColumnProps> = ({
       }}
     >
       {visibleItems.map((item, index) => {
-        const imageUrl = urlFor(item.image).width(800).url();
+        const imageUrls = (item.images || []).map((img) =>
+          urlFor(img).width(800).url()
+        );
+        // Fallback: if no images, provide empty array
+        const isFallback = imageUrls.length === 0;
         
         return (
           <motion.div
@@ -73,37 +82,60 @@ const PortfolioColumn: React.FC<PortfolioColumnProps> = ({
             onClick={() => onItemClick(item)}
             className="relative group cursor-pointer rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300"
           >
-            {/* Image - Full width, auto height to maintain aspect ratio */}
+            {/* Image Carousel - Full width, auto height to maintain aspect ratio */}
             <div className="relative w-full bg-gray-100">
-              <Image
-                src={imageUrl}
-                alt={item.title}
-                width={800}
-                height={600}
-                className="w-full h-auto object-contain"
-                sizes="(max-width: 768px) 100vw, 33vw"
-                loading={index < 3 ? "eager" : "lazy"}
-              />
-
-              {/* Overlay on Hover */}
-              <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <div className="absolute bottom-0 left-0 right-0 p-6 text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                  <div className="inline-block px-3 py-1 bg-brand-primary rounded-full text-xs font-semibold mb-2">
-                    {item.category}
-                  </div>
-                  <h3 className="text-xl font-bold mb-1">{item.title}</h3>
-                  {item.showMetrics && item.metricType && item.metricBefore && item.metricAfter && (
-                    <p className="text-sm text-emerald-400 font-semibold">
-                      {item.metricBefore}% {item.metricType} → {item.metricAfter}% {item.metricType}
-                    </p>
-                  )}
+              {!isFallback && imageUrls.length > 0 ? (
+                <Swiper
+                  modules={[Autoplay, EffectFade]}
+                  effect="fade"
+                  autoplay={{
+                    delay: 4000,
+                    disableOnInteraction: false,
+                  }}
+                  loop
+                  className="w-full h-full"
+                >
+                  {imageUrls.map((imageUrl, imgIndex) => (
+                    <SwiperSlide key={imgIndex}>
+                      <div className="relative w-full aspect-square">
+                        <Image
+                          src={imageUrl}
+                          alt={`${item.title} - Image ${imgIndex + 1}`}
+                          fill
+                          className="object-contain"
+                          sizes="(max-width: 768px) 100vw, 33vw"
+                          loading={index < 3 ? "eager" : "lazy"}
+                        />
+                      </div>
+                    </SwiperSlide>
+                  ))}
+                </Swiper>
+              ) : (
+                // Fallback for empty images
+                <div className="relative w-full aspect-square bg-linear-to-br from-gray-200 to-gray-300 flex items-center justify-center">
+                  <span className="text-gray-500 text-sm">No images</span>
                 </div>
-              </div>
+              )}
+            </div>
 
-              {/* Glow Effect */}
-              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <div className="absolute inset-0 bg-brand-primary/20 blur-xl"></div>
+            {/* Overlay on Hover */}
+            <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <div className="absolute bottom-0 left-0 right-0 p-6 text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                <div className="inline-block px-3 py-1 bg-brand-primary rounded-full text-xs font-semibold mb-2">
+                  {item.category}
+                </div>
+                <h3 className="text-xl font-bold mb-1">{item.title}</h3>
+                {item.showMetrics && item.metricType && item.metricBefore && item.metricAfter && (
+                  <p className="text-sm text-emerald-400 font-semibold">
+                    {item.metricBefore}% {item.metricType} → {item.metricAfter}% {item.metricType}
+                  </p>
+                )}
               </div>
+            </div>
+
+            {/* Glow Effect */}
+            <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <div className="absolute inset-0 bg-brand-primary/20 blur-xl"></div>
             </div>
           </motion.div>
         );

@@ -1,19 +1,13 @@
 import type { Metadata } from "next";
-import { Space_Grotesk, Kanit } from "next/font/google";
+import { Poppins } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/layout/navbar";
 import Footer from "@/components/layout/footer";
 
-const spaceGrotesk = Space_Grotesk({
+const poppins = Poppins({
   subsets: ["latin"],
   display: "swap",
-  variable: "--font-space-grotesk",
-});
-
-const kanit = Kanit({
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-kanit",
+  variable: "--font-poppins",
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
 });
 
@@ -29,7 +23,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${spaceGrotesk.variable} ${kanit.variable}`}>
+    <html lang="en" className={`${poppins.variable}`}>
       <body className="antialiased mx-auto font-sans">
         <Navbar />
         <main className="pt-20">{children}</main>

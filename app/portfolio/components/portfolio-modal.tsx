@@ -1,11 +1,16 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { X, ChevronLeft, ChevronRight, TrendingUp } from "lucide-react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, EffectFade } from "swiper/modules";
 import { PortfolioItem } from "@/lib/types";
 import { urlFor } from "@/lib/sanity.client";
+
+import "swiper/css";
+import "swiper/css/effect-fade";
 
 interface PortfolioModalProps {
   item: PortfolioItem | null;
@@ -20,6 +25,8 @@ const PortfolioModal: React.FC<PortfolioModalProps> = ({
   onPrevious,
   onNext,
 }) => {
+  const swiperRef = useRef<any>(null);
+
   // Keyboard navigation
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -46,7 +53,10 @@ const PortfolioModal: React.FC<PortfolioModalProps> = ({
 
   if (!item) return null;
 
-  const imageUrl = urlFor(item.image).width(1200).url();
+  const imageUrls = (item.images || []).map((img) =>
+    urlFor(img).width(1200).url()
+  );
+  const isFallback = imageUrls.length === 0;
 
   return (
     <AnimatePresence>
@@ -99,17 +109,42 @@ const PortfolioModal: React.FC<PortfolioModalProps> = ({
           className="relative max-w-6xl w-full mx-4 flex gap-8 items-center"
           onClick={(e) => e.stopPropagation()}
         >
-          {/* Image */}
+          {/* Image Carousel */}
           <div className="relative flex-1 bg-transparent rounded-2xl overflow-hidden shadow-2xl">
             <div className="relative h-[70vh]">
-              <Image
-                src={imageUrl}
-                alt={item.title}
-                fill
-                className="object-contain rounded-xl"
-                sizes="60vw"
-                priority
-              />
+              {!isFallback && imageUrls.length > 0 ? (
+                <Swiper
+                  ref={swiperRef}
+                  modules={[Autoplay, EffectFade]}
+                  effect="fade"
+                  autoplay={{
+                    delay: 4000,
+                    disableOnInteraction: false,
+                  }}
+                  loop
+                  className="w-full h-full"
+                >
+                  {imageUrls.map((imageUrl, index) => (
+                    <SwiperSlide key={index}>
+                      <div className="relative w-full h-full">
+                        <Image
+                          src={imageUrl}
+                          alt={`${item.title} - Image ${index + 1}`}
+                          fill
+                          className="object-contain"
+                          sizes="60vw"
+                          priority={index === 0}
+                        />
+                      </div>
+                    </SwiperSlide>
+                  ))}
+                </Swiper>
+              ) : (
+                // Fallback for empty images
+                <div className="w-full h-full bg-linear-to-br from-gray-200 to-gray-300 flex items-center justify-center">
+                  <span className="text-gray-500 text-lg">No images available</span>
+                </div>
+              )}
             </div>
           </div>
 
@@ -195,16 +230,41 @@ const PortfolioModal: React.FC<PortfolioModalProps> = ({
 
         {/* Content - Mobile */}
         <div className="relative min-h-screen">
-          {/* Image Container */}
+          {/* Image Container with Carousel */}
           <div className="relative h-[50vh]">
-            <Image
-              src={imageUrl}
-              alt={item.title}
-              fill
-              className="object-contain"
-              sizes="100vw"
-              priority
-            />
+            {!isFallback && imageUrls.length > 0 ? (
+              <Swiper
+                ref={swiperRef}
+                modules={[Autoplay, EffectFade]}
+                effect="fade"
+                autoplay={{
+                  delay: 4000,
+                  disableOnInteraction: false,
+                }}
+                loop
+                className="w-full h-full"
+              >
+                {imageUrls.map((imageUrl, index) => (
+                  <SwiperSlide key={index}>
+                    <div className="relative w-full h-full">
+                      <Image
+                        src={imageUrl}
+                        alt={`${item.title} - Image ${index + 1}`}
+                        fill
+                        className="object-contain"
+                        sizes="100vw"
+                        priority={index === 0}
+                      />
+                    </div>
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+            ) : (
+              // Fallback for empty images
+              <div className="w-full h-full bg-linear-to-br from-gray-200 to-gray-300 flex items-center justify-center">
+                <span className="text-gray-500 text-base">No images available</span>
+              </div>
+            )}
           </div>
 
           {/* Navigation Arrows - Mobile (Fixed Position) */}

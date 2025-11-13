@@ -85,7 +85,7 @@ const MissionSection = () => {
             variants={containerVariants}
           >
             <motion.h2
-              className="text-3xl sm:text-4xl lg:text-5xl text-black leading-tight font-display mb-8"
+              className="text-2xl sm:text-3xl lg:text-4xl text-black leading-tight font-display mb-8 font-semibold"
               variants={headingVariants}
             >
               Our Mission: Fix the Amazon{" "}
@@ -95,7 +95,7 @@ const MissionSection = () => {
             </motion.h2>
             <div className="space-y-6 text-gray-700">
               <motion.p
-                className="text-lg sm:text-xl lg:text-2xl leading-relaxed"
+                className="text-base sm:text-lg lg:text-xl leading-relaxed"
                 variants={paragraphVariants}
               >
                 Too many Amazon sellers are bleeding revenue because their
@@ -103,7 +103,7 @@ const MissionSection = () => {
                 <span className="font-bold text-red-600">don&apos;t sell</span>.
               </motion.p>
               <motion.p
-                className="text-base sm:text-lg lg:text-xl leading-relaxed"
+                className="text-sm sm:text-base lg:text-lg leading-relaxed"
                 variants={paragraphVariants}
               >
                 We saw brands burning thousands on traffic while their
@@ -113,7 +113,7 @@ const MissionSection = () => {
                 results.
               </motion.p>
               <motion.p
-                className="text-base sm:text-lg lg:text-xl leading-relaxed font-semibold"
+                className="text-sm sm:text-base lg:text-lg leading-relaxed font-semibold"
                 variants={paragraphVariants}
               >
                 So we built Merxpert to do what others won&apos;t: optimize for

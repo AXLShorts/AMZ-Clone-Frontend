@@ -13,14 +13,14 @@ const AboutHero = () => {
 
       <div className="relative z-10 container mx-auto px-4 sm:px-6">
         <div className="mx-auto text-center space-y-6 lg:space-y-8 flex flex-col items-center">
-          <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl xl:text-[80px] leading-tight tracking-[-2px] uppercase font-medium">
+          <h1 className="font-display text-3xl sm:text-4xl lg:text-5xl xl:text-6xl leading-tight tracking-[-1px] uppercase font-semibold">
             We&apos;re not just another{" "}
             <span className="text-brand-primary relative inline-block">
               Amazon agency.
             </span>
           </h1>
 
-          <p className="text-xl sm:text-2xl lg:text-3xl text-gray-200 max-w-4xl mx-auto leading-relaxed">
+          <p className="text-base sm:text-lg lg:text-xl text-gray-200 max-w-4xl mx-auto leading-relaxed">
             We&apos;re the team that turns underperforming listings into revenue
             machines — using data, not guesswork.
           </p>

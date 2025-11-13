@@ -21,12 +21,12 @@ const About = () => {
       <div className="container mx-auto px-4 sm:px-6 flex flex-col items-center">
         <h2
           id="about-heading"
-          className="text-center text-3xl sm:text-4xl lg:text-5xl xl:text-6xl text-black leading-tight font-display uppercase font-medium"
+          className="text-center text-2xl sm:text-3xl lg:text-4xl xl:text-5xl text-black leading-tight font-display uppercase font-semibold"
         >
           Stop guessing why your{" "}
           <span className="relative inline-block">Amazon sales plateaued.</span>
         </h2>
-        <p className="text-center text-base sm:text-lg lg:text-[22px] leading-relaxed text-gray-700">
+        <p className="text-center text-sm sm:text-base lg:text-lg leading-relaxed text-gray-700 mt-2">
           If your listings look great but your numbers don&apos;t — you&apos;re
           not alone.
         </p>
@@ -34,7 +34,7 @@ const About = () => {
           {/* Left Column - Text Content */}
           <div className="space-y-4">
             <div className="text-gray-700">
-              <p className="text-base sm:text-lg lg:text-[22px] leading-relaxed font-semibold">
+              <p className="text-sm sm:text-base lg:text-lg leading-relaxed font-semibold">
                 Most brands are losing conversions because they optimize for{" "}
                 <span className="italic">looks</span>, not{" "}
                 <span className="italic">performance</span>.
@@ -85,7 +85,7 @@ const About = () => {
         </div>
 
         <div className="bg-emerald-50 p-6 rounded-r-lg mt-4 lg:mt-8">
-          <p className="text-base sm:text-lg lg:text-xl text-gray-800 font-semibold">
+          <p className="text-sm sm:text-base lg:text-lg text-gray-800 font-semibold">
             The good news: these aren&apos;t permanent problems — they&apos;re
             fixable in days, not months.
           </p>
@@ -94,7 +94,7 @@ const About = () => {
         <div className="pt-4">
           <Link
             href="/audit"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-brand-primary text-white rounded-full text-base lg:text-lg hover:bg-brand-accent transition-all duration-300 group shadow-lg hover:shadow-xl hover:scale-105"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-brand-primary text-white rounded-full text-sm lg:text-base hover:bg-brand-accent transition-all duration-300 group shadow-lg hover:shadow-xl hover:scale-105"
             aria-label="Get a Free Conversion Audit"
           >
             Get a Free Conversion Audit & See Where You&apos;re Leaking Revenue

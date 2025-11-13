@@ -40,14 +40,14 @@ const Hero = () => {
 
       <div className="relative z-10 container mx-auto px-4 sm:px-6 pt-8 lg:pt-16">
         <div className="mx-auto text-center space-y-6 lg:space-y-8 container flex flex-col items-center">
-          <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl xl:text-7xl leading-tight tracking-[-2px] uppercase font-medium z-20">
+          <h1 className="font-display text-3xl sm:text-4xl lg:text-5xl xl:text-6xl leading-tight tracking-[-1px] uppercase font-semibold z-20">
             Your Amazon listings don&apos;t have a traffic problem{" "}
             <span className="text-brand-primary relative inline-block bg-[url('/assets/homepage/hero/orange-line.png')] bg-no-repeat bg-bottom bg-contain pb-2">
               they have a conversion problem.
             </span>
           </h1>
 
-          <p className="font-sans text-xl sm:text-2xl lg:text-3xl text-gray-200 mx-auto max-w-4xl">
+          <p className="font-sans text-lg sm:text-xl lg:text-2xl text-gray-200 mx-auto max-w-4xl">
             See how brands using{" "}
             <span className="font-bold text-brand-accent">
               Merxpert&apos;s Brand Conversion System™
@@ -67,18 +67,6 @@ const Hero = () => {
             <p className="text-sm text-gray-300 mt-2">
               Only 3 free audit slots open this month • No credit card required
             </p>
-          </div>
-        </div>
-
-        <div className="mt-16 flex justify-center">
-          <div className="relative w-64 h-28 sm:w-80 sm:h-32">
-            <Image
-              src="/assets/homepage/hero/6000-brands-trust-us.png"
-              alt="Featured by 50+ Amazon brands"
-              fill
-              className="object-contain"
-              sizes="(max-width: 640px) 256px, 320px"
-            />
           </div>
         </div>
       </div>

@@ -1,8 +1,9 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { Star, TrendingUp, DollarSign, Award, Quote } from "lucide-react";
+import { motion, Easing, useInView } from "framer-motion";
 import SimpleMarquee from "@/components/fancy/blocks/simple-marquee";
 
 const testimonials = [
@@ -113,6 +114,124 @@ const metrics = [
   },
 ];
 
+// Metric Card Component
+interface MetricCardProps {
+  metric: (typeof metrics)[0];
+}
+
+const MetricCard = ({ metric }: MetricCardProps) => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const [count, setCount] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
+
+  // Extract numeric value from metric value
+  const getNumericValue = (value: string): number => {
+    const num = parseFloat(value);
+    return isNaN(num) ? 0 : num;
+  };
+
+  const numericValue = getNumericValue(metric.value);
+  const isDecimal = metric.value.includes(".");
+
+  useEffect(() => {
+    if (isInView) {
+      let startTime: number;
+      const duration = 2000; // 2 seconds
+
+      const animate = (currentTime: number) => {
+        if (!startTime) startTime = currentTime;
+        const progress = Math.min((currentTime - startTime) / duration, 1);
+
+        // Ease out function
+        const easeOutProgress = 1 - Math.pow(1 - progress, 3);
+
+        const currentCount = easeOutProgress * numericValue;
+        setCount(currentCount);
+
+        if (progress < 1) {
+          requestAnimationFrame(animate);
+        }
+      };
+
+      requestAnimationFrame(animate);
+    }
+  }, [isInView, numericValue]);
+
+  const formatNumber = (num: number) => {
+    if (isDecimal) {
+      return num.toFixed(1);
+    }
+    return Math.floor(num).toLocaleString();
+  };
+
+  // Extract suffix (%, Days, etc.)
+  const getSuffix = (value: string): string => {
+    return value.replace(/[\d.]/g, "").trim();
+  };
+
+  const suffix = getSuffix(metric.value);
+
+  return (
+    <motion.div
+      ref={ref}
+      variants={{
+        hidden: { opacity: 0, y: 50 },
+        visible: {
+          opacity: 1,
+          y: 0,
+          transition: {
+            duration: 0.6,
+            ease: [0.25, 0.1, 0.25, 1] as Easing,
+          },
+        },
+      }}
+      whileHover={{
+        y: -10,
+        scale: 1.05,
+        transition: { duration: 0.3, ease: [0.25, 0.1, 0.25, 1] as Easing },
+      }}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      className="text-center p-8 rounded-xl cursor-pointer bg-white border border-gray-200 shadow-md hover:shadow-2xl transition-shadow duration-300 relative overflow-hidden"
+    >
+      {/* Animated background on hover */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: isHovered ? 1 : 0 }}
+        transition={{ duration: 0.3 }}
+        className={`absolute inset-0 ${metric.bgColor}`}
+      />
+
+      <div className="relative z-10">
+        <div className="flex justify-center mb-4">
+          <motion.div
+            animate={{ scale: isHovered ? 1.1 : 1 }}
+            transition={{ duration: 0.3 }}
+            className={`w-16 h-16 flex items-center justify-center rounded-full bg-white border-2 ${metric.color.replace('text-', 'border-')}`}
+          >
+            <metric.icon
+              className={`w-8 h-8 transition-colors duration-300 ${metric.color}`}
+              strokeWidth={2}
+            />
+          </motion.div>
+        </div>
+        <div
+          className={`text-3xl sm:text-4xl font-bold mb-2 font-display transition-colors duration-300 ${metric.color}`}
+        >
+          {formatNumber(count)}
+          {suffix}
+        </div>
+        <div
+          className={`font-medium text-xs sm:text-sm transition-colors duration-300 text-gray-600`}
+        >
+          {metric.label}
+        </div>
+      </div>
+    </motion.div>
+  );
+};
+
 // Testimonial Card Component
 const TestimonialCard = ({
   testimonial,
@@ -174,11 +293,11 @@ const SocialProof = () => {
         <div className="text-center mb-8 lg:mb-12 flex flex-col items-center">
           <h2
             id="social-proof-heading"
-            className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl text-black leading-tight font-display mb-4! uppercase font-medium"
+            className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl text-black leading-tight font-display mb-4! uppercase font-semibold"
           >
             Trusted by Amazon brands that stopped guessing and started scaling.
           </h2>
-          <p className="text-gray-600 text-center text-lg sm:text-xl max-w-3xl mx-auto">
+          <p className="text-gray-600 text-center text-base sm:text-lg max-w-3xl mx-auto">
             Join the brands experiencing real, measurable growth with our
             data-driven strategies.
           </p>
@@ -205,34 +324,29 @@ const SocialProof = () => {
         </div>
 
         {/* Metrics */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-4xl mx-auto">
+        <motion.div
+          className="grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-4xl mx-auto"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={{
+            hidden: { opacity: 0 },
+            visible: {
+              opacity: 1,
+              transition: {
+                staggerChildren: 0.1,
+              },
+            },
+          }}
+        >
           {metrics.map((metric, index) => (
-            <div
-              key={index}
-              className={`${metric.bgColor} p-8 rounded-xl text-center hover:scale-105 transition-transform`}
-            >
-              <div className="flex justify-center mb-4">
-                <div
-                  className={`w-16 h-16 ${metric.color} bg-white rounded-full flex items-center justify-center`}
-                >
-                  <metric.icon className="w-8 h-8" strokeWidth={2} />
-                </div>
-              </div>
-              <div
-                className={`text-4xl sm:text-5xl font-bold ${metric.color} mb-2`}
-              >
-                {metric.value}
-              </div>
-              <div className="text-gray-700 font-medium text-sm sm:text-base">
-                {metric.label}
-              </div>
-            </div>
+            <MetricCard key={index} metric={metric} />
           ))}
-        </div>
+        </motion.div>
 
         {/* Trust Badge */}
         <div className="text-center mt-12">
-          <p className="text-gray-600 text-lg">
+          <p className="text-gray-600 text-base">
             <span className="font-bold text-gray-900">50+ brands</span> scaling
             with Merxpert&apos;s Brand Conversion System™
           </p>

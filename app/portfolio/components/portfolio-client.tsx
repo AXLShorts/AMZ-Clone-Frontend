@@ -88,7 +88,7 @@ const PortfolioClient: React.FC<PortfolioClientProps> = ({ items }) => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl leading-tight tracking-[-2px] uppercase font-medium"
+              className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-tight tracking-[-1px] uppercase font-semibold"
             >
               See What&apos;s Possible When You{" "}
               <span className="text-brand-primary relative inline-block bg-[url('/assets/homepage/hero/orange-line.png')] bg-no-repeat bg-bottom bg-contain pb-2">
@@ -100,7 +100,7 @@ const PortfolioClient: React.FC<PortfolioClientProps> = ({ items }) => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-lg sm:text-xl lg:text-2xl text-gray-200 max-w-3xl mx-auto!"
+              className="text-base sm:text-lg lg:text-xl text-gray-200 max-w-3xl mx-auto!"
             >
               Real Amazon listings. Real results. Every project shows the
               conversion impact.
@@ -154,28 +154,6 @@ const PortfolioClient: React.FC<PortfolioClientProps> = ({ items }) => {
               speed={0.7}
               onItemClick={handleItemClick}
             />
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="relative z-10 bg-brand-dark text-white py-12 sm:py-16 lg:py-24">
-        <div className="container mx-auto px-4 sm:px-6">
-          <div className="max-w-4xl mx-auto text-center space-y-6 sm:space-y-8">
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-display">
-              Ready to See These Results for{" "}
-              <span className="text-brand-primary">Your Brand?</span>
-            </h2>
-            <p className="text-base sm:text-lg lg:text-xl text-gray-300">
-              Get a free Amazon Conversion Audit and discover exactly
-              what&apos;s holding your listings back.
-            </p>
-            <a
-              href="/audit"
-              className="inline-block px-6 sm:px-8 py-3 sm:py-4 bg-brand-primary text-white rounded-full text-base sm:text-lg font-bold hover:bg-brand-accent transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105"
-            >
-              Claim Your Free Audit →
-            </a>
           </div>
         </div>
       </section>

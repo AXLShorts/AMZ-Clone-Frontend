@@ -27,7 +27,7 @@ const Transformation = ({ data }: TransformationProps) => {
 
   return (
     <section
-      className="w-full pb-16 lg:pb-24"
+      className="w-[96%] mx-auto h-fit bg-brand-dark rounded-[20px] text-white py-16 lg:py-24"
       aria-labelledby="transformation-heading"
     >
       <div className="container mx-auto px-4 sm:px-6">
@@ -35,7 +35,7 @@ const Transformation = ({ data }: TransformationProps) => {
         <div className="text-center mb-12 lg:mb-16">
           <h2
             id="transformation-heading"
-            className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl text-black leading-tight font-display mb-6! uppercase font-medium"
+            className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl text-white leading-tight font-display mb-6! uppercase font-semibold"
           >
             Imagine listings that turn browsers into buyers —{" "}
             <span className="text-brand-accent">automatically.</span>
@@ -72,7 +72,7 @@ const Transformation = ({ data }: TransformationProps) => {
                     <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:gap-6 mb-6">
                       {/* Before Column */}
                       <div className="space-y-2">
-                        <div className="relative w-full aspect-video rounded-lg overflow-hidden bg-gray-100">
+                        <div className="relative w-full aspect-video rounded-lg overflow-hidden">
                           <Image
                             src={beforeImageUrl}
                             alt={`Before - ${slide.title}`}
@@ -91,7 +91,7 @@ const Transformation = ({ data }: TransformationProps) => {
 
                       {/* After Column */}
                       <div className="space-y-2">
-                        <div className="relative w-full aspect-video rounded-lg overflow-hidden bg-gray-100">
+                        <div className="relative w-full aspect-video rounded-lg overflow-hidden">
                           <Image
                             src={afterImageUrl}
                             alt={`After - ${slide.title}`}
@@ -128,9 +128,9 @@ const Transformation = ({ data }: TransformationProps) => {
 
         {/* Content Section */}
         <div className="max-w-4xl mx-auto text-center space-y-8">
-          <p className="text-lg sm:text-xl lg:text-2xl text-gray-700 leading-relaxed">
+          <p className="text-base sm:text-lg lg:text-xl text-gray-200 leading-relaxed">
             Merxpert builds{" "}
-            <span className="font-bold text-black">
+            <span className="font-bold text-brand-accent">
               high-converting brand systems
             </span>{" "}
             that transform your Amazon presence into a performance engine.
@@ -141,12 +141,12 @@ const Transformation = ({ data }: TransformationProps) => {
             {features.map((feature, index) => (
               <div
                 key={index}
-                className="flex items-start gap-3 p-4 bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow"
+                className="flex items-start gap-3 p-4 bg-brand-dark border border-emerald-500/30 rounded-lg shadow-sm hover:shadow-md transition-shadow"
               >
-                <div className="flex items-center justify-center w-6 h-6 bg-emerald-100 rounded-full shrink-0 mt-0.5">
-                  <Check className="w-4 h-4 text-emerald-600" strokeWidth={3} />
+                <div className="flex items-center justify-center w-6 h-6 bg-emerald-500 rounded-full shrink-0 mt-0.5">
+                  <Check className="w-4 h-4 text-white" strokeWidth={3} />
                 </div>
-                <span className="text-gray-800 text-sm sm:text-base font-medium text-left">
+                <span className="text-gray-200 text-sm sm:text-base font-medium text-left">
                   {feature}
                 </span>
               </div>
@@ -154,8 +154,8 @@ const Transformation = ({ data }: TransformationProps) => {
           </div>
 
           {/* Proof Statement */}
-          <div className="bg-linear-to-r from-emerald-50 to-blue-50 border-l-4 border-emerald-500 p-6 rounded-r-xl mt-12">
-            <p className="text-base sm:text-lg lg:text-xl text-gray-800 font-semibold">
+          <div className="bg-linear-to-r from-emerald-500/20 to-blue-500/20 border-l-4 border-emerald-500 p-6 rounded-r-xl mt-12">
+            <p className="text-sm sm:text-base lg:text-lg text-white font-semibold">
               &ldquo;On average, Merxpert partners see{" "}
               <span className="text-emerald-600">29% higher revenue</span> and{" "}
               <span className="text-blue-600">41% leaner ad spend</span>.&rdquo;

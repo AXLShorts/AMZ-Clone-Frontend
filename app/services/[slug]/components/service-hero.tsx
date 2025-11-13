@@ -32,14 +32,14 @@ export default function ServiceHero({ service }: { service: Service }) {
 
           {/* Main Heading */}
           <div className="text-center space-y-6 lg:space-y-8 flex flex-col items-center">
-            <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl xl:text-[80px] leading-tight tracking-[-2px]">
+            <h1 className="font-display text-3xl sm:text-4xl lg:text-5xl xl:text-6xl leading-tight tracking-[-1px]">
               {service.heroTitle.split(" ").slice(0, -2).join(" ")}{" "}
               <span className="text-brand-primary relative inline-block bg-[url('/assets/homepage/hero/orange-line.png')] bg-no-repeat bg-bottom bg-contain pb-2">
                 {service.heroTitle.split(" ").slice(-2).join(" ")}
               </span>
             </h1>
 
-            <p className="text-xl sm:text-2xl lg:text-3xl text-gray-200 max-w-4xl mx-auto leading-relaxed">
+            <p className="text-base sm:text-lg lg:text-xl text-gray-200 max-w-4xl mx-auto leading-relaxed">
               {service.heroDescription}
             </p>
 
@@ -50,7 +50,7 @@ export default function ServiceHero({ service }: { service: Service }) {
                   <div className="flex items-center justify-center w-6 h-6 bg-emerald-500 rounded-full shrink-0 mt-0.5">
                     <Check className="w-4 h-4 text-white" strokeWidth={3} />
                   </div>
-                  <span className="text-base text-gray-300">{highlight}</span>
+                  <span className="text-sm text-gray-300">{highlight}</span>
                 </div>
               ))}
             </div>
@@ -59,13 +59,13 @@ export default function ServiceHero({ service }: { service: Service }) {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-6">
               <Link
                 href="/audit"
-                className="font-sans w-full sm:w-auto py-4 px-8 bg-brand-primary text-white rounded-full font-bold hover:bg-brand-accent transition-all duration-300 text-lg shadow-lg hover:shadow-xl hover:scale-105 text-center"
+                className="font-sans w-full sm:w-auto py-4 px-8 bg-brand-primary text-white rounded-full font-bold hover:bg-brand-accent transition-all duration-300 text-base shadow-lg hover:shadow-xl hover:scale-105 text-center"
               >
                 Get Started Today →
               </Link>
               <Link
                 href="#process"
-                className="font-sans w-full sm:w-auto py-4 px-8 bg-transparent border-2 border-white text-white rounded-full font-bold hover:bg-white/10 transition-all duration-300 text-lg text-center"
+                className="font-sans w-full sm:w-auto py-4 px-8 bg-transparent border-2 border-white text-white rounded-full font-bold hover:bg-white/10 transition-all duration-300 text-base text-center"
               >
                 See How It Works
               </Link>

@@ -35,14 +35,14 @@ const LeadMagnet = () => {
           <div className="text-center mb-4 lg:mb-8">
             <h2
               id="lead-magnet-heading"
-              className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl text-black leading-tight font-display uppercase font-medium"
+              className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl text-black leading-tight font-display uppercase font-semibold"
             >
               Start with your{" "}
               <span className="relative inline-block bg-[url('/assets/homepage/portfolio/green-line.png')] bg-no-repeat bg-bottom-right pb-2!">
                 Free Amazon Conversion Audit
               </span>
             </h2>
-            <p className="text-xl sm:text-2xl text-brand-primary font-bold">
+            <p className="text-base sm:text-lg text-brand-primary font-bold">
               (worth $499)
             </p>
           </div>
@@ -51,26 +51,26 @@ const LeadMagnet = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             {/* Left - Copy */}
             <div>
-              <p className="text-lg sm:text-xl text-gray-700 leading-relaxed mb-4!">
+              <p className="text-base sm:text-lg text-gray-700 leading-relaxed mb-4!">
                 Get a 1-page audit + 5-minute Loom video showing exactly:
               </p>
 
               <ul className="space-y-4">
                 <li className="flex items-start gap-3">
                   <div className="w-2 h-2 bg-brand-primary rounded-full mt-2 shrink-0"></div>
-                  <span className="text-base sm:text-lg text-gray-700">
+                  <span className="text-sm sm:text-base text-gray-700">
                     Where your listings are losing sales
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
                   <div className="w-2 h-2 bg-brand-primary rounded-full mt-2 shrink-0"></div>
-                  <span className="text-base sm:text-lg text-gray-700">
+                  <span className="text-sm sm:text-base text-gray-700">
                     What conversion levers to fix first
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
                   <div className="w-2 h-2 bg-brand-primary rounded-full mt-2 shrink-0"></div>
-                  <span className="text-base sm:text-lg text-gray-700">
+                  <span className="text-sm sm:text-base text-gray-700">
                     How to boost ranking organically
                   </span>
                 </li>
@@ -105,7 +105,7 @@ const LeadMagnet = () => {
                 <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mb-3">
                   <item.icon className="w-6 h-6 text-brand-primary" />
                 </div>
-                <h3 className="font-bold text-sm text-gray-900 mb-1">
+                <h3 className="font-bold text-xs text-gray-900 mb-1">
                   {item.title}
                 </h3>
                 <p className="text-xs text-gray-600">{item.description}</p>
@@ -117,11 +117,11 @@ const LeadMagnet = () => {
           <div className="pt-6 w-full flex flex-col items-center gap-4">
             <Link
               href="/audit"
-              className="inline-block w-full sm:w-auto py-4 px-8 bg-brand-primary text-white text-center rounded-full font-bold hover:bg-brand-accent transition-all duration-300 text-base lg:text-lg shadow-lg hover:shadow-xl hover:scale-105"
+              className="inline-block w-full sm:w-auto py-4 px-8 bg-brand-primary text-white text-center rounded-full font-bold hover:bg-brand-accent transition-all duration-300 text-sm lg:text-base shadow-lg hover:shadow-xl hover:scale-105"
             >
               Reserve My Audit Slot →
             </Link>
-            <p className="text-sm text-gray-600 mt-4 italic">
+            <p className="text-xs sm:text-sm text-gray-600 mt-4 italic">
               &ldquo;We only take 3 new audits per month — secure your spot
               before it resets.&rdquo;
             </p>

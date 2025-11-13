@@ -133,7 +133,7 @@ export interface PortfolioItem {
   _id: string;
   _type: "portfolio";
   title: string;
-  image: SanityImageAsset;
+  images: SanityImageAsset[];
   category: string;
   description?: string;
   showMetrics: boolean;

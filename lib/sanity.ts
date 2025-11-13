@@ -6,7 +6,7 @@ const PORTFOLIO_QUERY = `*[_type == "portfolio"] | order(order asc) {
   _id,
   _type,
   title,
-  image,
+  images,
   category,
   description,
   showMetrics,

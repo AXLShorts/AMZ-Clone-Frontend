@@ -13,14 +13,14 @@ const CaseStudyHero = () => {
 
       <div className="relative z-10 container mx-auto px-4 sm:px-6">
         <div className="max-w-5xl mx-auto text-center space-y-6 lg:space-y-8 flex flex-col items-center">
-          <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl xl:text-[80px] leading-tight tracking-[-2px]">
+          <h1 className="font-display text-3xl sm:text-4xl lg:text-5xl xl:text-6xl leading-tight tracking-[-1px]">
             Real results from{" "}
             <span className="text-brand-primary relative inline-block bg-[url('/assets/homepage/hero/orange-line.png')] bg-no-repeat bg-bottom bg-contain pb-2">
               real clients.
             </span>
           </h1>
 
-          <p className="text-xl sm:text-2xl lg:text-3xl text-gray-200 max-w-4xl mx-auto leading-relaxed">
+          <p className="text-base sm:text-lg lg:text-xl text-gray-200 max-w-4xl mx-auto leading-relaxed">
             Discover how we&apos;ve helped Amazon sellers dramatically increase
             their revenue through proven strategies and data-driven
             optimization.

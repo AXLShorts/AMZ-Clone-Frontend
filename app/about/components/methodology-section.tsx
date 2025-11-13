@@ -38,10 +38,10 @@ const MethodologySection = () => {
       <div className="container mx-auto px-4 sm:px-6">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-4 flex flex-col items-center">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl text-black leading-tight font-display mb-4!">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl text-black leading-tight font-display mb-4! font-semibold">
               Our Brand Conversion System™
             </h2>
-            <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto mt-6!">
+            <p className="text-base sm:text-lg text-gray-600 max-w-3xl mx-auto mt-6!">
               The proven 4-step process that transformed over 200 Amazon brands
               from plateaued to profitable.
             </p>
@@ -60,14 +60,14 @@ const MethodologySection = () => {
                 </div>
                 <div className="flex-1">
                   <div className="flex items-center gap-4 mb-3">
-                    <span className="text-4xl font-bold text-gray-300 font-display">
+                    <span className="text-3xl font-bold text-gray-300 font-display">
                       {method.number}
                     </span>
-                    <h3 className="text-2xl font-bold text-black">
+                    <h3 className="text-lg font-bold text-black">
                       {method.title}
                     </h3>
                   </div>
-                  <p className="text-gray-600 text-lg leading-relaxed">
+                  <p className="text-gray-600 text-base leading-relaxed">
                     {method.description}
                   </p>
                 </div>

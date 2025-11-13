@@ -38,7 +38,7 @@ const Benefits = () => {
           {/* Heading */}
           <h2
             id="benefits-heading"
-            className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl text-black uppercase leading-tight font-display mb-12 lg:mb-16 text-center pb-8!"
+            className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl text-black uppercase leading-tight font-display mb-12 lg:mb-16 text-center pb-8! font-semibold"
           >
             You&apos;ll Benefit of our Services IF:
           </h2>
@@ -59,7 +59,7 @@ const Benefits = () => {
 
                 {/* Text Content */}
                 <div className="flex-1 min-w-0">
-                  <p className="text-base sm:text-lg lg:text-[22px] text-gray-600 leading-relaxed">
+                  <p className="text-base sm:text-lg lg:text-lg text-gray-600 leading-relaxed">
                     {benefit.text}
                   </p>
                 </div>

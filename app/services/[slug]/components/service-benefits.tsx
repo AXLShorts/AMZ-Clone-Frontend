@@ -7,10 +7,10 @@ export default function ServiceBenefits({ service }: { service: Service }) {
         <div className="max-w-6xl mx-auto flex flex-col items-center">
           {/* Header */}
           <div className="text-center mb-12 lg:mb-16">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl text-black leading-tight font-display mb-4!">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl text-black leading-tight font-display mb-4! font-semibold">
               {service.benefitsTitle}
             </h2>
-            <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-base sm:text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
               {service.benefitsDescription}
             </p>
           </div>
@@ -26,10 +26,10 @@ export default function ServiceBenefits({ service }: { service: Service }) {
                   {benefit.icon}
                 </div>
                 <div>
-                  <h3 className="font-bold text-xl text-black mb-2">
+                  <h3 className="font-bold text-lg text-black mb-2">
                     {benefit.title}
                   </h3>
-                  <p className="text-gray-600 leading-relaxed">
+                  <p className="text-sm text-gray-600 leading-relaxed">
                     {benefit.description}
                   </p>
                 </div>

@@ -78,7 +78,7 @@ const StatsSection = () => {
       <div className="container mx-auto px-4 sm:px-6">
         <div className="max-w-6xl mx-auto">
           <motion.h2
-            className="text-3xl sm:text-4xl lg:text-5xl text-black leading-tight font-display mb-12! text-center"
+            className="text-2xl sm:text-3xl lg:text-4xl text-black leading-tight font-display mb-12! text-center font-semibold"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
@@ -193,7 +193,7 @@ const StatCard = ({ stat, variants }: StatCardProps) => {
       />
 
       <div
-        className={`text-4xl sm:text-5xl lg:text-6xl font-bold mb-2 font-display relative z-10 transition-colors duration-300 ${
+        className={`text-3xl sm:text-4xl lg:text-5xl font-bold mb-2 font-display relative z-10 transition-colors duration-300 ${
           isHovered
             ? "text-white"
             : stat.highlight
@@ -205,7 +205,7 @@ const StatCard = ({ stat, variants }: StatCardProps) => {
         {stat.suffix}
       </div>
       <p
-        className={`text-sm sm:text-base font-medium relative z-10 transition-colors duration-300 ${
+        className={`text-xs sm:text-sm font-medium relative z-10 transition-colors duration-300 ${
           isHovered ? "text-white" : "text-gray-600"
         }`}
       >

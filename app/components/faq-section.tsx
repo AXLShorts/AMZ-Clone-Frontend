@@ -7,7 +7,7 @@ export function FAQSection() {
       <div className="container mx-auto px-4 md:px-6">
         {/* Header */}
         <div className="mb-12 text-center">
-          <h2 className="text-4xl md:text-5xl font-display tracking-tight mb-4">
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-display tracking-tight mb-4 font-semibold">
             <span className="text-balance bg-[url('/assets/homepage/portfolio/green-line.png')] bg-no-repeat bg-bottom-right pb-3!">
               Frequently Asked Questions
             </span>
@@ -15,7 +15,7 @@ export function FAQSection() {
           <div className="inline-block mb-4">
             <div className="h-1 w-24 rounded-full"></div>
           </div>
-          <p className="text-lg text-muted-foregroundl text-center">
+          <p className="text-base text-muted-foregroundl text-center">
             Here are answers to most common questions. Can&apos;t find an
             answer?{" "}
             <a

@@ -9,10 +9,10 @@ export default function ServiceOverview({ service }: { service: Service }) {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
             {/* Left Column */}
             <div>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display text-black leading-tight mb-6!">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-display text-black leading-tight mb-6! font-semibold">
                 {service.overviewTitle}
               </h2>
-              <p className="text-lg sm:text-xl text-gray-600 mb-8! leading-relaxed">
+              <p className="text-base sm:text-lg text-gray-600 mb-8! leading-relaxed">
                 {service.overviewDescription}
               </p>
 
@@ -22,7 +22,7 @@ export default function ServiceOverview({ service }: { service: Service }) {
                     <div className="flex items-center justify-center w-6 h-6 bg-emerald-500 rounded-full shrink-0 mt-0.5">
                       <Check className="w-4 h-4 text-white" strokeWidth={3} />
                     </div>
-                    <p className="text-gray-700 text-lg">{highlight}</p>
+                    <p className="text-gray-700 text-base">{highlight}</p>
                   </div>
                 ))}
               </div>
@@ -30,7 +30,7 @@ export default function ServiceOverview({ service }: { service: Service }) {
 
             {/* Right Column - Why Choose Us */}
             <div className="bg-white rounded-2xl p-8 lg:p-10 border border-gray-200 shadow-lg">
-              <h3 className="text-2xl sm:text-3xl font-bold text-black mb-8!">
+              <h3 className="text-xl sm:text-2xl font-bold text-black mb-8!">
                 Why Choose Us
               </h3>
               <div className="space-y-6">
@@ -39,10 +39,10 @@ export default function ServiceOverview({ service }: { service: Service }) {
                     key={idx}
                     className="pb-6 border-b border-gray-200 last:border-b-0 last:pb-0"
                   >
-                    <h4 className="font-bold text-lg text-black mb-2!">
+                    <h4 className="font-bold text-base text-black mb-2!">
                       {reason.title}
                     </h4>
-                    <p className="text-gray-600 leading-relaxed">
+                    <p className="text-sm text-gray-600 leading-relaxed">
                       {reason.description}
                     </p>
                   </div>

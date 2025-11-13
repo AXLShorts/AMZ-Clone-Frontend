@@ -20,17 +20,17 @@ const ScarcityCTA = () => {
           <div className="text-center mb-12 flex flex-col items-center">
             <h2
               id="scarcity-heading"
-              className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl text-black leading-tight font-display mb-6! uppercase font-medium"
+              className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl text-black leading-tight font-display mb-6! uppercase font-semibold"
             >
               We Only Work with 3 New Brands Each Month
             </h2>
 
-            <p className="text-lg sm:text-xl text-gray-700 leading-relaxed mx-auto">
+            <p className="text-base sm:text-lg text-gray-700 leading-relaxed mx-auto">
               We keep our client pool intentionally small to deliver deep
               performance and one-on-one focus.
             </p>
 
-            <p className="text-base sm:text-lg text-gray-600 mt-4 font-medium">
+            <p className="text-sm sm:text-base text-gray-600 mt-4 font-medium">
               Audit slots close monthly — when they&apos;re gone, they&apos;re
               gone.
             </p>
@@ -82,7 +82,7 @@ const ScarcityCTA = () => {
             <div className="text-center">
               <Link
                 href="/audit"
-                className="inline-block w-full sm:w-auto py-5 px-10 bg-brand-primary text-white text-center rounded-full font-bold hover:bg-brand-accent transition-all duration-300 text-lg lg:text-xl shadow-lg hover:shadow-xl hover:scale-105"
+                className="inline-block w-full sm:w-auto py-4 px-8 bg-brand-primary text-white text-center rounded-full font-bold hover:bg-brand-accent transition-all duration-300 text-sm lg:text-base shadow-lg hover:shadow-xl hover:scale-105"
               >
                 Claim My Free Conversion Audit Now →
               </Link>
@@ -91,7 +91,7 @@ const ScarcityCTA = () => {
 
           {/* Subtext */}
           <div className="text-center">
-            <p className="text-base sm:text-lg text-gray-700 leading-relaxed">
+            <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
               Join{" "}
               <span className="font-bold text-gray-900">
                 50+ brands scaling

@@ -1,67 +1,79 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ChevronDown, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import Image from "next/image";
+import { cn } from "@/lib/utils";
+import {
+  NavigationMenu,
+  NavigationMenuList,
+  NavigationMenuItem,
+  NavigationMenuTrigger,
+  NavigationMenuContent,
+} from "@/components/ui/navigation-menu";
 
-interface NavItem {
-  label: string;
-  href?: string;
-  dropdown?: boolean;
+interface SubMenuItem {
+  name: string;
+  href: string;
+  description?: string;
 }
 
 // Mock CMS API function
-async function fetchServices(): Promise<Array<{ name: string; slug: string }>> {
+async function fetchServices(): Promise<SubMenuItem[]> {
   return new Promise((resolve) => {
     setTimeout(() => {
       resolve([
         {
           name: "Full Listing Optimization",
-          slug: "full-listing-optimization",
-        },
-        { name: "Keyword Ranking", slug: "keyword-ranking" },
-        { name: "A+/EBC Content", slug: "a-ebc-content" },
-        { name: "Account Management", slug: "account-management" },
-        { name: "PPC Management", slug: "ppc-management" },
-        { name: "Brand Storefronts", slug: "brand-storefronts" },
-        {
-          name: "Product Packaging Print Ready Files",
-          slug: "product-packaging-print-ready-files",
+          href: "/services/full-listing-optimization",
+          description: "Complete Amazon listing optimization",
         },
         {
-          name: "CTR Image Creation/Optimization",
-          slug: "ctr-image-creation-optimization",
+          name: "Keyword Ranking",
+          href: "/services/keyword-ranking",
+          description: "Improve your keyword visibility",
+        },
+        {
+          name: "A+/EBC Content",
+          href: "/services/a-ebc-content",
+          description: "Enhanced brand content creation",
+        },
+        {
+          name: "Account Management",
+          href: "/services/account-management",
+          description: "Full Amazon account management",
+        },
+        {
+          name: "PPC Management",
+          href: "/services/ppc-management",
+          description: "Advertising optimization",
+        },
+        {
+          name: "Brand Storefronts",
+          href: "/services/brand-storefronts",
+          description: "Build your Amazon storefront",
         },
       ]);
-    }, 1000);
+    }, 300);
   });
 }
 
-const navItems: NavItem[] = [
-  { label: "Home", href: "/" },
-  { label: "Services", dropdown: true },
-  { label: "Portfolio", href: "/portfolio" },
-  { label: "About", href: "/about" },
-  { label: "Resources", dropdown: true },
-];
-
-const resourcesItems = [
-  { name: "Blog", href: "/blog" },
-  { name: "Case Studies", href: "/case-study" },
-  { name: "FAQ", href: "/faq" },
+const resourcesMenu: SubMenuItem[] = [
+  { name: "Blog", href: "/blog", description: "Latest insights and tips" },
+  {
+    name: "Case Studies",
+    href: "/case-study",
+    description: "Real client results",
+  },
+  { name: "FAQ", href: "/faq", description: "Common questions answered" },
 ];
 
 export default function Navbar() {
   const pathname = usePathname();
-  const navRef = useRef<HTMLElement>(null);
-  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
-  const [services, setServices] = useState<
-    Array<{ name: string; slug: string }>
-  >([]);
+  const [services, setServices] = useState<SubMenuItem[]>([]);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [mobileDropdown, setMobileDropdown] = useState<string | null>(null);
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
@@ -72,230 +84,267 @@ export default function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 20) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
+      setIsScrolled(window.scrollY > 20);
     };
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Close dropdown when clicking outside
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (navRef.current && !navRef.current.contains(event.target as Node)) {
-        setOpenDropdown(null);
-      }
-    };
-
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
-
-  // Check if current path matches or is under a nav item
   const isActive = (href?: string, label?: string) => {
-    if (href) {
-      return pathname === href;
-    }
-    // For dropdowns like Services and Resources, check if we're on related pages
-    if (label === "Services") {
-      return (
-        pathname.startsWith("/services") || pathname.startsWith("/portfolio")
-      );
-    }
-    if (label === "Resources") {
-      return pathname.startsWith("/resources") || pathname.startsWith("/blog");
-    }
+    if (href) return pathname === href;
+    if (label === "Services") return pathname.startsWith("/services");
+    if (label === "Resources")
+      return pathname.startsWith("/blog") || pathname.startsWith("/faq");
     return false;
-  };
-
-  const toggleDropdown = (label: string) => {
-    setOpenDropdown(openDropdown === label ? null : label);
-  };
-
-  const toggleMobileDropdown = (label: string) => {
-    setMobileDropdown(mobileDropdown === label ? null : label);
   };
 
   return (
     <nav
-      ref={navRef}
-      className={`fixed top-0 left-0 right-0 z-50 text-white px-6 py-4 transition-all duration-300 ${
+      className={cn(
+        "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
         isScrolled ? "bg-brand-dark shadow-lg" : "bg-transparent"
-      }`}
+      )}
       role="navigation"
       aria-label="Main navigation"
     >
-      <div className="max-w-7xl mx-auto flex items-center justify-between">
-        {/* Logo */}
-        <Link href="/" className="flex items-center gap-2 font-bold text-xl">
-          <div className="relative h-12 w-36">
-            <Image
-              src="/assets/logo-wt.png"
-              alt="MERXPERT"
-              fill
-              className="object-contain"
-              priority
-            />
-          </div>
-        </Link>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-20">
+          {/* Logo */}
+          <Link href="/" className="shrink-0">
+            <div className="relative h-12 w-36">
+              <Image
+                src="/assets/logo-wt.png"
+                alt="MERXPERT"
+                fill
+                className="object-contain"
+                priority
+              />
+            </div>
+          </Link>
 
-        {/* Desktop Nav Items */}
-        <ul className="hidden lg:flex items-center gap-8">
-          {navItems.map((item) => (
-            <li key={item.label} className="relative group">
-              {item.dropdown ? (
-                <button
-                  onClick={() => toggleDropdown(item.label)}
-                  className={`flex items-center gap-2 px-4 py-1 rounded-full font-semibold hover:bg-brand-accent transition-colors text-sm lg:text-base ${
-                    openDropdown === item.label
-                      ? "bg-brand-primary text-white"
-                      : "text-white"
-                  }`}
-                  aria-expanded={openDropdown === item.label}
-                  aria-haspopup="true"
-                >
-                  {item.label}
-                  <ChevronDown
-                    size={18}
-                    className={`transition-transform ${
-                      openDropdown === item.label ? "rotate-180" : ""
-                    }`}
-                  />
-                </button>
-              ) : (
+          {/* Desktop Navigation - shadcn NavigationMenu */}
+          <NavigationMenu className="hidden lg:flex">
+            <NavigationMenuList className="gap-2">
+              {/* Home */}
+              <NavigationMenuItem>
                 <Link
-                  href={item.href || "#"}
-                  className={`inline-flex items-center gap-2 px-4 py-1 rounded-full font-semibold transition-colors text-sm lg:text-base ${
-                    isActive(item.href, item.label)
+                  href="/"
+                  className={cn(
+                    "inline-flex items-center justify-center rounded-md px-4 py-2 text-sm font-semibold transition-colors",
+                    isActive("/")
                       ? "bg-brand-primary text-white"
                       : "text-white hover:text-brand-accent"
-                  }`}
+                  )}
                 >
-                  {item.label}
+                  Home
                 </Link>
-              )}
+              </NavigationMenuItem>
 
-              {/* Dropdown Menu */}
-              {item.dropdown && openDropdown === item.label && (
-                <div
-                  className="absolute top-full left-0 mt-2 bg-white text-black rounded-lg shadow-lg min-w-max z-50"
-                  role="menu"
-                  aria-label={`${item.label} menu`}
+              {/* Services Dropdown */}
+              <NavigationMenuItem>
+                <NavigationMenuTrigger
+                  className={cn(
+                    isActive(undefined, "Services") &&
+                      "bg-brand-primary text-white"
+                  )}
                 >
-                  <ul className="py-2">
-                    {item.label === "Services"
-                      ? services.map((service) => (
-                          <li key={service.slug}>
-                            <Link
-                              href={`/services/${service.slug}`}
-                              className="block w-full text-left px-4 py-2 hover:bg-gray-100 transition-colors"
-                              role="menuitem"
-                            >
-                              {service.name}
-                            </Link>
-                          </li>
-                        ))
-                      : resourcesItems.map((resource) => (
-                          <li key={resource.name}>
-                            <Link
-                              href={resource.href}
-                              className="block w-full text-left px-4 py-2 hover:bg-gray-100 transition-colors"
-                              role="menuitem"
-                            >
-                              {resource.name}
-                            </Link>
-                          </li>
-                        ))}
-                  </ul>
-                </div>
-              )}
-            </li>
-          ))}
-        </ul>
+                  Services
+                </NavigationMenuTrigger>
+                <NavigationMenuContent>
+                  <div className="grid w-[500px] gap-3">
+                    {services.map((service) => (
+                      <Link
+                        key={service.href}
+                        href={service.href}
+                        className={cn(
+                          "block select-none rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-gray-100"
+                        )}
+                      >
+                        <div className="text-sm font-semibold text-gray-900">
+                          {service.name}
+                        </div>
+                        {service.description && (
+                          <p className="text-xs text-gray-600 mt-1">
+                            {service.description}
+                          </p>
+                        )}
+                      </Link>
+                    ))}
+                  </div>
+                </NavigationMenuContent>
+              </NavigationMenuItem>
 
-        {/* Desktop CTA Button */}
-        <div className="flex gap-4 items-center">
-          <button className="hidden sm:block bg-brand-primary text-white px-6 py-2 rounded-full font-semibold hover:bg-brand-accent transition-colors">
-            Start a Project
-          </button>
+              {/* Portfolio */}
+              <NavigationMenuItem>
+                <Link
+                  href="/portfolio"
+                  className={cn(
+                    "inline-flex items-center justify-center rounded-md px-4 py-2 text-sm font-semibold transition-colors",
+                    isActive("/portfolio")
+                      ? "bg-brand-primary text-white"
+                      : "text-white hover:text-brand-accent"
+                  )}
+                >
+                  Portfolio
+                </Link>
+              </NavigationMenuItem>
 
-          <button
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="lg:hidden p-2"
-            aria-label="Toggle mobile menu"
-            aria-expanded={mobileMenuOpen}
-          >
-            {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+              {/* About */}
+              <NavigationMenuItem>
+                <Link
+                  href="/about"
+                  className={cn(
+                    "inline-flex items-center justify-center rounded-md px-4 py-2 text-sm font-semibold transition-colors",
+                    isActive("/about")
+                      ? "bg-brand-primary text-white"
+                      : "text-white hover:text-brand-accent"
+                  )}
+                >
+                  About
+                </Link>
+              </NavigationMenuItem>
+
+              {/* Resources Dropdown */}
+              <NavigationMenuItem>
+                <NavigationMenuTrigger
+                  className={cn(
+                    isActive(undefined, "Resources") &&
+                      "bg-brand-primary text-white"
+                  )}
+                >
+                  Resources
+                </NavigationMenuTrigger>
+                <NavigationMenuContent>
+                  <div className="grid w-[400px] gap-3">
+                    {resourcesMenu.map((resource) => (
+                      <Link
+                        key={resource.href}
+                        href={resource.href}
+                        className={cn(
+                          "block select-none rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-gray-100"
+                        )}
+                      >
+                        <div className="text-sm font-semibold text-gray-900">
+                          {resource.name}
+                        </div>
+                        {resource.description && (
+                          <p className="text-xs text-gray-600 mt-1">
+                            {resource.description}
+                          </p>
+                        )}
+                      </Link>
+                    ))}
+                  </div>
+                </NavigationMenuContent>
+              </NavigationMenuItem>
+            </NavigationMenuList>
+          </NavigationMenu>
+
+          {/* CTA and Mobile Menu Button */}
+          <div className="flex items-center gap-4">
+            <Link
+              href="/audit"
+              className="hidden sm:inline-block bg-brand-primary text-white px-6 py-2 rounded-full font-semibold hover:bg-brand-accent transition-colors text-sm"
+            >
+              Free Audit
+            </Link>
+
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="lg:hidden p-2 text-white hover:bg-brand-primary/20 rounded-lg transition-colors"
+              aria-label="Toggle mobile menu"
+              aria-expanded={mobileMenuOpen}
+            >
+              {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
         </div>
       </div>
 
+      {/* Mobile Menu */}
       {mobileMenuOpen && (
-        <div className="lg:hidden fixed inset-0 top-16 right-0 w-full bg-brand-dark bg-opacity-95 z-40">
-          <div className="flex flex-col p-6 space-y-4">
-            {navItems.map((item) => (
-              <div key={item.label}>
-                {item.dropdown ? (
-                  <>
-                    <button
-                      onClick={() => toggleMobileDropdown(item.label)}
-                      className="flex items-center gap-2 w-full px-4 py-2 rounded-lg bg-brand-primary text-white font-semibold hover:bg-brand-accent transition-colors"
-                      aria-expanded={mobileDropdown === item.label}
-                    >
-                      {item.label}
-                      <ChevronDown
-                        size={18}
-                        className={`transition-transform ml-auto ${
-                          mobileDropdown === item.label ? "rotate-180" : ""
-                        }`}
-                      />
-                    </button>
-                    {mobileDropdown === item.label && (
-                      <ul className="mt-2 ml-4 space-y-2 border-l-2 border-brand-primary pl-4">
-                        {item.label === "Services"
-                          ? services.map((service) => (
-                              <li key={service.slug}>
-                                <Link
-                                  href={`/services/${service.slug}`}
-                                  className="text-left text-gray-300 hover:text-brand-accent transition-colors text-sm"
-                                  onClick={() => setMobileMenuOpen(false)}
-                                >
-                                  {service.name}
-                                </Link>
-                              </li>
-                            ))
-                          : resourcesItems.map((resource) => (
-                              <li key={resource.name}>
-                                <Link
-                                  href={resource.href}
-                                  className="text-left text-gray-300 hover:text-brand-accent transition-colors text-sm"
-                                  onClick={() => setMobileMenuOpen(false)}
-                                >
-                                  {resource.name}
-                                </Link>
-                              </li>
-                            ))}
-                      </ul>
-                    )}
-                  </>
-                ) : (
+        <div className="lg:hidden bg-brand-dark border-t border-brand-primary/20">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4 space-y-2">
+            {/* Home */}
+            <Link
+              href="/"
+              className="block px-4 py-3 text-white hover:bg-brand-primary/20 rounded-lg transition-colors text-sm font-semibold"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Home
+            </Link>
+
+            {/* Services */}
+            <div>
+              <button
+                onClick={() => setMobileMenuOpen(false)}
+                className="w-full text-left px-4 py-3 text-white hover:bg-brand-primary/20 rounded-lg transition-colors text-sm font-semibold"
+              >
+                Services
+              </button>
+              <div className="mt-2 space-y-1 pl-4 border-l-2 border-brand-primary">
+                {services.map((service) => (
                   <Link
-                    href={item.href || "#"}
-                    className="block px-4 py-2 rounded-lg hover:bg-brand-primary hover:text-white transition-colors"
+                    key={service.href}
+                    href={service.href}
+                    className="block px-4 py-2 text-gray-300 hover:text-brand-accent transition-colors text-sm rounded"
                     onClick={() => setMobileMenuOpen(false)}
                   >
-                    {item.label}
+                    {service.name}
                   </Link>
-                )}
+                ))}
               </div>
-            ))}
-            <button className="w-full bg-brand-primary text-white px-6 py-2 rounded-full font-semibold hover:bg-brand-accent transition-colors mt-4">
-              Start a Project
-            </button>
+            </div>
+
+            {/* Portfolio */}
+            <Link
+              href="/portfolio"
+              className="block px-4 py-3 text-white hover:bg-brand-primary/20 rounded-lg transition-colors text-sm font-semibold"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Portfolio
+            </Link>
+
+            {/* About */}
+            <Link
+              href="/about"
+              className="block px-4 py-3 text-white hover:bg-brand-primary/20 rounded-lg transition-colors text-sm font-semibold"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              About
+            </Link>
+
+            {/* Resources */}
+            <div>
+              <button
+                onClick={() => setMobileMenuOpen(false)}
+                className="w-full text-left px-4 py-3 text-white hover:bg-brand-primary/20 rounded-lg transition-colors text-sm font-semibold"
+              >
+                Resources
+              </button>
+              <div className="mt-2 space-y-1 pl-4 border-l-2 border-brand-primary">
+                {resourcesMenu.map((resource) => (
+                  <Link
+                    key={resource.href}
+                    href={resource.href}
+                    className="block px-4 py-2 text-gray-300 hover:text-brand-accent transition-colors text-sm rounded"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    {resource.name}
+                  </Link>
+                ))}
+              </div>
+            </div>
+
+            {/* Mobile CTA */}
+            <Link
+              href="/audit"
+              className="block w-full text-center mt-4 bg-brand-primary text-white px-6 py-3 rounded-full font-semibold hover:bg-brand-accent transition-colors text-sm"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Free Audit
+            </Link>
           </div>
         </div>
       )}
