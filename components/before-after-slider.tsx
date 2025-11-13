@@ -23,35 +23,80 @@ export const BeforeAfterSlider: React.FC<BeforeAfterSliderProps> = ({
   imgClassName
 }) => {
   const [internalSliderPosition, setInternalSliderPosition] = useState(50);
+  const [isDragging, setIsDragging] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
   // Use external position if provided, otherwise use internal
   const sliderPosition = externalSliderPosition ?? internalSliderPosition;
 
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    // Only handle mouse move if not using external position
-    if (externalSliderPosition !== undefined) return;
-    if (!containerRef.current) return;
-
-    const rect = containerRef.current.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const percentage = (x / rect.width) * 100;
-
-    // Clamp between 0 and 100
-    setInternalSliderPosition(Math.min(Math.max(percentage, 0), 100));
+  const handleMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
+    e.stopPropagation();
+    e.preventDefault();
+    setIsDragging(true);
   };
 
-  const handleMouseLeave = () => {
-    // Optionally reset to center when mouse leaves
-    // setSliderPosition(50);
+  const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
+    e.stopPropagation();
+    setIsDragging(true);
   };
+
+  React.useEffect(() => {
+    const handleWindowMouseMove = (e: MouseEvent) => {
+      if (!containerRef.current) return;
+
+      const rect = containerRef.current.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const percentage = (x / rect.width) * 100;
+
+      if (isDragging && externalSliderPosition === undefined) {
+        e.preventDefault();
+        setInternalSliderPosition(Math.min(Math.max(percentage, 0), 100));
+      }
+    };
+
+    const handleWindowTouchMove = (e: TouchEvent) => {
+      if (!containerRef.current) return;
+
+      const rect = containerRef.current.getBoundingClientRect();
+      const touch = e.touches[0];
+      const x = touch.clientX - rect.left;
+      const percentage = (x / rect.width) * 100;
+
+      if (isDragging && externalSliderPosition === undefined) {
+        e.preventDefault();
+        setInternalSliderPosition(Math.min(Math.max(percentage, 0), 100));
+      }
+    };
+
+    const handleWindowMouseUp = () => {
+      setIsDragging(false);
+    };
+
+    const handleWindowTouchEnd = () => {
+      setIsDragging(false);
+    };
+
+    if (isDragging) {
+      window.addEventListener("mousemove", handleWindowMouseMove);
+      window.addEventListener("mouseup", handleWindowMouseUp);
+      window.addEventListener("touchmove", handleWindowTouchMove, { passive: false });
+      window.addEventListener("touchend", handleWindowTouchEnd);
+
+      return () => {
+        window.removeEventListener("mousemove", handleWindowMouseMove);
+        window.removeEventListener("mouseup", handleWindowMouseUp);
+        window.removeEventListener("touchmove", handleWindowTouchMove);
+        window.removeEventListener("touchend", handleWindowTouchEnd);
+      };
+    }
+  }, [isDragging, externalSliderPosition]);
 
   return (
     <div
       ref={containerRef}
-      className={`relative w-full h-full overflow-hidden md:cursor-ew-resize ${className}`}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
+      className={`relative w-full h-full overflow-hidden cursor-ew-resize ${className}`}
+      onMouseDown={handleMouseDown}
+      onTouchStart={handleTouchStart}
       role="img"
       aria-label="Before and after comparison"
     >
@@ -67,9 +112,9 @@ export const BeforeAfterSlider: React.FC<BeforeAfterSliderProps> = ({
         />
       </div>
 
-      {/* Before Image (Top Layer with clip - Hidden on mobile, visible on md+) */}
+      {/* Before Image (Top Layer with clip - Always visible) */}
       <div
-        className="hidden md:block absolute inset-0 w-full h-full"
+        className="absolute inset-0 w-full h-full"
         style={{
           clipPath: `inset(0 ${100 - sliderPosition}% 0 0)`,
         }}
@@ -84,16 +129,16 @@ export const BeforeAfterSlider: React.FC<BeforeAfterSliderProps> = ({
         />
       </div>
 
-      {/* Slider Line and Handle - Hidden on mobile, visible on md+ */}
+      {/* Slider Line and Handle - Always visible */}
       <div
-        className="hidden md:block absolute top-0 bottom-0 w-1 bg-white mix-blend-difference"
+        className="absolute top-0 bottom-0 w-1 bg-white mix-blend-difference"
         style={{
           left: `${sliderPosition}%`,
           transform: "translateX(-50%)",
         }}
       >
         {/* Slider Handle */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 bg-white rounded-full flex items-center justify-center mix-blend-difference">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-6 h-6 md:w-12 md:h-12 bg-white rounded-full flex items-center justify-center mix-blend-difference">
           {/* Left Arrow */}
           <svg
             className="w-4 h-4 absolute left-2"
@@ -125,11 +170,11 @@ export const BeforeAfterSlider: React.FC<BeforeAfterSliderProps> = ({
         </div>
       </div>
 
-      {/* Labels - Hidden on mobile, visible on md+ */}
-      <div className="hidden md:block absolute top-4 left-4 bg-black/60 backdrop-blur-sm text-white px-3 py-1 rounded-full text-sm font-semibold">
+      {/* Labels - Always visible */}
+      <div className="absolute top-4 left-4 bg-black/60 backdrop-blur-sm text-white px-3 py-1 rounded-full text-sm font-semibold">
         Before
       </div>
-      <div className="hidden md:block absolute top-4 right-4 bg-black/60 backdrop-blur-sm text-white px-3 py-1 rounded-full text-sm font-semibold">
+      <div className="absolute top-4 right-4 bg-black/60 backdrop-blur-sm text-white px-3 py-1 rounded-full text-sm font-semibold">
         After
       </div>
     </div>
