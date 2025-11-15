@@ -243,7 +243,7 @@ export default function FullListingOptimizationPage() {
           >
             <div className="relative w-full aspect-video rounded-2xl overflow-hidden shadow-2xl">
               <Image
-                src="/assets/service-assets/Full-Listing-Optimization/Amazon Seo section.jpg"
+                src="/assets/service-assets/Full-Listing-Optimization/Amazon.jpg"
                 alt="SEO optimization results"
                 fill
                 className="object-cover"

@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { ArrowRight, Palette, Camera, FileText, Upload, Star, Sparkles } from "lucide-react";
-import SimpleMarquee from "@/components/fancy/blocks/simple-marquee";
+import DraggableMarquee from "@/components/fancy/blocks/draggable-marquee";
 
 export default function AEBCContentPage() {
   const ebcMarqueeImages = [
@@ -13,6 +13,9 @@ export default function AEBCContentPage() {
     "/assets/service-assets/A+EBC-Content/A +/Amazon EBC or A+_Page4.jpg",
     "/assets/service-assets/A+EBC-Content/A +/Amazon EBC or A+_Page5.jpg",
     "/assets/service-assets/A+EBC-Content/A +/Amazon EBC or A+_Page6.jpg",
+    "/assets/service-assets/A+EBC-Content/A +/Amazon EBC or A+_Page2.jpg",
+    "/assets/service-assets/A+EBC-Content/A +/Amazon EBC or A+_Page3.jpg",
+    "/assets/service-assets/A+EBC-Content/A +/Amazon EBC or A+_Page4.jpg",
   ];
 
   return (
@@ -87,22 +90,15 @@ export default function AEBCContentPage() {
 
         {/* Draggable Marquee Showcase */}
         <div className="w-full">
-          <SimpleMarquee
+          <DraggableMarquee
             className="py-8"
-            baseVelocity={1.5}
-            repeat={2}
-            direction="left"
-            slowdownOnHover={true}
-            slowDownFactor={0.1}
-            draggable={true}
-            dragSensitivity={0.15}
-            dragAwareDirection={true}
-            grabCursor={true}
+            speed={1.5}
+            center={true}
           >
             {ebcMarqueeImages.map((image, index) => (
               <div
                 key={index}
-                className="relative h-[500px] w-auto mx-4 rounded-xl overflow-hidden shadow-2xl hover:shadow-3xl transition-shadow duration-300"
+                className="relative h-[500px] w-auto mx-4 rounded-xl overflow-hidden transition-shadow duration-300 shrink-0"
               >
                 <Image
                   src={image}
@@ -110,11 +106,12 @@ export default function AEBCContentPage() {
                   height={500}
                   width={350}
                   className="object-contain h-full w-auto"
+                  draggable={false}
                   loading="lazy"
                 />
               </div>
             ))}
-          </SimpleMarquee>
+          </DraggableMarquee>
         </div>
       </section>
 
