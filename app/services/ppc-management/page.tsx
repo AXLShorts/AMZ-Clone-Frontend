@@ -72,7 +72,7 @@ export default function PPCManagementPage() {
       </section>
 
       {/* Stats Banner */}
-      <section className="w-full bg-brand-dark text-white py-12">
+      <section className="w-full bg-brand-dark text-white py-12 mb-16 lg:mb-24">
         <div className="container mx-auto px-4 sm:px-6">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 max-w-5xl mx-auto">
             {[
@@ -102,7 +102,7 @@ export default function PPCManagementPage() {
       </section>
 
       {/* Image Right + Text Left */}
-      <section className="w-full py-16 lg:py-24 bg-white">
+      <section className="w-full mb-16 lg:mb-24 bg-white">
         <div className="container mx-auto px-4 sm:px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center max-w-7xl mx-auto">
             {/* Left - Content */}
@@ -152,7 +152,7 @@ export default function PPCManagementPage() {
       </section>
 
       {/* What We Manage - Grid Section */}
-      <section className="w-full">
+      <section className="w-full mb-16 lg:mb-24">
         <div className="w-[96%] mx-auto bg-brand-dark rounded-[20px] py-16 lg:py-24 px-4 sm:px-6">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -205,42 +205,10 @@ export default function PPCManagementPage() {
               </motion.div>
             ))}
           </div>
-
-          {/* Images Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="relative aspect-video rounded-xl overflow-hidden shadow-lg"
-            >
-              <Image
-                src="/assets/service-assets/PPC-Management/1 Header Section.jpg"
-                alt="PPC campaign overview"
-                fill
-                className="object-cover"
-              />
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
-              className="relative aspect-video rounded-xl overflow-hidden shadow-lg"
-            >
-              <Image
-                src="/assets/service-assets/PPC-Management/2 PPC.jpg"
-                alt="PPC optimization strategy"
-                fill
-                className="object-cover"
-              />
-            </motion.div>
-          </div>
         </div>
       </section>
 
-      {/* Text Left + Image Right (Reversed) */}
-      <section className="w-full py-16 lg:py-24 bg-white">
+      <section className="w-full mb-16 lg:mb-24 bg-white">
         <div className="container mx-auto px-4 sm:px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center max-w-7xl mx-auto">
             {/* Left - Image */}
@@ -294,6 +262,177 @@ export default function PPCManagementPage() {
                 ))}
               </div>
             </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Text Left + Image Right - Campaign Optimization */}
+      <section className="w-full mb-16 lg:mb-24 bg-white">
+        <div className="container mx-auto px-4 sm:px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center max-w-7xl mx-auto">
+            {/* Left - Content */}
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="space-y-6"
+            >
+              <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-semibold text-brand-dark mb-3!">
+                Daily optimization—
+                <span className="text-brand-primary"> not quarterly reviews</span>
+              </h2>
+              
+              <p className="text-lg text-gray-700 leading-relaxed mb-3!">
+                Your campaigns are continuously monitored and refined. We adjust bids, pause underperformers, test new keywords, and scale winners in real-time—not once every three months.
+              </p>
+
+              <div className="space-y-4">
+                {[
+                  "Daily bid optimization across all campaign types",
+                  "Continuous A/B testing of ad copy and creatives",
+                  "Weekly negative keyword pruning and expansion",
+                  "Real-time budget allocation to top performers",
+                ].map((item, index) => (
+                  <div key={index} className="flex items-start gap-3">
+                    <div className="flex items-center justify-center w-6 h-6 bg-emerald-500 rounded-full shrink-0 mt-1">
+                      <Check className="w-4 h-4 text-white" strokeWidth={3} />
+                    </div>
+                    <span className="text-gray-700 font-medium">{item}</span>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+
+            {/* Right - Image */}
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="relative"
+            >
+              <div className="relative w-full aspect-4/3 rounded-2xl overflow-hidden shadow-2xl">
+                <Image
+                  src="/assets/service-assets/PPC-Management/1 Header Section.jpg"
+                  alt="PPC campaign optimization"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Image Left + Text Right - Performance Tracking */}
+      <section className="w-full mb-16 lg:mb-24 bg-white">
+        <div className="container mx-auto px-4 sm:px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center max-w-7xl mx-auto">
+            {/* Left - Image */}
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="relative"
+            >
+              <div className="relative w-full aspect-4/3 rounded-2xl overflow-hidden shadow-2xl">
+                <Image
+                  src="/assets/service-assets/PPC-Management/2 PPC.jpg"
+                  alt="PPC performance metrics"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+            </motion.div>
+
+            {/* Right - Content */}
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="space-y-6"
+            >
+              <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-semibold text-brand-dark mb-3!">
+                Data-driven decisions—
+                <span className="text-brand-primary"> every single day</span>
+              </h2>
+              
+              <p className="text-lg text-gray-700 leading-relaxed mb-3!">
+                We analyze keyword performance, competitor activity, seasonal trends, and market opportunities to inform every decision. Your campaigns evolve based on what&apos;s actually working, not assumptions.
+              </p>
+
+              <div className="space-y-4">
+                {[
+                  "Granular ACOS and ROAS tracking per campaign",
+                  "Competitor spend monitoring and benchmarking",
+                  "Seasonal demand forecasting and scaling",
+                  "Attribution analysis across all ad types",
+                ].map((item, index) => (
+                  <div key={index} className="flex items-start gap-3">
+                    <div className="flex items-center justify-center w-6 h-6 bg-emerald-500 rounded-full shrink-0 mt-1">
+                      <Check className="w-4 h-4 text-white" strokeWidth={3} />
+                    </div>
+                    <span className="text-gray-700 font-medium">{item}</span>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Process Timeline - Text Top + Visual Bottom */}
+      <section className="w-full pb-16 lg:pb-24 bg-white">
+        <div className="container mx-auto px-4 sm:px-6">
+          <div className="max-w-6xl mx-auto space-y-12">
+            {/* Top - Heading */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-center space-y-4"
+            >
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-semibold text-brand-dark uppercase">
+                Getting started is <span className="text-brand-accent">simple</span>
+              </h2>
+              <p className="text-xl text-gray-700">
+                Launch optimized PPC campaigns in 5 easy steps
+              </p>
+            </motion.div>
+
+            {/* Bottom - Process Steps */}
+            <div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
+              {[
+                { number: "01", title: "Free PPC Audit", description: "Analyze your current campaigns for inefficiencies and opportunities" },
+                { number: "02", title: "Strategy & Goals", description: "Define target ACOS, sales goals, and campaign structure" },
+                { number: "03", title: "Campaign Launch", description: "Build and deploy optimized campaigns across all ad types" },
+                { number: "04", title: "Initial Optimization", description: "First 30 days of aggressive testing and keyword refinement" },
+                { number: "05", title: "Scale & Maintain", description: "Ongoing management and continuous ROAS improvement" },
+              ].map((step, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  className="relative"
+                >
+                  <div className="p-6 bg-gray-50 rounded-xl hover:bg-gray-100 transition-all duration-300 h-full">
+                    <div className="text-5xl font-bold text-brand-accent mb-3">{step.number}</div>
+                    <h3 className="text-xl font-bold text-brand-dark mb-2! line-clamp-2 min-h-14">{step.title}</h3>
+                    <p className="text-gray-600 text-sm">{step.description}</p>
+                  </div>
+                  {index < 4 && (
+                    <div className="hidden lg:block absolute top-1/2 -right-3 transform -translate-y-1/2 z-10">
+                      <ArrowRight className="w-6 h-6 text-brand-accent" />
+                    </div>
+                  )}
+                </motion.div>
+              ))}
+            </div>
           </div>
         </div>
       </section>

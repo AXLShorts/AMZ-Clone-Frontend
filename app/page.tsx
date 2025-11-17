@@ -1,6 +1,7 @@
 import Hero from "./components/hero";
 import About from "./components/about";
 import Transformation from "./components/transformation";
+import TransformationContent from "./components/transformation-content";
 import Offer from "./components/offer";
 import LeadMagnet from "./components/lead-magnet";
 import SocialProof from "./components/social-proof";
@@ -79,6 +80,7 @@ export default async function Home() {
       <Transformation 
         data={homepageData?.transformationSection || defaultTransformationData} 
       />
+      <TransformationContent />
       <Offer 
         data={homepageData?.offerSection || defaultOfferData} 
       />

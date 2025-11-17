@@ -70,8 +70,38 @@ export default function AEBCContentPage() {
         </div>
       </section>
 
+      {/* Stats Banner */}
+      <section className="w-full bg-brand-dark text-white py-12 mb-16 lg:mb-24">
+        <div className="container mx-auto px-4 sm:px-6">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 max-w-5xl mx-auto">
+            {[
+              { value: "500K+", label: "Products Ranked" },
+              { value: "14 Days", label: "Avg Time to Page 1" },
+              { value: "3-5x", label: "Sales Growth" },
+              { value: "98%", label: "Success Rate" },
+            ].map((stat, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                className="text-center"
+              >
+                <div className="text-3xl lg:text-4xl font-bold text-brand-accent mb-2">
+                  {stat.value}
+                </div>
+                <div className="text-sm text-gray-400 uppercase tracking-wide">
+                  {stat.label}
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* EBC Marquee Gallery */}
-      <section className="w-full py-16 lg:py-24 bg-white overflow-hidden">
+      <section className="w-full mb-16 lg:mb-24 bg-white overflow-hidden">
         <div className="container mx-auto px-4 sm:px-6">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -116,7 +146,7 @@ export default function AEBCContentPage() {
       </section>
 
       {/* Dark Rounded Features Section */}
-      <section className="w-full">
+      <section className="w-full mb-16 lg:mb-24">
         <div className="w-[96%] mx-auto bg-brand-dark rounded-[20px] py-16 lg:py-24 px-4 sm:px-6">
           <div className="container mx-auto">
             <motion.div
@@ -185,7 +215,7 @@ export default function AEBCContentPage() {
       </section>
 
       {/* Storefront Showcase - Image Left + Text Right */}
-      <section className="w-full py-16 lg:py-24">
+      <section className="w-full mb-16 lg:mb-24">
         <div className="container mx-auto px-4 sm:px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center max-w-7xl mx-auto">
             {/* Left - Image */}
@@ -196,7 +226,7 @@ export default function AEBCContentPage() {
               transition={{ duration: 0.8 }}
               className="relative"
             >
-              <div className="relative w-full aspect-video rounded-2xl overflow-hidden shadow-2xl">
+              <div className="relative w-full aspect-10/9 rounded-2xl overflow-hidden shadow-2xl">
                 <Image
                   src="/assets/service-assets/A+EBC-Content/storefront/new.jpg"
                   alt="Professional storefront design"
@@ -265,75 +295,195 @@ export default function AEBCContentPage() {
         </div>
       </section>
 
-      {/* Stats + Benefits Section */}
-      <section className="w-full">
+      {/* Portfolio Showcase Section - Image Right */}
+      <section className="w-full mb-16 lg:mb-24">
         <div className="container mx-auto px-4 sm:px-6">
-          <div className="max-w-6xl mx-auto space-y-16">
-            {/* Stats */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-              {[
-                { value: "5000+", label: "Modules Created" },
-                { value: "15%", label: "Avg Conversion Lift" },
-                { value: "3-5 Days", label: "Turnaround Time" },
-                { value: "99%", label: "Satisfaction Rate" },
-              ].map((stat, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                  className="text-center"
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center max-w-7xl mx-auto">
+            {/* Left - Content */}
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="space-y-6 order-2 lg:order-1"
+            >
+              <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-semibold text-brand-dark mb-3!">
+                Proven case studies—
+                <span className="text-brand-primary"> results that speak</span>
+              </h2>
+              
+              <p className="text-lg text-gray-700 leading-relaxed">
+                See real transformations from brands like yours. Our A+ content strategies have consistently driven double-digit conversion increases through stunning visuals and compelling storytelling.
+              </p>
+
+              <div className="space-y-4 pt-4">
+                {[
+                  "15%+ average conversion rate increase",
+                  "Dramatic improvement in customer engagement",
+                  "Higher average order value per customer",
+                  "Sustainable long-term sales growth",
+                ].map((item, index) => (
+                  <div key={index} className="flex items-start gap-3">
+                    <div className="flex items-center justify-center w-6 h-6 bg-brand-primary rounded-full shrink-0 mt-1">
+                      <Star className="w-4 h-4 text-white" strokeWidth={3} />
+                    </div>
+                    <span className="text-gray-700 font-medium">{item}</span>
+                  </div>
+                ))}
+              </div>
+
+              <div className="pt-6">
+                <Link
+                  href="/audit"
+                  className="inline-flex items-center gap-2 py-3 px-8 bg-brand-dark text-white rounded-full font-bold hover:bg-brand-dark/90 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105"
                 >
-                  <div className="text-4xl lg:text-5xl font-bold text-brand-primary mb-2">{stat.value}</div>
-                  <div className="text-sm text-gray-600 uppercase tracking-wide">{stat.label}</div>
-                </motion.div>
-              ))}
-            </div>
+                  View Case Studies
+                  <ArrowRight className="w-5 h-5" />
+                </Link>
+              </div>
+            </motion.div>
+
+            {/* Right - Image */}
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="relative order-1 lg:order-2"
+            >
+              <div className="relative w-full aspect-10/9 rounded-2xl overflow-hidden shadow-2xl">
+                <Image
+                  src="/assets/service-assets/A+EBC-Content/A +/new.jpg"
+                  alt="A+ Content portfolio example showcasing results"
+                  fill
+                  className="object-cover"
+                  loading="lazy"
+                />
+              </div>
+            </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Portfolio Showcase Section */}
-      <section className="w-full py-16 lg:py-24 bg-white">
+      {/* Portfolio Showcase Section - Image Left */}
+      <section className="w-full mb-16 lg:mb-24 bg-white">
         <div className="container mx-auto px-4 sm:px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-12 max-w-4xl mx-auto"
-          >
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-semibold text-brand-dark mb-4 uppercase">
-              Real results from <span className="text-brand-primary">real brands</span>
-            </h2>
-            <p className="text-xl text-gray-700">
-              See the transformations that drove 15%+ conversion increases
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-            {[
-              "/assets/service-assets/A+EBC-Content/A +/new.jpg",
-              "/assets/service-assets/A+EBC-Content/A +/2.jpg",
-            ].map((image, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="relative aspect-video rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 group"
-              >
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center max-w-7xl mx-auto">
+            {/* Left - Image */}
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="relative"
+            >
+              <div className="relative w-full aspect-10/9 rounded-2xl overflow-hidden shadow-2xl">
                 <Image
-                  src={image}
-                  alt={`A+ Content Portfolio Example ${index + 1}`}
+                  src="/assets/service-assets/A+EBC-Content/A +/2.jpg"
+                  alt="Professional A+ content module design"
                   fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  className="object-cover"
                   loading="lazy"
                 />
-                <div className="absolute inset-0 bg-linear-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              </motion.div>
-            ))}
+              </div>
+            </motion.div>
+
+            {/* Right - Content */}
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="space-y-6"
+            >
+              <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-semibold text-brand-dark mb-3!">
+                Modular design excellence—
+                <span className="text-brand-primary"> flexibility meets impact</span>
+              </h2>
+              
+              <p className="text-lg text-gray-700 leading-relaxed">
+                Each module is meticulously crafted to stand alone or as part of a complete brand narrative. Our modular approach lets you tell multiple stories that build trust and drive conversions at every stage.
+              </p>
+
+              <div className="space-y-4 pt-4">
+                {[
+                  "Adaptable modules for any product category",
+                  "Scalable designs across your entire catalog",
+                  "Consistent brand voice throughout",
+                  "Easy to update and maintain",
+                ].map((item, index) => (
+                  <div key={index} className="flex items-start gap-3">
+                    <div className="flex items-center justify-center w-6 h-6 bg-brand-primary rounded-full shrink-0 mt-1">
+                      <Star className="w-4 h-4 text-white" strokeWidth={3} />
+                    </div>
+                    <span className="text-gray-700 font-medium">{item}</span>
+                  </div>
+                ))}
+              </div>
+
+              <div className="pt-6">
+                <Link
+                  href="/audit"
+                  className="inline-flex items-center gap-2 py-3 px-8 bg-brand-dark text-white rounded-full font-bold hover:bg-brand-dark/90 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105"
+                >
+                  Start Your Project
+                  <ArrowRight className="w-5 h-5" />
+                </Link>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Process Timeline - Text Top + Visual Bottom */}
+      <section className="w-full pb-16 lg:pb-24 bg-white">
+        <div className="container mx-auto px-4 sm:px-6">
+          <div className="max-w-6xl mx-auto space-y-12">
+            {/* Top - Heading */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-center space-y-4"
+            >
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-semibold text-brand-dark uppercase">
+                Fast-track to <span className="text-brand-accent">page 1</span>
+              </h2>
+              <p className="text-xl text-gray-700">
+                Our proven 5-step process delivers results in 14-21 days
+              </p>
+            </motion.div>
+
+            {/* Bottom - Process Steps */}
+            <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
+              {[
+                { number: "01", title: "Strategy & Audit", description: "Review your product page and identify conversion opportunities" },
+                { number: "02", title: "Concept Development", description: "Design custom A+ modules that tell your brand story" },
+                { number: "03", title: "Content Creation", description: "Professional photography, copywriting, and design execution" },
+                { number: "04", title: "Revisions & Refinement", description: "Unlimited iterations until it's perfect" },
+                { number: "05", title: "Launch & Optimization", description: "Upload content and monitor performance metrics" },
+              ].map((step, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  className="relative"
+                >
+                  <div className="p-6 bg-gray-50 rounded-xl hover:bg-gray-100 transition-all duration-300 h-full">
+                    <div className="text-5xl font-bold text-brand-accent mb-3">{step.number}</div>
+                    <h3 className="text-xl font-bold text-brand-dark mb-2! line-clamp-2 min-h-14">{step.title}</h3>
+                    <p className="text-gray-600 text-sm">{step.description}</p>
+                  </div>
+                  {index < 4 && (
+                    <div className="hidden md:block absolute top-1/2 -right-3 transform -translate-y-1/2 z-10">
+                      <ArrowRight className="w-6 h-6 text-brand-accent" />
+                    </div>
+                  )}
+                </motion.div>
+              ))}
+            </div>
           </div>
         </div>
       </section>

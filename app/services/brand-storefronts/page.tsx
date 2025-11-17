@@ -16,6 +16,13 @@ export default function BrandStorefrontsPage() {
     "/assets/service-assets/Brand-Storefront/5.jpg",
     "/assets/service-assets/Brand-Storefront/6.jpg",
     "/assets/service-assets/Brand-Storefront/7.jpg",
+    "/assets/service-assets/Brand-Storefront/1.jpg",
+    "/assets/service-assets/Brand-Storefront/2.jpg",
+    "/assets/service-assets/Brand-Storefront/3.jpg",
+    "/assets/service-assets/Brand-Storefront/4.jpg",
+    "/assets/service-assets/Brand-Storefront/5.jpg",
+    "/assets/service-assets/Brand-Storefront/6.jpg",
+    "/assets/service-assets/Brand-Storefront/7.jpg",
   ];
 
   return (
@@ -70,8 +77,38 @@ export default function BrandStorefrontsPage() {
         </div>
       </section>
 
+      {/* Stats Banner */}
+      <section className="w-full bg-brand-dark text-white py-12 mb-16 lg:mb-24">
+        <div className="container mx-auto px-4 sm:px-6">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 max-w-5xl mx-auto">
+            {[
+              { value: "500K+", label: "Products Ranked" },
+              { value: "14 Days", label: "Avg Time to Page 1" },
+              { value: "3-5x", label: "Sales Growth" },
+              { value: "98%", label: "Success Rate" },
+            ].map((stat, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                className="text-center"
+              >
+                <div className="text-3xl lg:text-4xl font-bold text-brand-accent mb-2">
+                  {stat.value}
+                </div>
+                <div className="text-sm text-gray-400 uppercase tracking-wide">
+                  {stat.label}
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Storefront Marquee Gallery */}
-      <section className="w-full py-16 lg:py-24 bg-white overflow-hidden">
+      <section className="w-full mb-16 lg:mb-24 bg-white overflow-hidden">
         <div className="container mx-auto px-4 sm:px-6">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -340,28 +377,55 @@ export default function BrandStorefrontsPage() {
         </div>
       </section>
 
-      {/* Stats Section */}
-      <section className="w-full pb-16 lg:pb-24 bg-white">
+      {/* Process Timeline - Text Top + Visual Bottom */}
+      <section className="w-full mb-16 lg:mb-24 bg-white">
         <div className="container mx-auto px-4 sm:px-6">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-5xl mx-auto">
-            {[
-              { value: "1000+", label: "Storefronts Created" },
-              { value: "25%", label: "Avg Traffic Increase" },
-              { value: "1 Week", label: "Launch Timeline" },
-              { value: "100%", label: "Brand Compliance" },
-            ].map((stat, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="text-center"
-              >
-                <div className="text-4xl lg:text-5xl font-bold text-brand-primary mb-2">{stat.value}</div>
-                <div className="text-sm text-gray-600 uppercase tracking-wide">{stat.label}</div>
-              </motion.div>
-            ))}
+          <div className="max-w-6xl mx-auto space-y-12">
+            {/* Top - Heading */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-center space-y-4"
+            >
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-semibold text-brand-dark uppercase">
+                Launch your <span className="text-brand-accent">storefront</span>
+              </h2>
+              <p className="text-xl text-gray-700">
+                From concept to live storefront in 4 strategic steps
+              </p>
+            </motion.div>
+
+            {/* Bottom - Process Steps */}
+            <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
+              {[
+                { number: "01", title: "Brand Discovery", description: "Understand your brand identity, products, and strategic goals" },
+                { number: "02", title: "Storefront Strategy", description: "Plan page architecture, product organization, and customer journey" },
+                { number: "03", title: "Design & Build", description: "Create custom design, integrate assets, and optimize for mobile" },
+                { number: "04", title: "Launch & Optimize", description: "Go live, gather analytics, and continuously improve" },
+                { number: "05", title: "Growth & Scale", description: "Leverage storefront for campaigns, launches, and cross-selling" },
+              ].map((step, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  className="relative"
+                >
+                  <div className="p-6 bg-gray-50 rounded-xl hover:bg-gray-100 transition-all duration-300 h-full">
+                    <div className="text-5xl font-bold text-brand-accent mb-3">{step.number}</div>
+                    <h3 className="text-xl font-bold text-brand-dark mb-2! line-clamp-2 min-h-14">{step.title}</h3>
+                    <p className="text-gray-600 text-sm">{step.description}</p>
+                  </div>
+                  {index < 4 && (
+                    <div className="hidden md:block absolute top-1/2 -right-3 transform -translate-y-1/2 z-10">
+                      <ArrowRight className="w-6 h-6 text-brand-accent" />
+                    </div>
+                  )}
+                </motion.div>
+              ))}
+            </div>
           </div>
         </div>
       </section>

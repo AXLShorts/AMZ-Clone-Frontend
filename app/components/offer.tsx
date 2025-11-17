@@ -28,28 +28,28 @@ const Offer = ({ data }: OfferProps) => {
 
   return (
     <section
-      className="w-full py-16 lg:py-24"
+      className="w-[96%] mx-auto bg-brand-dark rounded-[20px] text-white py-16 lg:py-24"
       aria-label="Offer section"
     >
       <div className="container mx-auto px-4 sm:px-6">
         {/* Heading */}
-        <div className="text-center mb-4 lg:mb-8">
-          <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl xl:text-5xl leading-tight tracking-[-1px] mb-4 uppercase font-semibold text-black">
+        <div className="text-center mb-12 lg:mb-16">
+          <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl leading-tight mb-4! uppercase font-semibold text-white">
             Introducing the{" "}
-            <span className="relative inline-block">
+            <span className="text-brand-accent">
               Merxpert Brand Conversion System™
             </span>
           </h2>
-          <p className="text-base sm:text-lg lg:text-xl text-gray-700">
+          <p className="text-lg sm:text-xl text-gray-300">
             Full-service, done-for-you brand transformation.
           </p>
         </div>
 
         {/* 2-Column Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center max-w-6xl mx-auto">
           {/* Left Column - Text */}
           <div className="space-y-8">
-            <p className="text-sm sm:text-base lg:text-lg text-gray-700 mb-6! leading-relaxed">
+            <p className="text-base sm:text-lg text-gray-300 leading-relaxed">
               Our done-for-you system rebuilds your Amazon brand from the ground
               up — every word, every visual, every keyword — scientifically
               designed to convert.
@@ -57,7 +57,7 @@ const Offer = ({ data }: OfferProps) => {
 
             {/* Deliverables */}
             <div>
-              <h3 className="text-xl sm:text-2xl font-display mb-6! text-black font-semibold">
+              <h3 className="text-xl sm:text-2xl font-display mb-6! text-white font-semibold">
                 What You Get:
               </h3>
               <div className="space-y-4">
@@ -66,7 +66,7 @@ const Offer = ({ data }: OfferProps) => {
                     <div className="flex items-center justify-center w-6 h-6 bg-emerald-500 rounded-full shrink-0 mt-1">
                       <Check className="w-4 h-4 text-white" strokeWidth={3} />
                     </div>
-                    <span className="text-base sm:text-lg text-gray-700 font-medium">
+                    <span className="text-base sm:text-lg text-gray-300 font-medium">
                       {item}
                     </span>
                   </div>
@@ -78,11 +78,11 @@ const Offer = ({ data }: OfferProps) => {
             <div>
               <Link
                 href="/audit"
-                className="inline-block w-full sm:w-auto py-4 px-8 bg-brand-primary text-white text-center rounded-full font-bold hover:bg-brand-accent transition-all duration-300 text-sm lg:text-base shadow-lg hover:shadow-xl hover:scale-105"
+                className="inline-block w-full sm:w-auto py-4 px-8 bg-brand-accent text-white text-center rounded-full font-bold hover:bg-brand-accent/90 transition-all duration-300 text-sm lg:text-base shadow-lg hover:shadow-xl hover:scale-105"
               >
                 Book My Free Amazon Conversion Audit →
               </Link>
-              <p className="text-xs sm:text-sm text-gray-600 mt-4! text-center sm:text-left">
+              <p className="text-xs sm:text-sm text-gray-400 mt-4! text-center sm:text-left">
                 Only 3 free spots this month — closes in 48h
               </p>
             </div>

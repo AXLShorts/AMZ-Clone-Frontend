@@ -72,7 +72,7 @@ export default function KeywordRankingPage() {
       </section>
 
       {/* Stats Banner */}
-      <section className="w-full bg-brand-dark text-white py-12">
+      <section className="w-full bg-brand-dark text-white py-12 mb-16 lg:mb-24">
         <div className="container mx-auto px-4 sm:px-6">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 max-w-5xl mx-auto">
             {[
@@ -102,7 +102,7 @@ export default function KeywordRankingPage() {
       </section>
 
       {/* The Problem - Text Left + Image Right */}
-      <section className="w-full py-16 lg:py-24 bg-white">
+      <section className="w-full mb-16 lg:mb-24 bg-white">
         <div className="container mx-auto px-4 sm:px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center max-w-7xl mx-auto">
             {/* Left - Content */}
@@ -161,7 +161,7 @@ export default function KeywordRankingPage() {
       </section>
 
       {/* Dark Rounded Section - Tri-Rank System */}
-      <section className="w-full">
+      <section className="w-full mb-16 lg:mb-24">
         <div className="w-[96%] mx-auto bg-brand-dark rounded-[20px] py-16 lg:py-24 px-4 sm:px-6">
           <div className="container mx-auto">
             <motion.div
@@ -229,61 +229,8 @@ export default function KeywordRankingPage() {
         </div>
       </section>
 
-      {/* Process Timeline - Text Top + Visual Bottom */}
-      <section className="w-full py-16 lg:py-24 bg-white">
-        <div className="container mx-auto px-4 sm:px-6">
-          <div className="max-w-6xl mx-auto space-y-12">
-            {/* Top - Heading */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="text-center space-y-4"
-            >
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-semibold text-brand-dark uppercase">
-                Fast-track to <span className="text-brand-accent">page 1</span>
-              </h2>
-              <p className="text-xl text-gray-700">
-                Our proven 5-step process delivers results in 14-21 days
-              </p>
-            </motion.div>
-
-            {/* Bottom - Process Steps */}
-            <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
-              {[
-                { number: "01", title: "Strategy Call", description: "Identify target keywords and campaign goals" },
-                { number: "02", title: "Market Analysis", description: "Analyze competition and ranking opportunities" },
-                { number: "03", title: "Campaign Setup", description: "Deploy Tri-Rank system across multiple channels" },
-                { number: "04", title: "Active Monitoring", description: "Daily tracking and performance optimization" },
-                { number: "05", title: "Page 1 Achievement", description: "Secure top positions and maintain momentum" },
-              ].map((step, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                  className="relative"
-                >
-                  <div className="p-6 bg-gray-50 rounded-xl hover:bg-gray-100 transition-all duration-300 h-full">
-                    <div className="text-5xl font-bold text-brand-accent/20 mb-3">{step.number}</div>
-                    <h3 className="text-xl font-bold text-brand-dark mb-2">{step.title}</h3>
-                    <p className="text-gray-600 text-sm">{step.description}</p>
-                  </div>
-                  {index < 4 && (
-                    <div className="hidden md:block absolute top-1/2 -right-3 transform -translate-y-1/2 z-10">
-                      <ArrowRight className="w-6 h-6 text-brand-accent" />
-                    </div>
-                  )}
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Results/Benefits Section - Image Left + Text Right */}
-      <section className="w-full pb-24">
+      <section className="w-full mb-16 lg:mb-24">
         <div className="container mx-auto px-4 sm:px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center max-w-7xl mx-auto">
             {/* Left - Image */}
@@ -294,7 +241,7 @@ export default function KeywordRankingPage() {
               transition={{ duration: 0.8 }}
               className="relative"
             >
-              <div className="relative w-full aspect-4/3 rounded-2xl overflow-hidden shadow-2xl">
+              <div className="relative w-full aspect-square rounded-2xl overflow-hidden shadow-2xl">
                 <Image
                   src="/assets/service-assets/Keyword-Ranking/3 Amazon SEO.jpg"
                   alt="Keyword ranking success metrics"
@@ -339,12 +286,65 @@ export default function KeywordRankingPage() {
               </div>
 
               <div className="bg-brand-dark p-6 rounded-xl text-white">
-                <p className="text-lg italic mb-2">
-                  "Went from page 4 to position 3 on page 1 for our main keyword in just 12 days. Sales tripled.&quot;
+                <p className="text-lg italic mb-2!">
+                  &quot;Went from page 4 to position 3 on page 1 for our main keyword in just 12 days. Sales tripled.&quot;
                 </p>
                 <p className="text-sm text-gray-400">— Kitchen & Home Brand, $850K annual revenue</p>
               </div>
             </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Process Timeline - Text Top + Visual Bottom */}
+      <section className="w-full mb-16 lg:mb-24 bg-white">
+        <div className="container mx-auto px-4 sm:px-6">
+          <div className="max-w-6xl mx-auto space-y-12">
+            {/* Top - Heading */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-center space-y-4"
+            >
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-semibold text-brand-dark uppercase">
+                Fast-track to <span className="text-brand-accent">page 1</span>
+              </h2>
+              <p className="text-xl text-gray-700">
+                Our proven 5-step process delivers results in 14-21 days
+              </p>
+            </motion.div>
+
+            {/* Bottom - Process Steps */}
+            <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
+              {[
+                { number: "01", title: "Strategy Call", description: "Identify target keywords and campaign goals" },
+                { number: "02", title: "Market Analysis", description: "Analyze competition and ranking opportunities" },
+                { number: "03", title: "Campaign Setup", description: "Deploy Tri-Rank system across multiple channels" },
+                { number: "04", title: "Active Monitoring", description: "Daily tracking and performance optimization" },
+                { number: "05", title: "Page 1 Achievement", description: "Secure top positions and maintain momentum" },
+              ].map((step, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  className="relative"
+                >
+                  <div className="p-6 bg-gray-50 rounded-xl hover:bg-gray-100 transition-all duration-300 h-full">
+                    <div className="text-5xl font-bold text-brand-accent mb-3">{step.number}</div>
+                    <h3 className="text-xl font-bold text-brand-dark mb-2! line-clamp-2 min-h-14">{step.title}</h3>
+                    <p className="text-gray-600 text-sm">{step.description}</p>
+                  </div>
+                  {index < 4 && (
+                    <div className="hidden md:block absolute top-1/2 -right-3 transform -translate-y-1/2 z-10">
+                      <ArrowRight className="w-6 h-6 text-brand-accent" />
+                    </div>
+                  )}
+                </motion.div>
+              ))}
+            </div>
           </div>
         </div>
       </section>

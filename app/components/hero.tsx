@@ -10,7 +10,7 @@ const Hero = () => {
   return (
     <section
       ref={heroRef}
-      className="relative 2xl:max-w-[96%] w-full h-fit mx-auto rounded-b-[50px] text-white -mt-20 pt-20 pb-12 lg:pb-16 overflow-hidden"
+      className="relative w-full h-fit mx-auto text-white -mt-20 pt-20 pb-12 lg:pb-16 overflow-hidden"
       aria-label="Hero section"
     >
       {/* Video Background */}

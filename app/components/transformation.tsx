@@ -3,18 +3,10 @@
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Navigation } from "swiper/modules";
-import { Check, ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { TransformationSection } from "@/lib/types";
 import { urlFor } from "@/lib/sanity.client";
 import { BeforeAfterSlider } from "@/components/before-after-slider";
-
-const features = [
-  "Performance-driven listing redesigns",
-  "Keyword-anchored copy + visuals",
-  "A+ Content built for ranking",
-  "Storefront architecture that sells",
-  "Continuous improvement reports",
-];
 
 interface TransformationProps {
   data: TransformationSection;
@@ -122,42 +114,7 @@ const Transformation = ({ data }: TransformationProps) => {
           </button>
         </div>
 
-        {/* Content Section */}
-        <div className="max-w-4xl mx-auto text-center space-y-8">
-          <p className="text-base sm:text-lg lg:text-xl text-gray-200 leading-relaxed">
-            Merxpert builds{" "}
-            <span className="font-bold text-brand-accent">
-              high-converting brand systems
-            </span>{" "}
-            that transform your Amazon presence into a performance engine.
-          </p>
 
-          {/* Features List */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-3xl mx-auto pt-6">
-            {features.map((feature, index) => (
-              <div
-                key={index}
-                className="flex items-start gap-3 p-4 bg-brand-dark border border-emerald-500/30 rounded-lg shadow-sm hover:shadow-md transition-shadow"
-              >
-                <div className="flex items-center justify-center w-6 h-6 bg-emerald-500 rounded-full shrink-0 mt-0.5">
-                  <Check className="w-4 h-4 text-white" strokeWidth={3} />
-                </div>
-                <span className="text-gray-200 text-sm sm:text-base font-medium text-left">
-                  {feature}
-                </span>
-              </div>
-            ))}
-          </div>
-
-          {/* Proof Statement */}
-          <div className="bg-linear-to-r from-emerald-500/20 to-blue-500/20 border-l-4 border-emerald-500 p-6 rounded-r-xl mt-12">
-            <p className="text-sm sm:text-base lg:text-lg text-white font-semibold">
-              &ldquo;On average, Merxpert partners see{" "}
-              <span className="text-emerald-600">29% higher revenue</span> and{" "}
-              <span className="text-blue-600">41% leaner ad spend</span>.&rdquo;
-            </p>
-          </div>
-        </div>
       </div>
     </section>
   );

@@ -71,8 +71,38 @@ export default function AccountManagementPage() {
         </div>
       </section>
 
+            {/* Stats Banner */}
+      <section className="w-full bg-brand-dark text-white py-12 mb-16 lg:mb-24">
+        <div className="container mx-auto px-4 sm:px-6">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 max-w-5xl mx-auto">
+            {[
+              { value: "500K+", label: "Products Ranked" },
+              { value: "14 Days", label: "Avg Time to Page 1" },
+              { value: "3-5x", label: "Sales Growth" },
+              { value: "98%", label: "Success Rate" },
+            ].map((stat, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                className="text-center"
+              >
+                <div className="text-3xl lg:text-4xl font-bold text-brand-accent mb-2">
+                  {stat.value}
+                </div>
+                <div className="text-sm text-gray-400 uppercase tracking-wide">
+                  {stat.label}
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Text Top + Image Bottom */}
-      <section className="w-full py-16 lg:py-24 bg-white">
+      <section className="w-full bg-white">
         <div className="container mx-auto px-4 sm:px-6">
           <div className="max-w-7xl mx-auto space-y-12">
             {/* Top - Content */}
@@ -117,7 +147,7 @@ export default function AccountManagementPage() {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="relative w-full max-w-5xl mx-auto"
             >
-              <div className="relative w-full aspect-video rounded-2xl overflow-hidden shadow-2xl">
+              <div className="relative w-full aspect-video rounded-2xl overflow-hidden">
                 <Image
                   src="/assets/service-assets/Account-Management/1 Full Service Account Management.jpg"
                   alt="Amazon platform management dashboard"
@@ -131,7 +161,7 @@ export default function AccountManagementPage() {
       </section>
 
       {/* Dark Rounded Section - What We Handle */}
-      <section className="w-full">
+      <section className="w-full mb-16 lg:mb-24">
         <div className="w-[96%] mx-auto bg-brand-dark rounded-[20px] py-16 lg:py-24 px-4 sm:px-6">
           <div className="container mx-auto">
             <motion.div
@@ -200,7 +230,7 @@ export default function AccountManagementPage() {
       </section>
 
       {/* Image Left + Text Right - Reporting */}
-      <section className="w-full py-16 lg:py-24 bg-white">
+      <section className="w-full mb-16 lg:mb-24 bg-white">
         <div className="container mx-auto px-4 sm:px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center max-w-7xl mx-auto">
             {/* Left - Image */}
@@ -259,32 +289,55 @@ export default function AccountManagementPage() {
         </div>
       </section>
 
-      {/* Stats Section */}
-      <section className="w-full bg-brand-dark text-white py-16">
+      {/* Process Timeline - Text Top + Visual Bottom */}
+      <section className="w-full pb-16 lg:pb-24 bg-white">
         <div className="container mx-auto px-4 sm:px-6">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 max-w-5xl mx-auto">
-            {[
-              { value: "200+", label: "Accounts Managed" },
-              { value: "$50M+", label: "Revenue Managed Annually" },
-              { value: "35%", label: "Average Growth Rate" },
-              { value: "24/7", label: "Account Monitoring" },
-            ].map((stat, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="text-center"
-              >
-                <div className="text-3xl lg:text-4xl font-bold text-brand-accent mb-2">
-                  {stat.value}
-                </div>
-                <div className="text-sm text-gray-400 uppercase tracking-wide">
-                  {stat.label}
-                </div>
-              </motion.div>
-            ))}
+          <div className="max-w-6xl mx-auto space-y-12">
+            {/* Top - Heading */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-center space-y-4"
+            >
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-semibold text-brand-dark uppercase">
+                Getting started is <span className="text-brand-accent">simple</span>
+              </h2>
+              <p className="text-xl text-gray-700">
+                We take over your Amazon operations in just 5 steps
+              </p>
+            </motion.div>
+
+            {/* Bottom - Process Steps */}
+            <div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
+              {[
+                { number: "01", title: "Consultation Call", description: "Understand your business goals and current challenges" },
+                { number: "02", title: "Account Audit", description: "Complete analysis of listings, PPC, inventory, and performance" },
+                { number: "03", title: "Strategy Development", description: "Create customized roadmap for growth and optimization" },
+                { number: "04", title: "Full Takeover", description: "Transition all account access and implement strategies" },
+                { number: "05", title: "Monthly Growth", description: "Ongoing management, reporting, and continuous optimization" },
+              ].map((step, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  className="relative"
+                >
+                  <div className="p-6 bg-gray-50 rounded-xl hover:bg-gray-100 transition-all duration-300 h-full">
+                    <div className="text-5xl font-bold text-brand-accent mb-3">{step.number}</div>
+                    <h3 className="text-xl font-bold text-brand-dark mb-2! line-clamp-2 min-h-14">{step.title}</h3>
+                    <p className="text-gray-600 text-sm">{step.description}</p>
+                  </div>
+                  {index < 4 && (
+                    <div className="hidden lg:block absolute top-1/2 -right-3 transform -translate-y-1/2 z-10">
+                      <ArrowRight className="w-6 h-6 text-brand-accent" />
+                    </div>
+                  )}
+                </motion.div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
