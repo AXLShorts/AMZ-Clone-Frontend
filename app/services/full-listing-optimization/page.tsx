@@ -5,8 +5,6 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { Check, ArrowRight, Target, Zap, TrendingUp } from "lucide-react";
 
-
-
 export default function FullListingOptimizationPage() {
   return (
     <main>
@@ -43,9 +41,9 @@ export default function FullListingOptimizationPage() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="font-display text-4xl sm:text-5xl lg:text-6xl xl:text-7xl leading-[1.1] tracking-tight uppercase font-semibold"
             >
-              Maximize conversions with listings engineered to win
+              From Click to Sale:
               <span className="text-brand-accent relative inline-block">
-                on Amazon and beyond
+                Listings That Actually Sell
               </span>
             </motion.h1>
 
@@ -55,7 +53,9 @@ export default function FullListingOptimizationPage() {
               transition={{ duration: 0.6, delay: 0.4 }}
               className="text-lg sm:text-xl lg:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed"
             >
-              An end-to-end listing overhaul that combines buyer-intent keyword intelligence, conversion-focused copy, high-impact A+ modules, and backend optimization to improve rank and boost sales.
+              Data-backed keyword strategy, conversion-optimized copy, and
+              performance-focused A+ modules designed to lift organic rank and
+              increase revenue across your catalog.
             </motion.p>
 
             <motion.div
@@ -154,20 +154,25 @@ export default function FullListingOptimizationPage() {
               className="space-y-6"
             >
               <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-semibold text-brand-dark mb-3!">
-                Every word, every image, every keyword—
-                <span className="text-brand-primary"> strategically optimized</span>
+                Precision‑Optimized Listings—
+                <span className="text-brand-primary">
+                  {" "}
+                  Built to Rank and Convert
+                </span>
               </h2>
-              
+
               <p className="text-lg text-gray-700 leading-relaxed">
-                The listing is your product storefront — we sharpen titles, bullets, images and backend fields so your listing finds shoppers and converts them into loyal customers.
+                Your Amazon listing is your most important sales asset. MerXpert
+                engineer every element, from keywords to creatives to maximize
+                visibility, boost click‑through rate, and increase conversions.
               </p>
 
               <div className="space-y-4 pt-4">
                 {[
-                  "Buyer-intent keyword research & gap analysis",
-                  "Conversion-first product copy and optimized bullets",
-                  "A+ Content & photography strategy for higher conversion",
-                  "Backend search term optimization & indexing",
+                  "Data-backed keyword intelligence + competitor gap mapping",
+                  "Persuasion-driven copywriting that elevates clarity and desire",
+                  "Strategic A+ Content + visual guidelines proven to increase CVR",
+                  "Backend indexing architecture to improve organic ranking",
                 ].map((item, index) => (
                   <div key={index} className="flex items-start gap-3">
                     <div className="flex items-center justify-center w-6 h-6 bg-emerald-500 rounded-full shrink-0 mt-1">
@@ -183,7 +188,10 @@ export default function FullListingOptimizationPage() {
       </section>
 
       {/* What You Get - Dark Section */}
-      <section id="how-it-works" className="w-[96%] mx-auto bg-brand-dark rounded-[20px] text-white py-16 lg:py-24">
+      <section
+        id="how-it-works"
+        className="w-[96%] mx-auto bg-brand-dark rounded-[20px] text-white py-16 lg:py-24"
+      >
         <div className="container mx-auto px-4 sm:px-6">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -192,10 +200,14 @@ export default function FullListingOptimizationPage() {
             className="text-center mb-16"
           >
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-semibold mb-4! uppercase">
-              What you <span className="text-brand-accent">actually get</span>
+              What You Get:{" "}
+              <span className="text-brand-accent">
+                A Data-Engineered Listing Built to Win
+              </span>
             </h2>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto!">
-              A complete listing transformation in 3-5 days
+              A complete, data-driven listing rebuild — delivered in 3–5 days
+              for maximum visibility and conversions.
             </p>
           </motion.div>
 
@@ -203,33 +215,39 @@ export default function FullListingOptimizationPage() {
             {[
               {
                 icon: Target,
-                title: "Keyword Research & Mapping",
-                description: "Pinpoint buyer-intent keywords and map them to title, bullets, and backend fields for maximum visibility."
+                title: "Buyer-Intent Keyword Intelligence",
+                description:
+                  "Advanced keyword clustering + competitor gap detection to ensure every term is mapped for maximum ranking power.",
               },
               {
                 icon: Zap,
-                title: "Conversion Copywriting",
-                description: "High-conversion titles, bullets and backend copy tailored to your category and shoppers."
+                title: "Conversion-Engineered Copywriting",
+                description:
+                  "Persuasion-driven titles, bullets, and backend copy built to increase clarity, trust, and purchase intent.",
               },
               {
                 icon: TrendingUp,
-                title: "Backend Search Term Optimization",
-                description: "Optimize backend keyword fields, indexing and hidden attributes to improve discoverability."
+                title: "Backend Indexing Architecture",
+                description:
+                  "Full optimization of hidden keywords, attributes, and search term fields to expand organic reach.",
               },
               {
                 icon: Target,
-                title: "A+ Modules & Visual Strategy",
-                description: "Design and structure A+ content for storytelling, trust-building and higher click-to-conversion."
+                title: "A+ Content Strategy & Visual Blueprint",
+                description:
+                  "High-performance A+ framework designed around storytelling, benefits clarity, and conversion psychology.",
               },
               {
                 icon: Zap,
-                title: "Listing Competitor Benchmark",
-                description: "Deep competitive audit with direct, prioritized actions to close gaps and outperform rivals."
+                title: "Competitor Performance Breakdown",
+                description:
+                  "Actionable competitive analysis with direct steps to outperform category leaders.",
               },
               {
                 icon: TrendingUp,
-                title: "Listing Health & Conversion Tracking",
-                description: "Real-time rank and conversion monitoring with clear next steps to maintain momentum."
+                title: "Ongoing Listing Health Monitoring",
+                description:
+                  "Tracking for ranking, clicks, and conversion shifts, plus recommended next actions to maintain momentum.",
               },
             ].map((feature, index) => (
               <motion.div
@@ -262,20 +280,21 @@ export default function FullListingOptimizationPage() {
               className="space-y-6"
             >
               <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-semibold text-brand-dark mb-3!">
-                Design, copy, and data—
-                <span className="text-brand-primary"> tuned to convert</span>
+                Creative + Copy + Data =
+                <span className="text-brand-primary"> Conversion Power</span>
               </h2>
 
               <p className="text-lg text-gray-700 leading-relaxed">
-                We pair high-impact visuals with buyer-focused messaging and a testing framework so your listing not only ranks—it converts shoppers into customers. From photography direction to A+ module sequencing and backend indexing, every change is driven by measurable lift.
+                Your listing’s visuals, messaging, and backend structure are
+                engineered together for maximum conversion impact.
               </p>
 
               <div className="space-y-4 pt-4">
                 {[
-                  "A+ module blueprints + photography briefs to boost engagement",
-                  "Split-tested titles & bullets for measurable conversion lift",
-                  "Image optimization & A/B layouts for higher click-through rates",
-                  "Backend attribute mapping & indexing for long-term discoverability",
+                  "High-performance A+ frameworks + image briefs designed for engagement",
+                  "A/B-tested titles & bullets built to increase conversion rates",
+                  "Image sequencing & layout tactics proven to raise CTR",
+                  "Backend indexing architecture that strengthens long-term organic rank",
                 ].map((item, index) => (
                   <div key={index} className="flex items-start gap-3">
                     <div className="flex items-center justify-center w-6 h-6 bg-emerald-500 rounded-full shrink-0 mt-1">
@@ -334,18 +353,44 @@ export default function FullListingOptimizationPage() {
                 Fast-track to <span className="text-brand-accent">page 1</span>
               </h2>
               <p className="text-xl text-gray-700">
-                Our proven 5-step listing program focuses on speed and measurable growth — typical gains in 14–21 days
+                MerXpert 5‑step data driver system designed to deliver ranking
+                momentum in as little as 14–21 days.
               </p>
             </motion.div>
 
             {/* Bottom - Process Steps */}
             <div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
               {[
-                { number: "01", title: "Strategy Call", description: "Identify target keywords and campaign goals" },
-                { number: "02", title: "Market Analysis", description: "Analyze competition and ranking opportunities" },
-                { number: "03", title: "Optimized Content", description: "Update title, bullets, images and A+ to reflect keyword priorities" },
-                { number: "04", title: "Performance Monitoring", description: "Daily rank & conversion checks with rapid iteration" },
-                { number: "05", title: "Ongoing Wins", description: "Sustained visibility and conversion improvements" },
+                {
+                  number: "01",
+                  title: "Strategic Call",
+                  description:
+                    "Align goals, define opportunities, and lock target keyword clusters.",
+                },
+                {
+                  number: "02",
+                  title: "Market Analysis",
+                  description:
+                    "Deep competitor + ranking gap analysis to set a winning path.",
+                },
+                {
+                  number: "03",
+                  title: "Conversion-Optimized Content",
+                  description:
+                    "Full optimization of titles, bullets, images, and A+ built around ranking signals.",
+                },
+                {
+                  number: "04",
+                  title: "Performance Monitoring",
+                  description:
+                    "Daily monitoring with rapid iteration to push keywords upward.",
+                },
+                {
+                  number: "05",
+                  title: "Sustained Growth Engine",
+                  description:
+                    "Long-term visibility and conversion improvements that compound over time.",
+                },
               ].map((step, index) => (
                 <motion.div
                   key={index}
@@ -356,8 +401,12 @@ export default function FullListingOptimizationPage() {
                   className="relative"
                 >
                   <div className="p-6 bg-gray-50 rounded-xl hover:bg-gray-100 transition-all duration-300 h-full">
-                    <div className="text-5xl font-bold text-brand-accent mb-3">{step.number}</div>
-                    <h3 className="text-xl font-bold text-brand-dark mb-2! line-clamp-2 min-h-14">{step.title}</h3>
+                    <div className="text-5xl font-bold text-brand-accent mb-3">
+                      {step.number}
+                    </div>
+                    <h3 className="text-xl font-bold text-brand-dark mb-2! line-clamp-2 min-h-14">
+                      {step.title}
+                    </h3>
                     <p className="text-gray-600 text-sm">{step.description}</p>
                   </div>
                   {index < 4 && (

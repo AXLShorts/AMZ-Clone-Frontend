@@ -4,7 +4,15 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowRight, Store, Palette, ShoppingBag, Sparkles, Users, Layout } from "lucide-react";
+import {
+  ArrowRight,
+  Store,
+  Palette,
+  ShoppingBag,
+  Sparkles,
+  Users,
+  Layout,
+} from "lucide-react";
 import SimpleMarquee from "@/components/fancy/blocks/simple-marquee";
 
 export default function BrandStorefrontsPage() {
@@ -57,7 +65,9 @@ export default function BrandStorefrontsPage() {
               transition={{ duration: 0.6, delay: 0.4 }}
               className="text-xl lg:text-2xl text-gray-200 mb-6!"
             >
-              Build a stunning Amazon Storefront that showcases your full product line, tells your brand story, and drives cross-selling opportunities.
+              Build a stunning Amazon Storefront that showcases your full
+              product line, tells your brand story, and drives cross-selling
+              opportunities.
             </motion.p>
 
             <motion.div
@@ -117,7 +127,8 @@ export default function BrandStorefrontsPage() {
             className="text-center mb-12 max-w-4xl mx-auto"
           >
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-semibold text-brand-dark mb-4! uppercase">
-              Stunning <span className="text-brand-accent">brand storefronts</span>
+              Stunning{" "}
+              <span className="text-brand-accent">brand storefronts</span>
             </h2>
             <p className="text-xl text-gray-700">
               Create an immersive shopping experience that builds loyalty
@@ -143,13 +154,13 @@ export default function BrandStorefrontsPage() {
               <div
                 key={index}
                 className="relative h-[500px] w-auto mx-4 rounded-xl overflow-hidden shadow-2xl hover:shadow-3xl transition-shadow duration-300 select-none"
-                style={{ userSelect: 'none', WebkitUserSelect: 'none' }}
+                style={{ userSelect: "none", WebkitUserSelect: "none" }}
               >
                 <img
                   src={image}
                   alt={`Brand Storefront Example ${index + 1}`}
                   className="object-contain select-none pointer-events-none"
-                  style={{ height: '500px', width: 'auto' }}
+                  style={{ height: "500px", width: "auto" }}
                   draggable={false}
                   loading="lazy"
                 />
@@ -171,13 +182,13 @@ export default function BrandStorefrontsPage() {
               transition={{ duration: 0.8 }}
               className="relative"
             >
-              <div className="relative w-full aspect-video rounded-2xl overflow-hidden shadow-2xl">
+              <div className="relative w-full aspect-square rounded-2xl overflow-hidden shadow-2xl">
                 <Image
-                  src="/assets/service-assets/Brand-Storefront/1.jpg"
+                  src="/assets/service-assets/Brand-Storefront/2.png"
                   alt="Professional brand storefront design"
                   fill
                   sizes="(max-width: 1024px) 100vw, 50vw"
-                  className="object-cover"
+                  className="object-contain"
                   loading="lazy"
                 />
               </div>
@@ -206,9 +217,12 @@ export default function BrandStorefrontsPage() {
                 Your brand&apos;s headquarters—
                 <span className="text-brand-primary"> on Amazon</span>
               </h2>
-              
+
               <p className="text-lg text-gray-700 leading-relaxed">
-                Your Amazon Storefront isn&apos;t just a product gallery. It&apos;s your brand&apos;s premium destination that tells your complete story, showcases your full catalog, and creates an immersive shopping experience.
+                Your Amazon Storefront isn&apos;t just a product gallery.
+                It&apos;s your brand&apos;s premium destination that tells your
+                complete story, showcases your full catalog, and creates an
+                immersive shopping experience.
               </p>
 
               <div className="space-y-4 pt-4">
@@ -252,10 +266,12 @@ export default function BrandStorefrontsPage() {
               className="text-center mb-16 max-w-4xl mx-auto"
             >
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-semibold text-white mb-4 uppercase">
-                Complete <span className="text-brand-accent">Storefront Solution</span>
+                Complete{" "}
+                <span className="text-brand-accent">Storefront Solution</span>
               </h2>
               <p className="text-xl text-gray-300">
-                From strategy to launch—everything you need for a premium brand presence
+                From strategy to launch—everything you need for a premium brand
+                presence
               </p>
             </motion.div>
 
@@ -264,32 +280,38 @@ export default function BrandStorefrontsPage() {
                 {
                   icon: Palette,
                   title: "Custom Design",
-                  description: "Unique layouts tailored to your brand identity and product mix for maximum impact.",
+                  description:
+                    "Unique layouts tailored to your brand identity and product mix for maximum impact.",
                 },
                 {
                   icon: Layout,
                   title: "Multi-Page Architecture",
-                  description: "Organized navigation with category pages, collections, and brand story sections.",
+                  description:
+                    "Organized navigation with category pages, collections, and brand story sections.",
                 },
                 {
                   icon: Sparkles,
                   title: "Visual Storytelling",
-                  description: "High-quality images, videos, and hero banners that showcase your brand narrative.",
+                  description:
+                    "High-quality images, videos, and hero banners that showcase your brand narrative.",
                 },
                 {
                   icon: ShoppingBag,
                   title: "Shoppable Content",
-                  description: "Strategic product placement, cross-sells, and bundling opportunities built-in.",
+                  description:
+                    "Strategic product placement, cross-sells, and bundling opportunities built-in.",
                 },
                 {
                   icon: Users,
                   title: "Customer Journey Design",
-                  description: "Guide visitors through a strategic experience from discovery to purchase.",
+                  description:
+                    "Guide visitors through a strategic experience from discovery to purchase.",
                 },
                 {
                   icon: Store,
                   title: "Brand Compliance",
-                  description: "100% Amazon guidelines compliant with SEO optimization and performance tracking.",
+                  description:
+                    "100% Amazon guidelines compliant with SEO optimization and performance tracking.",
                 },
               ].map((feature, index) => (
                 <motion.div
@@ -301,7 +323,9 @@ export default function BrandStorefrontsPage() {
                   className="p-8 bg-white/5 rounded-xl border border-white/10 hover:bg-white/10 transition-all duration-300"
                 >
                   <feature.icon className="w-12 h-12 text-brand-accent mb-4" />
-                  <h3 className="text-2xl font-bold text-white mb-3">{feature.title}</h3>
+                  <h3 className="text-2xl font-bold text-white mb-3">
+                    {feature.title}
+                  </h3>
                   <p className="text-gray-300">{feature.description}</p>
                 </motion.div>
               ))}
@@ -320,7 +344,8 @@ export default function BrandStorefrontsPage() {
             className="text-center mb-16 max-w-4xl mx-auto"
           >
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-semibold text-brand-dark mb-4! uppercase">
-              The Storefront <span className="text-brand-primary">Advantage</span>
+              The Storefront{" "}
+              <span className="text-brand-primary">Advantage</span>
             </h2>
             <p className="text-xl text-gray-700">
               Why leading brands invest in premium Amazon Storefronts
@@ -332,32 +357,38 @@ export default function BrandStorefrontsPage() {
               {
                 emoji: "🎯",
                 title: "Own Your Brand Space",
-                description: "Create a dedicated destination where you control the entire customer experience without competitor distractions.",
+                description:
+                  "Create a dedicated destination where you control the entire customer experience without competitor distractions.",
               },
               {
                 emoji: "📈",
                 title: "Drive Discovery",
-                description: "Showcase your full product catalog with strategic organization that encourages exploration and cross-category shopping.",
+                description:
+                  "Showcase your full product catalog with strategic organization that encourages exploration and cross-category shopping.",
               },
               {
                 emoji: "💎",
                 title: "Premium Positioning",
-                description: "Elevate brand perception with professional design that matches your off-Amazon presence and builds trust.",
+                description:
+                  "Elevate brand perception with professional design that matches your off-Amazon presence and builds trust.",
               },
               {
                 emoji: "🔗",
                 title: "External Traffic Ready",
-                description: "Use your custom Amazon URL in ads, social media, and marketing to drive qualified traffic directly to your brand.",
+                description:
+                  "Use your custom Amazon URL in ads, social media, and marketing to drive qualified traffic directly to your brand.",
               },
               {
                 emoji: "📊",
                 title: "Performance Insights",
-                description: "Access exclusive storefront analytics to understand visitor behavior and optimize your brand strategy.",
+                description:
+                  "Access exclusive storefront analytics to understand visitor behavior and optimize your brand strategy.",
               },
               {
                 emoji: "🚀",
                 title: "Launch Platform",
-                description: "Perfect for new product launches, seasonal campaigns, and building long-term brand loyalty on Amazon.",
+                description:
+                  "Perfect for new product launches, seasonal campaigns, and building long-term brand loyalty on Amazon.",
               },
             ].map((benefit, index) => (
               <motion.div
@@ -369,7 +400,9 @@ export default function BrandStorefrontsPage() {
                 className="p-6 bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300"
               >
                 <div className="text-5xl mb-4">{benefit.emoji}</div>
-                <h3 className="text-xl font-bold text-brand-dark mb-3">{benefit.title}</h3>
+                <h3 className="text-xl font-bold text-brand-dark mb-3">
+                  {benefit.title}
+                </h3>
                 <p className="text-gray-600">{benefit.description}</p>
               </motion.div>
             ))}
@@ -389,7 +422,8 @@ export default function BrandStorefrontsPage() {
               className="text-center space-y-4"
             >
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-semibold text-brand-dark uppercase">
-                Launch your <span className="text-brand-accent">storefront</span>
+                Launch your{" "}
+                <span className="text-brand-accent">storefront</span>
               </h2>
               <p className="text-xl text-gray-700">
                 From concept to live storefront in 4 strategic steps
@@ -399,11 +433,36 @@ export default function BrandStorefrontsPage() {
             {/* Bottom - Process Steps */}
             <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
               {[
-                { number: "01", title: "Brand Discovery", description: "Understand your brand identity, products, and strategic goals" },
-                { number: "02", title: "Storefront Strategy", description: "Plan page architecture, product organization, and customer journey" },
-                { number: "03", title: "Design & Build", description: "Create custom design, integrate assets, and optimize for mobile" },
-                { number: "04", title: "Launch & Optimize", description: "Go live, gather analytics, and continuously improve" },
-                { number: "05", title: "Growth & Scale", description: "Leverage storefront for campaigns, launches, and cross-selling" },
+                {
+                  number: "01",
+                  title: "Brand Discovery",
+                  description:
+                    "Understand your brand identity, products, and strategic goals",
+                },
+                {
+                  number: "02",
+                  title: "Storefront Strategy",
+                  description:
+                    "Plan page architecture, product organization, and customer journey",
+                },
+                {
+                  number: "03",
+                  title: "Design & Build",
+                  description:
+                    "Create custom design, integrate assets, and optimize for mobile",
+                },
+                {
+                  number: "04",
+                  title: "Launch & Optimize",
+                  description:
+                    "Go live, gather analytics, and continuously improve",
+                },
+                {
+                  number: "05",
+                  title: "Growth & Scale",
+                  description:
+                    "Leverage storefront for campaigns, launches, and cross-selling",
+                },
               ].map((step, index) => (
                 <motion.div
                   key={index}
@@ -414,8 +473,12 @@ export default function BrandStorefrontsPage() {
                   className="relative"
                 >
                   <div className="p-6 bg-gray-50 rounded-xl hover:bg-gray-100 transition-all duration-300 h-full">
-                    <div className="text-5xl font-bold text-brand-accent mb-3">{step.number}</div>
-                    <h3 className="text-xl font-bold text-brand-dark mb-2! line-clamp-2 min-h-14">{step.title}</h3>
+                    <div className="text-5xl font-bold text-brand-accent mb-3">
+                      {step.number}
+                    </div>
+                    <h3 className="text-xl font-bold text-brand-dark mb-2! line-clamp-2 min-h-14">
+                      {step.title}
+                    </h3>
                     <p className="text-gray-600 text-sm">{step.description}</p>
                   </div>
                   {index < 4 && (

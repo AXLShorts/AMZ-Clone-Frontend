@@ -3,7 +3,16 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { Check, ArrowRight, Search, Target, Zap, TrendingUp, BarChart2, RefreshCw } from "lucide-react";
+import {
+  Check,
+  ArrowRight,
+  Search,
+  Target,
+  Zap,
+  TrendingUp,
+  BarChart2,
+  RefreshCw,
+} from "lucide-react";
 
 export default function KeywordRankingPage() {
   return (
@@ -40,8 +49,8 @@ export default function KeywordRankingPage() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="font-display text-4xl sm:text-5xl lg:text-6xl xl:text-7xl leading-[1.1] font-semibold uppercase pb-6!"
             >
-              Page 1 rankings{" "}
-              <span className="text-brand-accent">in 14 days</span>
+              Hit Page 1 Fast:{" "}
+              <span className="text-brand-accent">14-Day Ranking System</span>
             </motion.h1>
 
             <motion.p
@@ -50,7 +59,8 @@ export default function KeywordRankingPage() {
               transition={{ duration: 0.6, delay: 0.4 }}
               className="text-xl lg:text-2xl text-gray-200 pb-6!"
             >
-              Our proprietary Tri-Rank Strategy combines PPC, organic tactics, and automation to rocket your products to the top of Amazon search results.
+              With our unique Tri-Rank system, we combine PPC, organic boosts,
+              and automation to rocket your listings to page 1 on Amazon.
             </motion.p>
 
             <motion.div
@@ -115,11 +125,15 @@ export default function KeywordRankingPage() {
             >
               <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-semibold text-brand-dark mb-3!">
                 Buried on page 5?{" "}
-                <span className="text-brand-primary">You&apos;re invisible.</span>
+                <span className="text-brand-primary">
+                  You&apos;re invisible.
+                </span>
               </h2>
-              
+
               <p className="text-lg text-gray-700 leading-relaxed mb-3!">
-                85% of Amazon shoppers never scroll past page 1. If you&apos;re not ranking in the top 20 for your main keywords, you&apos;re leaving massive revenue on the table.
+                85% of Amazon shoppers never scroll past page 1. If you&apos;re
+                not ranking in the top 20 for your main keywords, you&apos;re
+                leaving massive revenue on the table.
               </p>
 
               <div className="space-y-4">
@@ -174,7 +188,8 @@ export default function KeywordRankingPage() {
                 The <span className="text-brand-accent">Tri-Rank System</span>
               </h2>
               <p className="text-xl text-gray-300">
-                Three synchronized strategies working together for explosive growth
+                Three synchronized strategies working together for explosive
+                growth
               </p>
             </motion.div>
 
@@ -183,32 +198,38 @@ export default function KeywordRankingPage() {
                 {
                   icon: Search,
                   title: "Keyword Strategy",
-                  description: "Target high-value keywords with proven conversion potential and realistic ranking timelines based on competition analysis.",
+                  description:
+                    "Target high-value keywords with proven conversion potential and realistic ranking timelines based on competition analysis.",
                 },
                 {
                   icon: Target,
                   title: "PPC Acceleration",
-                  description: "Strategic ad campaigns to boost initial visibility and sales velocity, signaling relevance to Amazon's algorithm.",
+                  description:
+                    "Strategic ad campaigns to boost initial visibility and sales velocity, signaling relevance to Amazon's algorithm.",
                 },
                 {
                   icon: Zap,
                   title: "Automation Tools",
-                  description: "Leverage chatbots and rebate systems for consistent sales momentum and sustained keyword performance.",
+                  description:
+                    "Leverage chatbots and rebate systems for consistent sales momentum and sustained keyword performance.",
                 },
                 {
                   icon: BarChart2,
                   title: "Listing Optimization",
-                  description: "Ensure your listing converts visitors driven by ranking improvements with optimized titles, images, and content.",
+                  description:
+                    "Ensure your listing converts visitors driven by ranking improvements with optimized titles, images, and content.",
                 },
                 {
                   icon: TrendingUp,
                   title: "Daily Tracking",
-                  description: "Monitor keyword positions and adjust strategy in real-time to capitalize on opportunities and prevent drops.",
+                  description:
+                    "Monitor keyword positions and adjust strategy in real-time to capitalize on opportunities and prevent drops.",
                 },
                 {
                   icon: RefreshCw,
                   title: "Ongoing Support",
-                  description: "Maintain rankings with continuous optimization and adjustments as competition and market dynamics shift.",
+                  description:
+                    "Maintain rankings with continuous optimization and adjustments as competition and market dynamics shift.",
                 },
               ].map((feature, index) => (
                 <motion.div
@@ -220,7 +241,9 @@ export default function KeywordRankingPage() {
                   className="p-8 bg-white/5 rounded-xl border border-white/10 hover:bg-white/10 transition-all duration-300"
                 >
                   <feature.icon className="w-12 h-12 text-brand-accent mb-4" />
-                  <h3 className="text-2xl font-bold text-white mb-3">{feature.title}</h3>
+                  <h3 className="text-2xl font-bold text-white mb-3">
+                    {feature.title}
+                  </h3>
                   <p className="text-gray-300">{feature.description}</p>
                 </motion.div>
               ))}
@@ -263,9 +286,11 @@ export default function KeywordRankingPage() {
                 Dominate search results.{" "}
                 <span className="text-brand-primary">Scale sustainably.</span>
               </h2>
-              
+
               <p className="text-lg text-gray-700 leading-relaxed mb-3!">
-                Higher rankings mean more visibility, more clicks, and more sales. Our ranking service puts your products in front of ready-to-buy customers searching for exactly what you sell.
+                Higher rankings mean more visibility, more clicks, and more
+                sales. Our ranking service puts your products in front of
+                ready-to-buy customers searching for exactly what you sell.
               </p>
 
               <div className="space-y-4">
@@ -287,9 +312,12 @@ export default function KeywordRankingPage() {
 
               <div className="bg-brand-dark p-6 rounded-xl text-white">
                 <p className="text-lg italic mb-2!">
-                  &quot;Went from page 4 to position 3 on page 1 for our main keyword in just 12 days. Sales tripled.&quot;
+                  &quot;Went from page 4 to position 3 on page 1 for our main
+                  keyword in just 12 days. Sales tripled.&quot;
                 </p>
-                <p className="text-sm text-gray-400">— Kitchen & Home Brand, $850K annual revenue</p>
+                <p className="text-sm text-gray-400">
+                  — Kitchen & Home Brand, $850K annual revenue
+                </p>
               </div>
             </motion.div>
           </div>
@@ -318,11 +346,32 @@ export default function KeywordRankingPage() {
             {/* Bottom - Process Steps */}
             <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
               {[
-                { number: "01", title: "Strategy Call", description: "Identify target keywords and campaign goals" },
-                { number: "02", title: "Market Analysis", description: "Analyze competition and ranking opportunities" },
-                { number: "03", title: "Campaign Setup", description: "Deploy Tri-Rank system across multiple channels" },
-                { number: "04", title: "Active Monitoring", description: "Daily tracking and performance optimization" },
-                { number: "05", title: "Page 1 Achievement", description: "Secure top positions and maintain momentum" },
+                {
+                  number: "01",
+                  title: "Strategy Call",
+                  description: "Identify target keywords and campaign goals",
+                },
+                {
+                  number: "02",
+                  title: "Market Analysis",
+                  description: "Analyze competition and ranking opportunities",
+                },
+                {
+                  number: "03",
+                  title: "Campaign Setup",
+                  description:
+                    "Deploy Tri-Rank system across multiple channels",
+                },
+                {
+                  number: "04",
+                  title: "Active Monitoring",
+                  description: "Daily tracking and performance optimization",
+                },
+                {
+                  number: "05",
+                  title: "Page 1 Achievement",
+                  description: "Secure top positions and maintain momentum",
+                },
               ].map((step, index) => (
                 <motion.div
                   key={index}
@@ -333,8 +382,12 @@ export default function KeywordRankingPage() {
                   className="relative"
                 >
                   <div className="p-6 bg-gray-50 rounded-xl hover:bg-gray-100 transition-all duration-300 h-full">
-                    <div className="text-5xl font-bold text-brand-accent mb-3">{step.number}</div>
-                    <h3 className="text-xl font-bold text-brand-dark mb-2! line-clamp-2 min-h-14">{step.title}</h3>
+                    <div className="text-5xl font-bold text-brand-accent mb-3">
+                      {step.number}
+                    </div>
+                    <h3 className="text-xl font-bold text-brand-dark mb-2! line-clamp-2 min-h-14">
+                      {step.title}
+                    </h3>
                     <p className="text-gray-600 text-sm">{step.description}</p>
                   </div>
                   {index < 4 && (

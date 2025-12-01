@@ -3,8 +3,16 @@
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { ArrowRight, Palette, Camera, FileText, Upload, Star, Sparkles } from "lucide-react";
-import DraggableMarquee from "@/components/fancy/blocks/draggable-marquee";
+import {
+  ArrowRight,
+  Palette,
+  Camera,
+  FileText,
+  Upload,
+  Star,
+  Sparkles,
+} from "lucide-react";
+import SimpleMarquee from "@/components/fancy/blocks/simple-marquee";
 
 export default function AEBCContentPage() {
   const ebcMarqueeImages = [
@@ -50,7 +58,8 @@ export default function AEBCContentPage() {
               transition={{ duration: 0.6, delay: 0.4 }}
               className="text-xl lg:text-2xl text-gray-200 mb-6!"
             >
-              Transform your product pages into visual stories that build trust, showcase benefits, and dramatically increase sales.
+              Transform your product pages into visual stories that build trust,
+              showcase benefits, and dramatically increase sales.
             </motion.p>
 
             <motion.div
@@ -119,29 +128,38 @@ export default function AEBCContentPage() {
         </div>
 
         {/* Draggable Marquee Showcase */}
-        <div className="w-full">
-          <DraggableMarquee
+        <div className="w-full select-none">
+          <SimpleMarquee
             className="py-8"
-            speed={1.5}
-            center={true}
+            baseVelocity={1.5}
+            repeat={2}
+            direction="left"
+            slowdownOnHover={true}
+            slowDownFactor={0.1}
+            draggable={true}
+            dragSensitivity={0.5}
+            dragAwareDirection={true}
+            grabCursor={true}
           >
             {ebcMarqueeImages.map((image, index) => (
               <div
                 key={index}
-                className="relative h-[500px] w-auto mx-4 rounded-xl overflow-hidden transition-shadow duration-300 shrink-0"
+                className="relative h-[500px] w-auto mx-4 rounded-xl overflow-hidden shadow-2xl hover:shadow-3xl transition-shadow duration-300 select-none"
+                style={{ userSelect: "none", WebkitUserSelect: "none" }}
               >
                 <Image
                   src={image}
                   alt={`A+ EBC Content Module ${index + 1}`}
                   height={500}
                   width={350}
-                  className="object-contain h-full w-auto"
+                  className="object-contain select-none pointer-events-none"
+                  style={{ height: "500px", width: "auto" }}
                   draggable={false}
                   loading="lazy"
                 />
               </div>
             ))}
-          </DraggableMarquee>
+          </SimpleMarquee>
         </div>
       </section>
 
@@ -156,7 +174,8 @@ export default function AEBCContentPage() {
               className="text-center mb-16 max-w-4xl mx-auto"
             >
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-semibold text-white mb-4! uppercase">
-                Complete <span className="text-brand-accent">A+ Content Service</span>
+                Complete{" "}
+                <span className="text-brand-accent">A+ Content Service</span>
               </h2>
               <p className="text-xl text-gray-300">
                 From concept to upload—we handle every aspect
@@ -168,32 +187,38 @@ export default function AEBCContentPage() {
                 {
                   icon: Palette,
                   title: "Custom Module Design",
-                  description: "Bespoke layouts that tell your brand story and showcase products beautifully.",
+                  description:
+                    "Bespoke layouts that tell your brand story and showcase products beautifully.",
                 },
                 {
                   icon: Camera,
                   title: "Professional Photography",
-                  description: "Product and lifestyle images that highlight features and build desire.",
+                  description:
+                    "Product and lifestyle images that highlight features and build desire.",
                 },
                 {
                   icon: FileText,
                   title: "Strategic Copywriting",
-                  description: "SEO-friendly, benefit-driven text that complements visuals perfectly.",
+                  description:
+                    "SEO-friendly, benefit-driven text that complements visuals perfectly.",
                 },
                 {
                   icon: Sparkles,
                   title: "Brand Consistency",
-                  description: "Designs aligned with your brand guidelines and visual identity.",
+                  description:
+                    "Designs aligned with your brand guidelines and visual identity.",
                 },
                 {
                   icon: Upload,
                   title: "Upload & Management",
-                  description: "We handle all technical aspects of uploading and managing your content.",
+                  description:
+                    "We handle all technical aspects of uploading and managing your content.",
                 },
                 {
                   icon: Star,
                   title: "Unlimited Revisions",
-                  description: "Refine until perfect—your satisfaction is guaranteed.",
+                  description:
+                    "Refine until perfect—your satisfaction is guaranteed.",
                 },
               ].map((feature, index) => (
                 <motion.div
@@ -205,7 +230,9 @@ export default function AEBCContentPage() {
                   className="p-8 bg-white/5 rounded-xl border border-white/10 hover:bg-white/10 transition-all duration-300"
                 >
                   <feature.icon className="w-12 h-12 text-brand-accent mb-4" />
-                  <h3 className="text-2xl font-bold text-white mb-3!">{feature.title}</h3>
+                  <h3 className="text-2xl font-bold text-white mb-3!">
+                    {feature.title}
+                  </h3>
                   <p className="text-gray-300">{feature.description}</p>
                 </motion.div>
               ))}
@@ -228,7 +255,7 @@ export default function AEBCContentPage() {
             >
               <div className="relative w-full aspect-10/9 rounded-2xl overflow-hidden shadow-2xl">
                 <Image
-                  src="/assets/service-assets/A+EBC-Content/storefront/new.jpg"
+                  src="/assets/service-assets/A+EBC-Content/1.png"
                   alt="Professional storefront design"
                   fill
                   className="object-cover"
@@ -260,9 +287,11 @@ export default function AEBCContentPage() {
                 Complete brand storytelling—
                 <span className="text-brand-primary"> from scroll to sold</span>
               </h2>
-              
+
               <p className="text-lg text-gray-700 leading-relaxed">
-                Your A+ Content isn&apos;t just pretty pictures. It&apos;s strategic visual selling that addresses objections, highlights benefits, and builds emotional connection with every scroll.
+                Your A+ Content isn&apos;t just pretty pictures. It&apos;s
+                strategic visual selling that addresses objections, highlights
+                benefits, and builds emotional connection with every scroll.
               </p>
 
               <div className="space-y-4 pt-4">
@@ -311,9 +340,11 @@ export default function AEBCContentPage() {
                 Proven case studies—
                 <span className="text-brand-primary"> results that speak</span>
               </h2>
-              
+
               <p className="text-lg text-gray-700 leading-relaxed">
-                See real transformations from brands like yours. Our A+ content strategies have consistently driven double-digit conversion increases through stunning visuals and compelling storytelling.
+                See real transformations from brands like yours. Our A+ content
+                strategies have consistently driven double-digit conversion
+                increases through stunning visuals and compelling storytelling.
               </p>
 
               <div className="space-y-4 pt-4">
@@ -379,7 +410,7 @@ export default function AEBCContentPage() {
             >
               <div className="relative w-full aspect-10/9 rounded-2xl overflow-hidden shadow-2xl">
                 <Image
-                  src="/assets/service-assets/A+EBC-Content/A +/2.jpg"
+                  src="/assets/service-assets/A+EBC-Content/3.png"
                   alt="Professional A+ content module design"
                   fill
                   className="object-cover"
@@ -398,11 +429,17 @@ export default function AEBCContentPage() {
             >
               <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-semibold text-brand-dark mb-3!">
                 Modular design excellence—
-                <span className="text-brand-primary"> flexibility meets impact</span>
+                <span className="text-brand-primary">
+                  {" "}
+                  flexibility meets impact
+                </span>
               </h2>
-              
+
               <p className="text-lg text-gray-700 leading-relaxed">
-                Each module is meticulously crafted to stand alone or as part of a complete brand narrative. Our modular approach lets you tell multiple stories that build trust and drive conversions at every stage.
+                Each module is meticulously crafted to stand alone or as part of
+                a complete brand narrative. Our modular approach lets you tell
+                multiple stories that build trust and drive conversions at every
+                stage.
               </p>
 
               <div className="space-y-4 pt-4">
@@ -457,11 +494,34 @@ export default function AEBCContentPage() {
             {/* Bottom - Process Steps */}
             <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
               {[
-                { number: "01", title: "Strategy & Audit", description: "Review your product page and identify conversion opportunities" },
-                { number: "02", title: "Concept Development", description: "Design custom A+ modules that tell your brand story" },
-                { number: "03", title: "Content Creation", description: "Professional photography, copywriting, and design execution" },
-                { number: "04", title: "Revisions & Refinement", description: "Unlimited iterations until it's perfect" },
-                { number: "05", title: "Launch & Optimization", description: "Upload content and monitor performance metrics" },
+                {
+                  number: "01",
+                  title: "Strategy & Audit",
+                  description:
+                    "Review your product page and identify conversion opportunities",
+                },
+                {
+                  number: "02",
+                  title: "Concept Development",
+                  description:
+                    "Design custom A+ modules that tell your brand story",
+                },
+                {
+                  number: "03",
+                  title: "Content Creation",
+                  description:
+                    "Professional photography, copywriting, and design execution",
+                },
+                {
+                  number: "04",
+                  title: "Revisions & Refinement",
+                  description: "Unlimited iterations until it's perfect",
+                },
+                {
+                  number: "05",
+                  title: "Launch & Optimization",
+                  description: "Upload content and monitor performance metrics",
+                },
               ].map((step, index) => (
                 <motion.div
                   key={index}
@@ -472,8 +532,12 @@ export default function AEBCContentPage() {
                   className="relative"
                 >
                   <div className="p-6 bg-gray-50 rounded-xl hover:bg-gray-100 transition-all duration-300 h-full">
-                    <div className="text-5xl font-bold text-brand-accent mb-3">{step.number}</div>
-                    <h3 className="text-xl font-bold text-brand-dark mb-2! line-clamp-2 min-h-14">{step.title}</h3>
+                    <div className="text-5xl font-bold text-brand-accent mb-3">
+                      {step.number}
+                    </div>
+                    <h3 className="text-xl font-bold text-brand-dark mb-2! line-clamp-2 min-h-14">
+                      {step.title}
+                    </h3>
                     <p className="text-gray-600 text-sm">{step.description}</p>
                   </div>
                   {index < 4 && (
