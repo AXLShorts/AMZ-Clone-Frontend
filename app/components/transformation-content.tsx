@@ -63,7 +63,7 @@ export default function TransformationContent() {
             </h2>
 
             <p className="text-lg text-gray-700 leading-relaxed">
-              That transform your Amazon presence into a performance engine.
+              That make the right buyers see you and impossible not to buy.
             </p>
 
             <div className="space-y-4 pt-4">

@@ -5,6 +5,7 @@ import TransformationContent from "./components/transformation-content";
 import Offer from "./components/offer";
 import LeadMagnet from "./components/lead-magnet";
 import SocialProof from "./components/social-proof";
+import GuaranteeSection from "./components/guarantee-section";
 import ScarcityCTA from "./components/scarcity-cta";
 import { getHomepage } from "@/lib/sanity";
 
@@ -86,6 +87,7 @@ export default async function Home() {
       />
       <LeadMagnet />
       <SocialProof />
+      <GuaranteeSection />
       <ScarcityCTA />
     </div>
   );

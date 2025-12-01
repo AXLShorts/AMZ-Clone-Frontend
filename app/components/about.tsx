@@ -23,12 +23,10 @@ const About = () => {
           id="about-heading"
           className="text-center text-2xl sm:text-3xl lg:text-4xl xl:text-5xl text-black leading-tight font-display uppercase font-semibold"
         >
-          Stop guessing why your{" "}
-          <span className="relative inline-block">Amazon sales plateaued.</span>
+          Stop guessing why your sales are Stuck
         </h2>
         <p className="text-center text-sm sm:text-base lg:text-lg leading-relaxed text-gray-700 mt-2">
-          If your listings look great but your numbers don&apos;t — you&apos;re
-          not alone.
+          Your listings don&apos;t need just clicks. They need the right clicks that actually buy
         </p>
         <div className="flex flex-col lg:flex-row-reverse gap-8 lg:gap-12 items-center mt-4 lg:mt-8">
           {/* Left Column - Text Content */}

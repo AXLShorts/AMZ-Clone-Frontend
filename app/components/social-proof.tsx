@@ -285,7 +285,7 @@ const TestimonialCard = ({
 const SocialProof = () => {
   return (
     <section
-      className="w-full overflow-hidden"
+      className="w-full overflow-hidden pb-8 lg:pb-16"
       aria-labelledby="social-proof-heading"
     >
       <div className="container mx-auto px-4 sm:px-6">

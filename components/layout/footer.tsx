@@ -202,27 +202,27 @@ const Footer = () => {
                 <li className="flex items-start gap-3">
                   <Mail className="w-5 h-5 text-brand-primary mt-0.5 shrink-0" />
                   <a
-                    href="mailto:hello@merxpert.com"
+                    href="mailto:info@merxpert.com"
                     className="text-gray-300 hover:text-brand-accent transition-colors"
                   >
-                    hello@merxpert.com
+                    info@merxpert.com
                   </a>
                 </li>
                 <li className="flex items-start gap-3">
                   <Phone className="w-5 h-5 text-brand-primary mt-0.5 shrink-0" />
                   <a
-                    href="tel:+1234567890"
+                    href="tel:+18478608644"
                     className="text-gray-300 hover:text-brand-accent transition-colors"
                   >
-                    +1 (234) 567-890
+                    +1 (847) 860-8644
                   </a>
                 </li>
                 <li className="flex items-start gap-3">
                   <MapPin className="w-5 h-5 text-brand-primary mt-0.5 shrink-0" />
                   <span className="text-gray-300">
-                    123 Amazon Street
+                    2 Ct Salford Algonquin, IL, 60102
                     <br />
-                    Seattle, WA 98109
+                    United States
                   </span>
                 </li>
               </ul>
@@ -236,8 +236,7 @@ const Footer = () => {
         <div className="container mx-auto px-4 sm:px-6 py-6">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
             <p className="text-gray-400 text-sm text-center sm:text-left">
-              Merxpert LLC © {new Date().getFullYear()} | Amazon Branding
-              Experts
+              Merxpert LLC © {new Date().getFullYear()} | where merch meets experts
             </p>
             <div className="flex items-center gap-6">
               <Link

@@ -41,7 +41,7 @@ const Offer = ({ data }: OfferProps) => {
             </span>
           </h2>
           <p className="text-lg sm:text-xl text-gray-300">
-            Full-service, done-for-you brand transformation.
+            Zero Impact? You pay nothing + get your money back.
           </p>
         </div>
 
@@ -49,10 +49,8 @@ const Offer = ({ data }: OfferProps) => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center max-w-6xl mx-auto">
           {/* Left Column - Text */}
           <div className="space-y-8">
-            <p className="text-base sm:text-lg text-gray-300 leading-relaxed">
-              Our done-for-you system rebuilds your Amazon brand from the ground
-              up — every word, every visual, every keyword — scientifically
-              designed to convert.
+            <p className="text-base sm:text-lg text-gray-300 leading-relaxed mb-4!">
+              A done-for-you system that gets your product in front of the right buyers & turns clicks into sales with high-converting creatives.
             </p>
 
             {/* Deliverables */}

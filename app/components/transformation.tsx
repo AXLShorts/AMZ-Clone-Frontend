@@ -40,8 +40,8 @@ const Transformation = ({ data }: TransformationProps) => {
             id="transformation-heading"
             className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl text-white leading-tight font-display mb-6! uppercase font-semibold"
           >
-            Imagine listings that turn browsers into buyers —{" "}
-            <span className="text-brand-accent">automatically.</span>
+            listings that turn browsers into buyers —{" "}
+            <span className="text-brand-accent">On Autopilot</span>
           </h2>
         </div>
 

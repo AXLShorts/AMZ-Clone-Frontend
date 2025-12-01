@@ -5,13 +5,13 @@ import Link from "next/link";
 import { Clock, Users } from "lucide-react";
 
 const ScarcityCTA = () => {
-  const [spotsFilled] = useState(2);
-  const totalSpots = 3;
+  const [spotsFilled] = useState(4);
+  const totalSpots = 5;
   const progressPercentage = (spotsFilled / totalSpots) * 100;
 
   return (
     <section
-      className="w-full bg-white py-8 lg:py-16"
+      className="w-full bg-white pb-8 lg:pb-16"
       aria-labelledby="scarcity-heading"
     >
       <div className="container mx-auto px-4 sm:px-6">
@@ -22,7 +22,7 @@ const ScarcityCTA = () => {
               id="scarcity-heading"
               className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl text-black leading-tight font-display mb-6! uppercase font-semibold"
             >
-              We Only Work with 3 New Brands Each Month
+              We Only Work with 5 New Brands Each Month
             </h2>
 
             <p className="text-base sm:text-lg text-gray-700 leading-relaxed mx-auto">

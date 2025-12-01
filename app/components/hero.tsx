@@ -41,9 +41,9 @@ const Hero = () => {
       <div className="relative z-10 container mx-auto px-4 sm:px-6 pt-8 lg:pt-16">
         <div className="mx-auto text-center space-y-6 lg:space-y-8 container flex flex-col items-center">
           <h1 className="font-display text-3xl sm:text-4xl lg:text-5xl xl:text-6xl leading-tight tracking-[-1px] uppercase font-semibold z-20">
-            Your Amazon listings don&apos;t have a traffic problem{" "}
+            You don&apos;t need more traffic{" "}
             <span className="text-brand-primary relative inline-block bg-[url('/assets/homepage/hero/orange-line.png')] bg-no-repeat bg-bottom bg-contain pb-2">
-              they have a conversion problem.
+              you need the right trafix and better conversion
             </span>
           </h1>
 

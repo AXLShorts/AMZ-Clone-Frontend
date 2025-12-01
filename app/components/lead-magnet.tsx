@@ -8,7 +8,7 @@ import { FileText, Video, ListChecks } from "lucide-react";
 const deliverables = [
   {
     icon: FileText,
-    title: "1-Page Conversion Report",
+    title: "Conversion Report",
     description: "Detailed analysis of your listing performance",
   },
   {
