@@ -253,12 +253,12 @@ export default function AEBCContentPage() {
               transition={{ duration: 0.8 }}
               className="relative"
             >
-              <div className="relative w-full aspect-10/9 rounded-2xl overflow-hidden shadow-2xl">
+              <div className="relative w-full aspect-square rounded-2xl overflow-hidden shadow-2xl">
                 <Image
                   src="/assets/service-assets/A+EBC-Content/1.png"
                   alt="Professional storefront design"
                   fill
-                  className="object-cover"
+                  className="object-contain"
                   loading="lazy"
                 />
               </div>
