@@ -68,6 +68,11 @@ const resourcesMenu: SubMenuItem[] = [
     description: "Real client results",
   },
   { name: "FAQ", href: "/faq", description: "Common questions answered" },
+  {
+    name: "ROI Calculator",
+    href: "/resources/roi-calculator",
+    description: "Estimate your potential profit",
+  },
 ];
 
 export default function Navbar() {
