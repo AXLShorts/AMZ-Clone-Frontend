@@ -43,7 +43,7 @@ const Hero = () => {
           <h1 className="font-display text-3xl sm:text-4xl lg:text-5xl xl:text-6xl leading-tight tracking-[-1px] uppercase font-semibold z-20">
             You don&apos;t need more traffic{" "}
             <span className="text-brand-primary relative inline-block bg-[url('/assets/homepage/hero/orange-line.png')] bg-no-repeat bg-bottom bg-contain pb-2">
-              you need the right trafix and better conversion
+              you need the right traffic and better conversion
             </span>
           </h1>
 
