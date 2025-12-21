@@ -1,9 +1,9 @@
 "use client";
 
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
-import { X, ChevronLeft, ChevronRight, TrendingUp } from "lucide-react";
+import { X, ChevronLeft, ChevronRight, TrendingUp, Loader2, ImageOff } from "lucide-react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, EffectFade } from "swiper/modules";
 import { PortfolioItem } from "@/lib/types";
@@ -18,6 +18,75 @@ interface PortfolioModalProps {
   onPrevious: () => void;
   onNext: () => void;
 }
+
+// Image component with loading and error states
+const ModalImage: React.FC<{
+  src: string;
+  alt: string;
+  fill?: boolean;
+  width?: number;
+  height?: number;
+  className?: string;
+  sizes?: string;
+  priority?: boolean;
+}> = ({ src, alt, fill, width, height, className, sizes, priority }) => {
+  const [isLoading, setIsLoading] = useState(true);
+  const [hasError, setHasError] = useState(false);
+  const [retryCount, setRetryCount] = useState(0);
+  const MAX_RETRIES = 3;
+
+  const handleError = () => {
+    if (retryCount < MAX_RETRIES) {
+      // Retry loading the image
+      setTimeout(() => {
+        setRetryCount(prev => prev + 1);
+        setIsLoading(true);
+        setHasError(false);
+      }, 1000 * (retryCount + 1)); // Exponential backoff
+    } else {
+      setHasError(true);
+      setIsLoading(false);
+    }
+  };
+
+  const handleLoad = () => {
+    setIsLoading(false);
+    setHasError(false);
+  };
+
+  if (hasError) {
+    return (
+      <div className="w-full h-full flex flex-col items-center justify-center bg-gray-100 text-gray-500">
+        <ImageOff className="w-12 h-12 mb-2 opacity-50" />
+        <p className="text-sm">Failed to load image</p>
+        <p className="text-xs mt-1">Please try again later</p>
+      </div>
+    );
+  }
+
+  return (
+    <div className="absolute inset-0">
+      {isLoading && (
+        <div className="absolute inset-0 flex items-center justify-center bg-gray-100 z-20">
+          <Loader2 className="w-8 h-8 text-brand-primary animate-spin" />
+        </div>
+      )}
+      <Image
+        key={`${src}-${retryCount}`}
+        src={src}
+        alt={alt}
+        fill={fill}
+        width={width}
+        height={height}
+        className={className}
+        sizes={sizes}
+        priority={priority}
+        onLoad={handleLoad}
+        onError={handleError}
+      />
+    </div>
+  );
+};
 
 const PortfolioModal: React.FC<PortfolioModalProps> = ({
   item,
@@ -110,13 +179,17 @@ const PortfolioModal: React.FC<PortfolioModalProps> = ({
           onClick={(e) => e.stopPropagation()}
         >
           {/* Image Carousel */}
-          <div className="relative flex-1 bg-transparent rounded-2xl overflow-hidden shadow-2xl">
+          <div className="relative flex-1 bg-transparent rounded-2xl overflow-hidden">
             <div className="relative h-[70vh]">
               {!isFallback && imageUrls.length > 0 ? (
                 <Swiper
+                  key={item._id}
                   ref={swiperRef}
                   modules={[Autoplay, EffectFade]}
                   effect="fade"
+                  fadeEffect={{
+                    crossFade: true
+                  }}
                   autoplay={{
                     delay: 4000,
                     disableOnInteraction: false,
@@ -125,17 +198,15 @@ const PortfolioModal: React.FC<PortfolioModalProps> = ({
                   className="w-full h-full"
                 >
                   {imageUrls.map((imageUrl, index) => (
-                    <SwiperSlide key={index}>
-                      <div className="relative w-full h-full">
-                        <Image
-                          src={imageUrl}
-                          alt={`${item.title} - Image ${index + 1}`}
-                          fill
-                          className="object-contain"
-                          sizes="60vw"
-                          priority={index === 0}
-                        />
-                      </div>
+                    <SwiperSlide key={index} className="!flex items-center justify-center">
+                      <ModalImage
+                        src={imageUrl}
+                        alt={`${item.title} - Image ${index + 1}`}
+                        fill
+                        className="object-contain"
+                        sizes="60vw"
+                        priority={index === 0}
+                      />
                     </SwiperSlide>
                   ))}
                 </Swiper>
@@ -234,9 +305,13 @@ const PortfolioModal: React.FC<PortfolioModalProps> = ({
           <div className="relative h-[50vh]">
             {!isFallback && imageUrls.length > 0 ? (
               <Swiper
+                key={item._id}
                 ref={swiperRef}
                 modules={[Autoplay, EffectFade]}
                 effect="fade"
+                fadeEffect={{
+                  crossFade: true
+                }}
                 autoplay={{
                   delay: 4000,
                   disableOnInteraction: false,
@@ -245,17 +320,15 @@ const PortfolioModal: React.FC<PortfolioModalProps> = ({
                 className="w-full h-full"
               >
                 {imageUrls.map((imageUrl, index) => (
-                  <SwiperSlide key={index}>
-                    <div className="relative w-full h-full">
-                      <Image
-                        src={imageUrl}
-                        alt={`${item.title} - Image ${index + 1}`}
-                        fill
-                        className="object-contain"
-                        sizes="100vw"
-                        priority={index === 0}
-                      />
-                    </div>
+                  <SwiperSlide key={index} className="!flex items-center justify-center">
+                    <ModalImage
+                      src={imageUrl}
+                      alt={`${item.title} - Image ${index + 1}`}
+                      fill
+                      className="object-contain"
+                      sizes="100vw"
+                      priority={index === 0}
+                    />
                   </SwiperSlide>
                 ))}
               </Swiper>

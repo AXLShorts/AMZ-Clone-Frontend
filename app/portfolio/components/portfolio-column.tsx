@@ -93,16 +93,17 @@ const PortfolioColumn: React.FC<PortfolioColumnProps> = ({
                     disableOnInteraction: false,
                   }}
                   loop
-                  className="w-full h-full"
+                  className="w-full"
                 >
                   {imageUrls.map((imageUrl, imgIndex) => (
                     <SwiperSlide key={imgIndex}>
-                      <div className="relative w-full aspect-square">
+                      <div className="relative w-full">
                         <Image
                           src={imageUrl}
                           alt={`${item.title} - Image ${imgIndex + 1}`}
-                          fill
-                          className="object-contain"
+                          width={800}
+                          height={800}
+                          className="w-full h-auto"
                           sizes="(max-width: 768px) 100vw, 33vw"
                           loading={index < 3 ? "eager" : "lazy"}
                         />
@@ -112,7 +113,7 @@ const PortfolioColumn: React.FC<PortfolioColumnProps> = ({
                 </Swiper>
               ) : (
                 // Fallback for empty images
-                <div className="relative w-full aspect-square bg-linear-to-br from-gray-200 to-gray-300 flex items-center justify-center">
+                <div className="relative w-full aspect-4/3 bg-linear-to-br from-gray-200 to-gray-300 flex items-center justify-center">
                   <span className="text-gray-500 text-sm">No images</span>
                 </div>
               )}
