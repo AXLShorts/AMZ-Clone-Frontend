@@ -8,6 +8,7 @@ import { Autoplay, EffectFade } from "swiper/modules";
 import { PortfolioItem } from "@/lib/types";
 import { urlFor } from "@/lib/sanity.client";
 import { useParallaxScroll } from "@/hooks/use-parallax-scroll";
+import { Loader2, ImageOff } from "lucide-react";
 
 import "swiper/css";
 import "swiper/css/effect-fade";
@@ -17,6 +18,72 @@ interface PortfolioColumnProps {
   speed: number;
   onItemClick: (item: PortfolioItem) => void;
 }
+
+// Image component with loading and error states
+const ColumnImage: React.FC<{
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
+  className?: string;
+  sizes?: string;
+  loading?: "eager" | "lazy";
+}> = ({ src, alt, width, height, className, sizes, loading }) => {
+  const [isLoading, setIsLoading] = useState(true);
+  const [hasError, setHasError] = useState(false);
+  const [retryCount, setRetryCount] = useState(0);
+  const MAX_RETRIES = 5;
+
+  const handleError = () => {
+    if (retryCount < MAX_RETRIES) {
+      // Retry loading the image with exponential backoff
+      setTimeout(() => {
+        setRetryCount(prev => prev + 1);
+        setIsLoading(true);
+        setHasError(false);
+      }, 1000 * (retryCount + 1));
+    } else {
+      setHasError(true);
+      setIsLoading(false);
+    }
+  };
+
+  const handleLoad = () => {
+    setIsLoading(false);
+    setHasError(false);
+  };
+
+  if (hasError) {
+    return (
+      <div className="w-full aspect-[4/3] flex flex-col items-center justify-center bg-gray-100 text-gray-500">
+        <ImageOff className="w-8 h-8 mb-2 opacity-50" />
+        <p className="text-xs">Failed to load image</p>
+      </div>
+    );
+  }
+
+  return (
+    <div className="relative w-full">
+      {isLoading && (
+        <div className="absolute inset-0 flex items-center justify-center bg-gray-100 z-10">
+          <Loader2 className="w-6 h-6 text-brand-primary animate-spin" />
+        </div>
+      )}
+      <Image
+        key={`${src}-${retryCount}`}
+        src={src}
+        alt={alt}
+        width={width}
+        height={height}
+        className={className}
+        sizes={sizes}
+        loading={loading}
+        onLoad={handleLoad}
+        onError={handleError}
+      />
+    </div>
+  );
+};
 
 const PortfolioColumn: React.FC<PortfolioColumnProps> = ({
   items,
@@ -97,17 +164,15 @@ const PortfolioColumn: React.FC<PortfolioColumnProps> = ({
                 >
                   {imageUrls.map((imageUrl, imgIndex) => (
                     <SwiperSlide key={imgIndex}>
-                      <div className="relative w-full">
-                        <Image
-                          src={imageUrl}
-                          alt={`${item.title} - Image ${imgIndex + 1}`}
-                          width={800}
-                          height={800}
-                          className="w-full h-auto"
-                          sizes="(max-width: 768px) 100vw, 33vw"
-                          loading={index < 3 ? "eager" : "lazy"}
-                        />
-                      </div>
+                      <ColumnImage
+                        src={imageUrl}
+                        alt={`${item.title} - Image ${imgIndex + 1}`}
+                        width={800}
+                        height={800}
+                        className="w-full h-auto"
+                        sizes="(max-width: 768px) 100vw, 33vw"
+                        loading={index < 3 ? "eager" : "lazy"}
+                      />
                     </SwiperSlide>
                   ))}
                 </Swiper>
