@@ -18,18 +18,7 @@ export default function KeywordRankingPage() {
   return (
     <main>
       {/* Hero Section - Dual Image with Overlay */}
-      <section className="relative w-full h-[600px] lg:h-[700px] -mt-20 pt-20 overflow-hidden">
-        {/* Background Image */}
-        <div className="absolute inset-0 z-0">
-          <Image
-            src="/assets/service-assets/Keyword-Ranking/3 Amazon SEO.jpg"
-            alt="Amazon Keyword Ranking Service"
-            fill
-            className="object-cover"
-            priority
-          />
-          <div className="absolute inset-0 bg-linear-to-r from-brand-dark via-brand-dark/85 to-transparent"></div>
-        </div>
+      <section className="relative w-full h-[600px] lg:h-[700px] -mt-20 pt-20 overflow-hidden bg-[linear-gradient(125deg,var(--brand-dark)_10%,var(--brand-primary)_50%,var(--brand-dark)_90%)]">
 
         <div className="relative z-10 container mx-auto px-4 sm:px-6 h-full flex items-center">
           <div className="max-w-3xl space-y-8 text-white">

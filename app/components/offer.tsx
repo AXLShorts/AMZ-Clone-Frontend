@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Check } from "lucide-react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination, Autoplay } from "swiper/modules";
+import { Autoplay } from "swiper/modules";
 import { OfferSection } from "@/lib/types";
 import { urlFor } from "@/lib/sanity.client";
 

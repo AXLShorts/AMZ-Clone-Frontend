@@ -9,18 +9,7 @@ export default function AccountManagementPage() {
   return (
     <main>
       {/* Hero Section - Full Background */}
-      <section className="relative w-full h-[600px] lg:h-[700px] -mt-20 pt-20 overflow-hidden">
-        {/* Background Image */}
-        <div className="absolute inset-0 z-0">
-          <Image
-            src="/assets/service-assets/Account-Management/5 Amazon Platform Management.jpg"
-            alt="Full Service Amazon Account Management"
-            fill
-            className="object-cover"
-            priority
-          />
-          <div className="absolute inset-0 bg-linear-to-r from-brand-dark via-brand-dark/90 to-brand-dark/70"></div>
-        </div>
+      <section className="relative w-full h-[600px] lg:h-[700px] -mt-20 pt-20 overflow-hidden bg-[linear-gradient(115deg,var(--brand-dark)_0%,var(--brand-primary)_40%,var(--brand-dark)_100%)]">
 
         <div className="relative z-10 container mx-auto px-4 sm:px-6 h-full flex items-center">
           <div className="max-w-3xl space-y-8 text-white">

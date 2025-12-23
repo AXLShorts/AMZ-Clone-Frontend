@@ -16,14 +16,15 @@ import SimpleMarquee from "@/components/fancy/blocks/simple-marquee";
 
 export default function AEBCContentPage() {
   const ebcMarqueeImages = [
-    "/assets/service-assets/A+EBC-Content/A +/Amazon EBC or A+_Page2.jpg",
-    "/assets/service-assets/A+EBC-Content/A +/Amazon EBC or A+_Page3.jpg",
-    "/assets/service-assets/A+EBC-Content/A +/Amazon EBC or A+_Page4.jpg",
-    "/assets/service-assets/A+EBC-Content/A +/Amazon EBC or A+_Page5.jpg",
-    "/assets/service-assets/A+EBC-Content/A +/Amazon EBC or A+_Page6.jpg",
-    "/assets/service-assets/A+EBC-Content/A +/Amazon EBC or A+_Page2.jpg",
-    "/assets/service-assets/A+EBC-Content/A +/Amazon EBC or A+_Page3.jpg",
-    "/assets/service-assets/A+EBC-Content/A +/Amazon EBC or A+_Page4.jpg",
+    "/assets/service-assets/A+EBC-Content/A +/1.png",
+    "/assets/service-assets/A+EBC-Content/A +/2.png",
+    "/assets/service-assets/A+EBC-Content/A +/3.png",
+    "/assets/service-assets/A+EBC-Content/A +/1.png",
+    "/assets/service-assets/A+EBC-Content/A +/2.png",
+    "/assets/service-assets/A+EBC-Content/A +/3.png",
+    "/assets/service-assets/A+EBC-Content/A +/1.png",
+    "/assets/service-assets/A+EBC-Content/A +/2.png",
+    "/assets/service-assets/A+EBC-Content/A +/3.png",
   ];
 
   return (
@@ -384,7 +385,7 @@ export default function AEBCContentPage() {
             >
               <div className="relative w-full aspect-10/9 rounded-2xl overflow-hidden shadow-2xl">
                 <Image
-                  src="/assets/service-assets/A+EBC-Content/A +/new.jpg"
+                  src="/assets/service-assets/A+EBC-Content/A +/new.png"
                   alt="A+ Content portfolio example showcasing results"
                   fill
                   className="object-cover"

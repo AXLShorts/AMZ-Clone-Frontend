@@ -62,6 +62,7 @@
   --color-brand-primary-100: rgba(4, 50, 153, 0.2);
   --color-brand-accent-50: rgba(109, 44, 248, 0.1);
   --color-brand-accent-100: rgba(109, 44, 248, 0.2);
+  --color-brand-accent-secondary: var(--brand-accent-secondary);
 }
 
 :root {

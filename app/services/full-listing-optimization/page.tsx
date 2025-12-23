@@ -9,28 +9,16 @@ export default function FullListingOptimizationPage() {
   return (
     <main>
       {/* Hero Section with Background Image */}
-      <section className="relative w-full bg-brand-dark text-white -mt-20 pt-32 pb-20 lg:pb-28 overflow-hidden">
-        {/* Background Image */}
-        <div className="absolute inset-0 z-0">
-          <Image
-            src="/assets/service-assets/Full-Listing-Optimization/Amazon.jpg"
-            alt="Amazon SEO Optimization"
-            fill
-            className="object-cover opacity-20"
-            priority
-          />
-          <div className="absolute inset-0 bg-linear-to-b from-brand-dark via-brand-dark/10 to-brand-dark"></div>
-        </div>
+      <section className="relative w-full h-[600px] lg:h-[700px] -mt-20 pt-20 overflow-hidden bg-[linear-gradient(155deg,var(--brand-dark)_0%,var(--brand-primary)_60%,var(--brand-dark)_100%)]">
 
-        <div className="relative z-10 container mx-auto px-4 sm:px-6">
-          <div className="max-w-5xl mx-auto text-center space-y-8 flex flex-col items-center">
+        <div className="relative z-10 container mx-auto px-4 sm:px-6 h-full flex items-center">
+          <div className="max-w-3xl space-y-8 text-white">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="inline-block px-6 py-2.5 bg-brand-primary/20 rounded-full border border-brand-primary/40 backdrop-blur-sm mb-6"
             >
-              <span className="text-brand-primary text-sm font-semibold uppercase tracking-wider">
+              <span className="inline-block px-6! py-2.5! bg-brand-accent/20 rounded-full border border-brand-accent/40 backdrop-blur-sm mb-6! text-brand-accent text-sm font-semibold uppercase tracking-wider">
                 Listing Optimization
               </span>
             </motion.div>
@@ -39,10 +27,10 @@ export default function FullListingOptimizationPage() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="font-display text-4xl sm:text-5xl lg:text-6xl xl:text-7xl leading-[1.1] tracking-tight uppercase font-semibold"
+              className="font-display text-4xl sm:text-5xl lg:text-6xl xl:text-7xl leading-[1.1] font-semibold uppercase mb-6!"
             >
-              From Click to Sale:
-              <span className="text-brand-accent relative inline-block">
+              From Click to Sale:{" "}
+              <span className="text-brand-accent">
                 Listings That Actually Sell
               </span>
             </motion.h1>
@@ -51,7 +39,7 @@ export default function FullListingOptimizationPage() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
-              className="text-lg sm:text-xl lg:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed"
+              className="text-xl lg:text-2xl text-gray-200 mb-6!"
             >
               Data-backed keyword strategy, conversion-optimized copy, and
               performance-focused A+ modules designed to lift organic rank and
@@ -62,18 +50,18 @@ export default function FullListingOptimizationPage() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.6 }}
-              className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-8"
+              className="flex flex-col sm:flex-row gap-4"
             >
               <Link
                 href="/audit"
-                className="group w-full sm:w-auto py-4 px-10 bg-brand-accent text-white rounded-full font-bold hover:bg-brand-accent/90 transition-all duration-300 text-lg shadow-lg hover:shadow-xl hover:scale-105 flex items-center justify-center gap-2"
+                className="group py-4 px-10 bg-brand-accent text-white rounded-full font-bold hover:bg-brand-accent/90 transition-all duration-300 text-lg shadow-lg hover:shadow-xl hover:scale-105 flex items-center justify-center gap-2"
               >
                 Get Your Free Audit
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Link>
               <Link
                 href="#how-it-works"
-                className="w-full sm:w-auto py-4 px-10 bg-transparent border-2 border-white/30 text-white rounded-full font-bold hover:bg-white/10 hover:border-white/50 transition-all duration-300 text-lg backdrop-blur-sm"
+                className="group py-4 px-10 bg-transparent border-2 border-white/30 text-white rounded-full font-bold hover:bg-white/10 hover:border-white/50 transition-all duration-300 text-lg backdrop-blur-sm flex items-center justify-center gap-2"
               >
                 See How It Works
               </Link>

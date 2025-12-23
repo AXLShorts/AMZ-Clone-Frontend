@@ -9,18 +9,7 @@ export default function PPCManagementPage() {
   return (
     <main>
       {/* Hero Section - Video Style with Overlay */}
-      <section className="relative w-full h-[600px] lg:h-[700px] -mt-20 pt-20 overflow-hidden">
-        {/* Background Image */}
-        <div className="absolute inset-0 z-0">
-          <Image
-            src="/assets/service-assets/PPC-Management/Amazon advertising management.jpg"
-            alt="Amazon PPC Management"
-            fill
-            className="object-cover"
-            priority
-          />
-          <div className="absolute inset-0 bg-linear-to-r from-brand-dark via-brand-dark/80 to-transparent"></div>
-        </div>
+      <section className="relative w-full h-[600px] lg:h-[700px] -mt-20 pt-20 overflow-hidden bg-[linear-gradient(145deg,var(--brand-dark)_0%,var(--brand-primary)_45%,var(--brand-dark)_100%)]">
 
         <div className="relative z-10 container mx-auto px-4 sm:px-6 h-full flex items-center">
           <div className="max-w-3xl space-y-8 text-white">
