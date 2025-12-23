@@ -322,7 +322,7 @@ const PortfolioModal: React.FC<PortfolioModalProps> = ({
                 className="w-full h-full"
               >
                 {imageUrls.map((imageUrl, index) => (
-                  <SwiperSlide key={index} className="!flex items-center justify-center">
+                  <SwiperSlide key={index} className="flex! items-center justify-center">
                     <ModalImage
                       src={imageUrl}
                       alt={`${item.title} - Image ${index + 1}`}
