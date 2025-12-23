@@ -220,66 +220,68 @@ const PortfolioModal: React.FC<PortfolioModalProps> = ({
           </div>
 
           {/* Details */}
-          <motion.div
-            initial={{ x: 50, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            transition={{ delay: 0.2 }}
-            className="bg-white rounded-2xl p-8 w-96 shadow-2xl max-h-[70vh] h-fit"
-          >
-            <div className="space-y-2">
-              {/* Category Badge */}
-              <div className="inline-block px-4 py-2 bg-blue-100 text-brand-primary rounded-full text-sm font-semibold">
-                {item.category}
-              </div>
-
-              {/* Title */}
-              <h2 className="text-3xl font-display text-black">{item.title}</h2>
-
-              {/* Description */}
-              {item.description && (
-                <p className="text-gray-600 leading-relaxed">
-                  {item.description}
-                </p>
-              )}
-
-              {/* Metrics */}
-              {item.showMetrics && item.metricType && item.metricBefore && item.metricAfter && (
-                <div className="border-t border-gray-200 py-2">
-                  <div className="flex items-center gap-2 mb-2">
-                    <TrendingUp className="w-5 h-5 text-emerald-600" />
-                    <h3 className="font-bold text-black">Conversion Impact</h3>
-                  </div>
-                  <div className="grid grid-cols-2 gap-4">
-                    <div className="bg-red-50 rounded-lg p-4">
-                      <p className="text-xs text-gray-600 mb-1">Before</p>
-                      <p className="text-xl font-bold text-red-600">
-                        {item.metricBefore}% {item.metricType}
-                      </p>
-                    </div>
-                    <div className="bg-emerald-50 rounded-lg p-4">
-                      <p className="text-xs text-gray-600 mb-1">After</p>
-                      <p className="text-xl font-bold text-emerald-600">
-                        {item.metricAfter}% {item.metricType}
-                      </p>
-                    </div>
-                  </div>
+          {item.category !== 'Brand Brandstory Design' && (
+            <motion.div
+              initial={{ x: 50, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ delay: 0.2 }}
+              className="bg-white rounded-2xl p-8 w-96 shadow-2xl max-h-[70vh] h-fit"
+            >
+              <div className="space-y-2">
+                {/* Category Badge */}
+                <div className="inline-block px-4 py-2 bg-blue-100 text-brand-primary rounded-full text-sm font-semibold">
+                  {item.category}
                 </div>
-              )}
 
-              {/* CTA */}
-              <div className="border-t border-gray-200 pt-4">
-                <p className="text-sm text-gray-600 mb-4!">
-                  Want similar results for your Amazon listings?
-                </p>
-                <a
-                  href="/audit"
-                  className="block w-full text-center px-6 py-3 bg-brand-primary text-white rounded-full font-bold hover:bg-brand-accent transition-colors"
-                >
-                  Get Your Free Audit →
-                </a>
+                {/* Title */}
+                <h2 className="text-3xl font-display text-black">{item.title}</h2>
+
+                {/* Description */}
+                {item.description && (
+                  <p className="text-gray-600 leading-relaxed">
+                    {item.description}
+                  </p>
+                )}
+
+                {/* Metrics */}
+                {item.showMetrics && item.metricType && item.metricBefore && item.metricAfter && (
+                  <div className="border-t border-gray-200 py-2">
+                    <div className="flex items-center gap-2 mb-2">
+                      <TrendingUp className="w-5 h-5 text-emerald-600" />
+                      <h3 className="font-bold text-black">Conversion Impact</h3>
+                    </div>
+                    <div className="grid grid-cols-2 gap-4">
+                      <div className="bg-red-50 rounded-lg p-4">
+                        <p className="text-xs text-gray-600 mb-1">Before</p>
+                        <p className="text-xl font-bold text-red-600">
+                          {item.metricBefore}% {item.metricType}
+                        </p>
+                      </div>
+                      <div className="bg-emerald-50 rounded-lg p-4">
+                        <p className="text-xs text-gray-600 mb-1">After</p>
+                        <p className="text-xl font-bold text-emerald-600">
+                          {item.metricAfter}% {item.metricType}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                {/* CTA */}
+                <div className="border-t border-gray-200 pt-4">
+                  <p className="text-sm text-gray-600 mb-4!">
+                    Want similar results for your Amazon listings?
+                  </p>
+                  <a
+                    href="/audit"
+                    className="block w-full text-center px-6 py-3 bg-brand-primary text-white rounded-full font-bold hover:bg-brand-accent transition-colors"
+                  >
+                    Get Your Free Audit →
+                  </a>
+                </div>
               </div>
-            </div>
-          </motion.div>
+            </motion.div>
+          )}
         </motion.div>
       </motion.div>
 

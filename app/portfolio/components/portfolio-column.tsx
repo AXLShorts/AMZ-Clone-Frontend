@@ -146,7 +146,16 @@ const PortfolioColumn: React.FC<PortfolioColumnProps> = ({
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: index * 0.05 }}
             whileHover={{ scale: 1.03, y: -8 }}
-            onClick={() => onItemClick(item)}
+            onClick={() => {
+              if (item.category === 'EBC') {
+                const imageUrl = item.images?.[0] ? urlFor(item.images[0]).url() : null;
+                if (imageUrl) {
+                  window.open(imageUrl, '_blank');
+                }
+              } else {
+                onItemClick(item);
+              }
+            }}
             className="relative group cursor-pointer rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300"
           >
             {/* Image Carousel - Full width, auto height to maintain aspect ratio */}
@@ -155,6 +164,7 @@ const PortfolioColumn: React.FC<PortfolioColumnProps> = ({
                 <Swiper
                   modules={[Autoplay, EffectFade]}
                   effect="fade"
+                  fadeEffect={{ crossFade: true }}
                   autoplay={{
                     delay: 4000,
                     disableOnInteraction: false,
@@ -185,7 +195,7 @@ const PortfolioColumn: React.FC<PortfolioColumnProps> = ({
             </div>
 
             {/* Overlay on Hover */}
-            <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <div className="absolute inset-0 z-10 bg-linear-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
               <div className="absolute bottom-0 left-0 right-0 p-6 text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
                 <div className="inline-block px-3 py-1 bg-brand-primary rounded-full text-xs font-semibold mb-2">
                   {item.category}
