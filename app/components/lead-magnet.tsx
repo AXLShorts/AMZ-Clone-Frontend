@@ -3,7 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { FileText, Video, ListChecks } from "lucide-react";
+import { FileText, ListChecks, Clipboard } from "lucide-react";
 
 const deliverables = [
   {
@@ -12,9 +12,9 @@ const deliverables = [
     description: "Detailed analysis of your listing performance",
   },
   {
-    icon: Video,
-    title: "Loom Breakdown",
-    description: "5-minute video walkthrough of findings",
+    icon: Clipboard,
+    title: "1-Page Audit",
+    description: "Audit walkthrough of findings",
   },
   {
     icon: ListChecks,
@@ -52,7 +52,7 @@ const LeadMagnet = () => {
             {/* Left - Copy */}
             <div>
               <p className="text-base sm:text-lg text-gray-700 leading-relaxed mb-4!">
-                Get a 1-page audit + 5-minute Loom video showing exactly:
+                Get a 1-page audit showing exactly:
               </p>
 
               <ul className="space-y-4">
@@ -81,14 +81,14 @@ const LeadMagnet = () => {
             <div className="relative">
               <div className="relative aspect-video rounded-xl overflow-hidden shadow-2xl">
                 <Image
-                  src="/assets/homepage/hero/header-bg.png"
+                  src="/assets/homepage/listing-audit.png"
                   alt="Amazon Conversion Audit Report Preview"
                   fill
                   className="object-cover"
                   sizes="(max-width: 768px) 100vw, 50vw"
                 />
                 {/* Badge Overlay */}
-                <div className="absolute top-4 right-4 bg-brand-primary text-white px-4 py-2 rounded-full font-bold text-sm shadow-lg">
+                <div className="absolute top-4 right-4 bg-brand-dark text-brand-accent px-4 py-2 rounded-full font-bold text-sm shadow-lg">
                   Worth $499
                 </div>
               </div>
