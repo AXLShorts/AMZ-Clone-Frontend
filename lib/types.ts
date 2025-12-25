@@ -93,42 +93,81 @@ export interface CaseStudy {
   seoDescription?: string;
 }
 
-// Homepage Types
-export interface TransformationSlide {
+
+
+// Service Types
+export interface ServiceStats {
+  value: string;
+  label: string;
+}
+
+export interface ServiceFeature {
+  icon?: string;
   title: string;
-  beforeImage: SanityImageAsset;
-  afterImage: SanityImageAsset;
-  showStats: boolean;
-  statType?: string;
-  beforeValue?: string;
-  afterValue?: string;
-  _key: string;
+  description: string;
 }
 
-export interface TransformationSection {
-  slides: TransformationSlide[];
-}
-
-export interface SliderImage {
+export interface ServiceContentBlock {
+  heading: string;
+  headingHighlight?: string;
+  description: string;
   image: SanityImageAsset;
-  caption: string;
-  altText?: string;
-  _key: string;
+  quote?: string;
+  quoteAuthor?: string;
+  gridItems?: { label: string, icon?: string; }[];
+  listItems?: string[];
+  overlayText?: string;
 }
 
-export interface OfferSection {
-  sliderImages: SliderImage[];
-}
-
-export interface Homepage {
-  _id: string;
-  _type: "homepage";
+export interface ServiceBenefit {
   title: string;
-  transformationSection: TransformationSection;
-  offerSection: OfferSection;
+  description: string;
 }
 
-// Portfolio Types
+export interface ServiceProcessStep {
+  number: string;
+  title: string;
+  description: string;
+}
+
+export interface ServiceProcessSection {
+  heading: string;
+  headingHighlight?: string;
+  subheading?: string;
+  steps: ServiceProcessStep[];
+}
+
+export interface ServicePage {
+  _id: string;
+  _type: string;
+  hero: {
+    tagline?: string;
+    title: string;
+    titleHighlight?: string;
+    description: string;
+  };
+  stats: ServiceStats[];
+  marqueeImages?: SanityImageAsset[];
+  contentBlock?: ServiceContentBlock;
+  contentBlock2?: ServiceContentBlock;
+  contentBlock3?: ServiceContentBlock;
+  contentBlock4?: ServiceContentBlock;
+  features?: {
+    heading: string;
+    headingHighlight?: string;
+    subheading?: string;
+    featureList: ServiceFeature[];
+  };
+  benefits?: {
+    heading: string;
+    headingHighlight?: string;
+    subheading?: string;
+    benefitList: ServiceBenefit[];
+  };
+  process?: ServiceProcessSection;
+}
+
+// Portfolio Item
 export interface PortfolioItem {
   _id: string;
   _type: "portfolio";
@@ -140,5 +179,63 @@ export interface PortfolioItem {
   metricType?: string;
   metricBefore?: number;
   metricAfter?: number;
-  order: number;
+  order?: number;
+}
+
+export interface TransformationSlide {
+  _key: string;
+  title: string;
+  beforeImage: SanityImageAsset;
+  afterImage: SanityImageAsset;
+  showStats: boolean;
+  statType?: string;
+  beforeValue?: string;
+  afterValue?: string;
+}
+
+export interface TransformationSection {
+  heading?: string;
+  accentText?: string;
+  description?: string;
+  slides: TransformationSlide[];
+  features?: string[];
+  proofStatement?: string;
+}
+
+export interface SliderImage {
+  image: SanityImageAsset;
+  caption: string;
+  altText?: string;
+  _key: string;
+}
+
+export interface OfferSection {
+  heading?: string;
+  subheading?: string;
+  description?: string;
+  deliverables?: string[];
+  ctaText?: string;
+  ctaUrl?: string;
+  ctaSubtext?: string;
+  sliderImages: SliderImage[];
+}
+
+export interface Homepage {
+  _id: string;
+  _type: "homepage";
+  title: string;
+  seoDescription?: string;
+  heroSection?: {
+    video: { asset: { _ref: string } };
+    poster: SanityImageAsset;
+  };
+  aboutSection?: {
+    video: { asset: { _ref: string } };
+    poster: SanityImageAsset;
+  };
+  auditSection?: {
+    auditImage: SanityImageAsset;
+  };
+  transformationSection: TransformationSection;
+  offerSection: OfferSection;
 }

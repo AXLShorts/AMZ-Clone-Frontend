@@ -7,14 +7,26 @@ import {
   BarChart3,
   Eye,
 } from "lucide-react";
+import { urlFor, fileUrl } from "@/lib/sanity.client";
+import { SanityImageAsset } from "@/lib/types";
 
-const About = () => {
+interface AboutProps {
+  data?: {
+    video: { asset: { _ref: string } };
+    poster: SanityImageAsset;
+  };
+}
+
+const About = ({ data }: AboutProps) => {
   const painPoints = [
     { icon: Eye, text: "Traffic without conversions" },
     { icon: DollarSign, text: "Rising ad spend with shrinking margins" },
     { icon: BarChart3, text: "Stuck organic rankings" },
     { icon: TrendingDown, text: '"Looks good" visuals that don\'t sell' },
   ];
+
+  const videoUrl = data?.video ? fileUrl(data.video) : null;
+  const posterUrl = data?.poster ? urlFor(data.poster).url() : null;
 
   return (
     <section className="w-full py-16 lg:py-24" aria-labelledby="about-heading">
@@ -58,26 +70,28 @@ const About = () => {
           {/* Right Column - Video */}
           <div className="relative w-full">
             <div className="relative aspect-video rounded-lg overflow-hidden bg-black shadow-2xl">
-              <video
-                className="w-full h-full object-cover"
-                controls
-                preload="metadata"
-                poster="/assets/homepage/description/video-intro-poster.jpg"
-                aria-label="Merxpert introduction video"
-              >
-                <source
-                  src="/assets/homepage/description/video-intro.mp4"
-                  type="video/mp4"
-                />
-                <track
-                  kind="captions"
-                  src="/assets/homepage/description/video-intro-captions.vtt"
-                  srcLang="en"
-                  label="English"
-                />
-                Your browser does not support the video tag. Please upgrade to a
-                modern browser to view this content.
-              </video>
+              {videoUrl && (
+                <video
+                  className="w-full h-full object-cover"
+                  controls
+                  preload="metadata"
+                  poster={posterUrl || undefined}
+                  aria-label="Merxpert introduction video"
+                >
+                  <source
+                    src={videoUrl}
+                    type="video/mp4"
+                  />
+                  <track
+                    kind="captions"
+                    src="/assets/homepage/description/video-intro-captions.vtt"
+                    srcLang="en"
+                    label="English"
+                  />
+                  Your browser does not support the video tag. Please upgrade to a
+                  modern browser to view this content.
+                </video>
+              )}
             </div>
           </div>
         </div>

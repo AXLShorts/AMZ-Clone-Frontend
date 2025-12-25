@@ -34,7 +34,7 @@ const features = [
 
 const GuaranteeSection = () => {
   return (
-    <section className="w-full py-16 lg:py-24 bg-linear-to-b from-white to-gray-50/50 overflow-hidden">
+    <section className="w-full pb-16 lg:pb-24 bg-linear-to-b from-white to-gray-50/50 overflow-hidden">
       <div className="container mx-auto px-4 sm:px-6">
         <div className="max-w-6xl mx-auto">
           {/* Header */}

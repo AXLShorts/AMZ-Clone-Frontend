@@ -1,7 +1,7 @@
 import React, { Suspense } from "react";
 import { getPortfolioItems } from "@/lib/sanity";
-import PortfolioClient from "./components/portfolio-client";
-import PortfolioSkeleton from "./components/portfolio-skeleton";
+import PortfolioClient from "./portfolio-client";
+import PortfolioSkeleton from "./portfolio-skeleton";
 
 export const revalidate = 60;
 

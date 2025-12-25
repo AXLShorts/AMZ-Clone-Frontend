@@ -4,6 +4,14 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { FileText, ListChecks, Clipboard } from "lucide-react";
+import { urlFor } from "@/lib/sanity.client";
+import { SanityImageAsset } from "@/lib/types";
+
+interface LeadMagnetProps {
+  data?: {
+    auditImage: SanityImageAsset;
+  };
+}
 
 const deliverables = [
   {
@@ -23,7 +31,9 @@ const deliverables = [
   },
 ];
 
-const LeadMagnet = () => {
+const LeadMagnet = ({ data }: LeadMagnetProps) => {
+  const auditImageUrl = data?.auditImage ? urlFor(data.auditImage).url() : null;
+
   return (
     <section
       className="w-full bg-white py-16 lg:py-24"
@@ -80,13 +90,15 @@ const LeadMagnet = () => {
             {/* Right - Visual */}
             <div className="relative">
               <div className="relative aspect-video rounded-xl overflow-hidden shadow-2xl">
-                <Image
-                  src="/assets/homepage/listing-audit.png"
-                  alt="Amazon Conversion Audit Report Preview"
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                />
+                {auditImageUrl && (
+                  <Image
+                    src={auditImageUrl}
+                    alt="Amazon Conversion Audit Report Preview"
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                  />
+                )}
                 {/* Badge Overlay */}
                 <div className="absolute top-4 right-4 bg-brand-dark text-brand-accent px-4 py-2 rounded-full font-bold text-sm shadow-lg">
                   Worth $499

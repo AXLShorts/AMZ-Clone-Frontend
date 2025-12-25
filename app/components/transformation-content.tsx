@@ -28,7 +28,7 @@ export default function TransformationContent() {
           >
             <div className="relative w-full aspect-4/3 rounded-2xl overflow-hidden shadow-2xl">
               <Image
-                src="/assets/service-assets/Full-Listing-Optimization/4 Design.jpg"
+                src="/assets/service-assets/Full-Listing-Optimization/1.jpg"
                 alt="Performance-driven listing redesigns"
                 fill
                 className="object-cover"

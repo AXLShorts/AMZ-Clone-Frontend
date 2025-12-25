@@ -1,5 +1,5 @@
 import { client, urlFor } from "./sanity.client";
-import type { CaseStudy, Homepage, PortfolioItem } from "./types";
+import type { CaseStudy, Homepage, PortfolioItem, ServicePage } from "./types";
 
 // GROQ query for fetching portfolio items
 const PORTFOLIO_QUERY = `*[_type == "portfolio"] | order(order asc) {
@@ -21,6 +21,17 @@ const HOMEPAGE_QUERY = `*[_type == "homepage"][0] {
   _id,
   _type,
   title,
+  heroSection {
+    video,
+    poster
+  },
+  aboutSection {
+    video,
+    poster
+  },
+  auditSection {
+    auditImage
+  },
   transformationSection {
     heading,
     accentText,
@@ -51,6 +62,69 @@ const HOMEPAGE_QUERY = `*[_type == "homepage"][0] {
       image,
       caption,
       altText
+    }
+  }
+}`;
+
+// GROQ query for fetching service pages
+const SERVICE_QUERY = (type: string) => `*[_type == "${type}"][0] {
+  _id,
+  _type,
+  hero,
+  stats,
+  marqueeImages,
+  contentBlock {
+    heading,
+    headingHighlight,
+    description,
+    image,
+    quote,
+    quoteAuthor,
+    gridItems,
+    listItems,
+    overlayText
+  },
+  contentBlock2 {
+    heading,
+    headingHighlight,
+    description,
+    image,
+    listItems
+  },
+  contentBlock3 {
+    heading,
+    headingHighlight,
+    description,
+    image,
+    listItems
+  },
+  contentBlock4 {
+    heading,
+    headingHighlight,
+    description,
+    image,
+    listItems
+  },
+  features {
+    heading,
+    headingHighlight,
+    subheading,
+    featureList
+  },
+  benefits {
+    heading,
+    headingHighlight,
+    subheading,
+    benefitList
+  },
+  process {
+    heading,
+    headingHighlight,
+    subheading,
+    steps[] {
+      number,
+      title,
+      description
     }
   }
 }`;
@@ -99,6 +173,19 @@ export async function getHomepage(): Promise<Homepage | null> {
     return homepage;
   } catch (error) {
     console.error("Error fetching homepage:", error);
+    return null;
+  }
+}
+
+/**
+ * Fetch service page content from Sanity
+ */
+export async function getServicePage(type: string): Promise<ServicePage | null> {
+  try {
+    const servicePage = await client.fetch<ServicePage>(SERVICE_QUERY(type));
+    return servicePage;
+  } catch (error) {
+    console.error(`Error fetching service page ${type}:`, error);
     return null;
   }
 }

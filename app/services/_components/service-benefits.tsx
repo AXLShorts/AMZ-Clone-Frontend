@@ -26,7 +26,7 @@ export default function ServiceBenefits({
   columns = 3,
 }: ServiceBenefitsProps) {
   return (
-    <section className="w-full py-16 lg:py-24">
+    <section className="w-full pb-16 lg:pb-24">
       <div className="container mx-auto px-4 sm:px-6">
         <motion.div
           initial={{ opacity: 0, y: 30 }}

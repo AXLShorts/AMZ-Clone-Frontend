@@ -3,9 +3,22 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { urlFor, fileUrl } from "@/lib/sanity.client";
+import { SanityImageAsset } from "@/lib/types";
 
-const Hero = () => {
+interface HeroProps {
+  data?: {
+    video: { asset: { _ref: string } };
+    poster: SanityImageAsset;
+  };
+}
+
+const Hero = ({ data }: HeroProps) => {
   const heroRef = React.useRef<HTMLDivElement>(null);
+  const videoUrl = data?.video ? fileUrl(data.video) : null;
+  const posterUrl = data?.poster ? urlFor(data.poster).url() : null;
+
+  if (!videoUrl && !posterUrl) return null;
 
   return (
     <section
@@ -15,25 +28,29 @@ const Hero = () => {
     >
       {/* Video Background */}
       <div className="absolute inset-0 z-0 pointer-events-none">
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          className="w-full h-full object-cover"
-          aria-label="Hero background video"
-        >
-          <source src="/assets/homepage/hero/hero.mp4" type="video/mp4" />
-        </video>
-        {/* Fallback image for browsers that don't support video */}
+        {videoUrl && (
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            poster={posterUrl || undefined}
+            className="w-full h-full object-cover"
+            aria-label="Hero background video"
+          >
+            <source src={videoUrl} type="video/mp4" />
+          </video>
+        )}
         <div className="absolute inset-0 hidden video-not-supported">
-          <Image
-            src="/assets/homepage/hero/header-bg.png"
-            alt="Amazon store optimization"
-            fill
-            className="object-cover"
-            priority
-          />
+          {posterUrl && (
+            <Image
+              src={posterUrl}
+              alt="Amazon store optimization"
+              fill
+              className="object-cover"
+              priority
+            />
+          )}
         </div>
         <div className="absolute inset-0 bg-brand-dark/50"></div>
       </div>
