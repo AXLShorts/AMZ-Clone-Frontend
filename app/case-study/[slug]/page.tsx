@@ -69,6 +69,20 @@ export async function generateStaticParams() {
   }));
 }
 
+function getGradientParams(id: string) {
+  let hash = 0;
+  for (let i = 0; i < id.length; i++) {
+    const char = id.charCodeAt(i);
+    hash = ((hash << 5) - hash) + char;
+    hash = hash & hash;
+  }
+  const positiveHash = Math.abs(hash);
+  return {
+    angle: positiveHash % 360,
+    percentage: (positiveHash % 40) + 30,
+  };
+}
+
 export default async function CaseStudyPage({ params }: PageProps) {
   const { slug } = await params;
   const caseStudy = await getCaseStudyBySlug(slug);
@@ -88,16 +102,25 @@ export default async function CaseStudyPage({ params }: PageProps) {
     "best-practices": "Best Practices",
   };
 
+  const { angle, percentage } = getGradientParams(caseStudy._id);
+
+  const gradientStyle = {
+    background: `linear-gradient(${angle}deg, var(--brand-dark) 0%, var(--brand-primary) ${percentage}%, var(--brand-dark) 100%)`,
+  };
+
   return (
     <main className="min-h-screen bg-background case-study-page">
       {/* Hero Section */}
-      <article className="border-b border-border">
-        <div className="mx-auto container px-4 sm:px-6 lg:px-8 py-8 sm:py-16">
+      <section 
+        className="relative -mt-20 pt-32 pb-16 sm:pb-24 overflow-hidden"
+        style={gradientStyle}
+      >
+        <div className="relative z-10 mx-auto container px-4 sm:px-6 lg:px-8">
           {/* Breadcrumb & Category */}
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-8">
             <Link
               href="/case-study"
-              className="text-sm text-brand-primary hover:text-brand-accent flex items-center gap-2 font-medium transition-colors"
+              className="text-sm text-gray-200 hover:text-white flex items-center gap-2 font-medium transition-colors"
             >
               <svg
                 className="w-4 h-4"
@@ -114,17 +137,17 @@ export default async function CaseStudyPage({ params }: PageProps) {
               </svg>
               Back to case studies
             </Link>
-            <span className="inline-block rounded-full bg-brand-primary/10 px-4! py-1.5! text-xs font-semibold text-brand-primary border border-brand-primary/20">
+            <span className="inline-block rounded-full bg-white/10 px-4! py-1.5! text-xs font-semibold text-white border border-white/20 backdrop-blur-sm">
               {categoryLabels[caseStudy.category] || "Case Study"}
             </span>
           </div>
 
           {/* Title & Meta */}
           <div className="mb-10">
-            <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-foreground mb-6! text-balance">
+            <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white mb-6! text-balance leading-18">
               {caseStudy.title}
             </h1>
-            <div className="flex flex-wrap items-center gap-4 text-muted-foreground text-sm">
+            <div className="flex flex-wrap items-center gap-4 text-gray-300 text-sm">
               {caseStudy.author && (
                 <div className="flex items-center gap-2">
                   <svg
@@ -140,7 +163,7 @@ export default async function CaseStudyPage({ params }: PageProps) {
                       d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
                     />
                   </svg>
-                  <span className="font-medium text-foreground">
+                  <span className="font-medium text-white">
                     {caseStudy.author}
                   </span>
                 </div>
@@ -181,7 +204,7 @@ export default async function CaseStudyPage({ params }: PageProps) {
           </div>
 
           {/* Featured Image */}
-          <div className="relative h-[400px] sm:h-[500px] lg:h-[600px] w-full overflow-hidden rounded-2xl bg-muted shadow-2xl">
+          <div className="relative h-[400px] sm:h-[500px] lg:h-[600px] w-full overflow-hidden rounded-2xl bg-muted shadow-2xl border border-white/10">
             <Image
               src={
                 getOptimizedImageUrl(caseStudy.featuredImage, 1200, 630) ||
@@ -195,7 +218,7 @@ export default async function CaseStudyPage({ params }: PageProps) {
             />
           </div>
         </div>
-      </article>
+      </section>
 
       {/* Content */}
       <section className="pt-12 bg-background">

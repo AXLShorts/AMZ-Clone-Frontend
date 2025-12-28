@@ -55,7 +55,7 @@ const ColumnImage: React.FC<{
 
   if (hasError) {
     return (
-      <div className="w-full aspect-[4/3] flex flex-col items-center justify-center bg-gray-100 text-gray-500">
+      <div className="w-full aspect-4/3 flex flex-col items-center justify-center bg-gray-100 text-gray-500">
         <ImageOff className="w-8 h-8 mb-2 opacity-50" />
         <p className="text-xs">Failed to load image</p>
       </div>

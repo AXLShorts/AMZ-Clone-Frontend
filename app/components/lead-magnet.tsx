@@ -48,7 +48,7 @@ const LeadMagnet = ({ data }: LeadMagnetProps) => {
               className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl text-black leading-tight font-display uppercase font-semibold"
             >
               Start with your{" "}
-              <span className="relative inline-block bg-[url('/assets/homepage/portfolio/green-line.png')] bg-no-repeat bg-bottom-right pb-2!">
+              <span className="relative inline-block pb-2!">
                 Free Amazon Conversion Audit
               </span>
             </h2>

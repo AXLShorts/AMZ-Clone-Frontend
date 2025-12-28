@@ -237,5 +237,8 @@ export interface Homepage {
     auditImage: SanityImageAsset;
   };
   transformationSection: TransformationSection;
+  transformationContentSection?: {
+    transformationContentImage: SanityImageAsset;
+  };
   offerSection: OfferSection;
 }

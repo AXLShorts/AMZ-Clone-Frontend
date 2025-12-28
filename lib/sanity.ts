@@ -49,6 +49,9 @@ const HOMEPAGE_QUERY = `*[_type == "homepage"][0] {
     features,
     proofStatement
   },
+  transformationContentSection {
+    transformationContentImage
+  },
   offerSection {
     heading,
     subheading,

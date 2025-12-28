@@ -1,9 +1,9 @@
 "use client";
 
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import { PortfolioItem } from "@/lib/types";
 import { useMousePosition } from "@/hooks/use-mouse-position";
-import PortfolioColumn from "./portfolio-column";
+import PortfolioCard from "./portfolio-card";
 import PortfolioModal from "./portfolio-modal";
 
 interface PortfolioClientProps {
@@ -21,26 +21,14 @@ const PortfolioClient: React.FC<PortfolioClientProps> = ({ items }) => {
     return ["All", ...Array.from(uniqueCategories).sort()];
   }, [items]);
 
-  // Filter items by category
   const filteredItems = useMemo(() => {
     if (selectedCategory === "All") return items;
     return items.filter((item) => item.category === selectedCategory);
   }, [selectedCategory, items]);
 
-  // Distribute items across 3 columns
-  const columns = useMemo(() => {
-    const col1: PortfolioItem[] = [];
-    const col2: PortfolioItem[] = [];
-    const col3: PortfolioItem[] = [];
-
-    filteredItems.forEach((item, index) => {
-      if (index % 3 === 0) col1.push(item);
-      else if (index % 3 === 1) col2.push(item);
-      else col3.push(item);
-    });
-
-    return [col1, col2, col3];
-  }, [filteredItems]);
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [selectedCategory]);
 
   // Handle modal navigation
   const handleItemClick = (item: PortfolioItem) => {
@@ -100,31 +88,25 @@ const PortfolioClient: React.FC<PortfolioClientProps> = ({ items }) => {
         </div>
       </section>
 
-      {/* Portfolio Gallery - 3 Column Parallax */}
+      {/* Portfolio Gallery - Masonry Layout */}
       <section className="relative z-10 py-8 sm:py-12 lg:py-20">
         <div className="container mx-auto px-4 sm:px-6">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-            {/* Column 1 - Slow (or single column on mobile) */}
-            <PortfolioColumn
-              items={columns[0]}
-              speed={0.3}
-              onItemClick={handleItemClick}
-            />
-
-            {/* Column 2 - Medium (hidden on mobile if single column) */}
-            <PortfolioColumn
-              items={columns[1]}
-              speed={0.5}
-              onItemClick={handleItemClick}
-            />
-
-            {/* Column 3 - Fast */}
-            <PortfolioColumn
-              items={columns[2]}
-              speed={0.7}
-              onItemClick={handleItemClick}
-            />
+          <div className="columns-1 sm:columns-2 lg:columns-3 gap-6">
+            {filteredItems.map((item, index) => (
+              <div key={item._id} className="break-inside-avoid mb-6">
+                <PortfolioCard
+                  item={item}
+                  index={index}
+                  onItemClick={handleItemClick}
+                />
+              </div>
+            ))}
           </div>
+          {filteredItems.length === 0 && (
+             <div className="text-center py-20 text-gray-500">
+                No items found in this category.
+             </div>
+          )}
         </div>
       </section>
 

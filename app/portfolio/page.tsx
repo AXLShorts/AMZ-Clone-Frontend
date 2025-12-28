@@ -15,7 +15,7 @@ function PortfolioHero() {
             className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-tight tracking-[-1px] uppercase font-semibold"
           >
             See What&apos;s Possible When You{" "}
-            <span className="text-brand-primary relative inline-block bg-[url('/assets/homepage/hero/orange-line.png')] bg-no-repeat bg-bottom bg-contain pb-2">
+            <span className="text-brand-primary relative inline-block pb-2">
               Optimize for Performance
             </span>
           </h1>

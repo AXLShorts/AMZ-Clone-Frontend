@@ -32,7 +32,7 @@ export default async function Home() {
       {homepageData?.transformationSection && (
         <Transformation data={homepageData.transformationSection} />
       )}
-      <TransformationContent />
+      <TransformationContent data={homepageData?.transformationContentSection}/>
       {homepageData?.offerSection && (
         <Offer data={homepageData.offerSection} />
       )}

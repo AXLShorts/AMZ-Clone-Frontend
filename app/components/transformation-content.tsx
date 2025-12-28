@@ -4,6 +4,8 @@ import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { Check } from "lucide-react";
+import { urlFor } from "@/lib/sanity.client";
+import { SanityImageAsset } from "@/lib/types";
 
 const features = [
   "Performance-driven listing redesigns",
@@ -13,7 +15,14 @@ const features = [
   "Continuous improvement reports",
 ];
 
-export default function TransformationContent() {
+interface TransformationContentProps {
+  data?: {
+    transformationContentImage: SanityImageAsset;
+  };
+}
+
+export default function TransformationContent({ data }: TransformationContentProps) {
+  const transformationContentImageUrl = data?.transformationContentImage ? urlFor(data.transformationContentImage).url() : null;
   return (
     <section className="w-full py-16 lg:py-24 bg-white">
       <div className="container mx-auto px-4 sm:px-6">
@@ -27,12 +36,14 @@ export default function TransformationContent() {
             className="relative"
           >
             <div className="relative w-full aspect-4/3 rounded-2xl overflow-hidden shadow-2xl">
-              <Image
-                src="/assets/service-assets/Full-Listing-Optimization/1.jpg"
-                alt="Performance-driven listing redesigns"
-                fill
-                className="object-cover"
-              />
+              {transformationContentImageUrl && (
+                <Image
+                  src={transformationContentImageUrl}
+                  alt="Performance-driven listing redesigns"
+                  fill
+                  className="object-cover"
+                />
+              )}
             </div>
             {/* Floating stat card */}
             <motion.div
