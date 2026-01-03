@@ -66,6 +66,20 @@ const HOMEPAGE_QUERY = `*[_type == "homepage"][0] {
       caption,
       altText
     }
+  },
+  testimonialsSection {
+    testimonials[] {
+      _key,
+      author,
+      role,
+      rating,
+      title,
+      quote,
+      date,
+      experienceDate,
+      isVerified,
+      avatar
+    }
   }
 }`;
 
@@ -183,7 +197,9 @@ export async function getHomepage(): Promise<Homepage | null> {
 /**
  * Fetch service page content from Sanity
  */
-export async function getServicePage(type: string): Promise<ServicePage | null> {
+export async function getServicePage(
+  type: string
+): Promise<ServicePage | null> {
   try {
     const servicePage = await client.fetch<ServicePage>(SERVICE_QUERY(type));
     return servicePage;

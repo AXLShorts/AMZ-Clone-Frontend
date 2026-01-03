@@ -2,93 +2,19 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
-import { Star, TrendingUp, DollarSign, Award, Quote } from "lucide-react";
+import {
+  Star,
+  TrendingUp,
+  DollarSign,
+  Award,
+  ThumbsUp,
+  Flag,
+  X,
+} from "lucide-react";
 import { motion, Easing, useInView } from "framer-motion";
 import SimpleMarquee from "@/components/fancy/blocks/simple-marquee";
-
-const testimonials = [
-  {
-    id: 1,
-    quote:
-      "After the audit, our CTR doubled and sales jumped 28% in 45 days. Worth every penny.",
-    author: "Sarah Johnson",
-    role: "DTC Owner, Pet Supplies",
-    rating: 5,
-    avatar: "https://i.pravatar.cc/150?img=1",
-  },
-  {
-    id: 2,
-    quote:
-      "Merxpert rebuilt our brand store and listings. 32% revenue growth. Game-changer.",
-    author: "Michael Chen",
-    role: "Private Label Founder",
-    rating: 5,
-    avatar: "https://i.pravatar.cc/150?img=13",
-  },
-  {
-    id: 3,
-    quote:
-      "The conversion audit revealed issues we never knew existed. Fixed them and saw immediate results.",
-    author: "Emily Rodriguez",
-    role: "E-commerce Manager",
-    rating: 5,
-    avatar: "https://i.pravatar.cc/150?img=5",
-  },
-  {
-    id: 4,
-    quote:
-      "Professional, data-driven, and results-oriented. Best investment we made for our Amazon business.",
-    author: "David Thompson",
-    role: "Brand Owner, Home & Kitchen",
-    rating: 5,
-    avatar: "https://i.pravatar.cc/150?img=12",
-  },
-  {
-    id: 5,
-    quote:
-      "Their attention to detail in A+ Content design helped us stand out. Conversion rate up 45%.",
-    author: "Jessica Lee",
-    role: "Marketing Director",
-    rating: 5,
-    avatar: "https://i.pravatar.cc/150?img=9",
-  },
-  {
-    id: 6,
-    quote:
-      "From listing optimization to brand strategy, they deliver. ROI speaks for itself.",
-    author: "Marcus Williams",
-    role: "CEO, Health & Wellness",
-    rating: 5,
-    avatar: "https://i.pravatar.cc/150?img=14",
-  },
-  {
-    id: 7,
-    quote:
-      "Best agency we've worked with. Clear communication, measurable results, honest pricing.",
-    author: "Amanda Foster",
-    role: "Operations Manager",
-    rating: 5,
-    avatar: "https://i.pravatar.cc/150?img=10",
-  },
-  {
-    id: 8,
-    quote:
-      "They transformed our struggling listings into top performers. Sales tripled in 3 months.",
-    author: "Robert Kim",
-    role: "Brand Founder",
-    rating: 5,
-    avatar: "https://i.pravatar.cc/150?img=15",
-  },
-  {
-    id: 9,
-    quote:
-      "The team's expertise in Amazon's algorithm is unmatched. Our visibility skyrocketed.",
-    author: "Lisa Martinez",
-    role: "Growth Lead",
-    rating: 5,
-    avatar: "https://i.pravatar.cc/150?img=16",
-  },
-];
+import { TestimonialsSection, Testimonial } from "@/lib/types";
+import { urlFor } from "@/lib/sanity.client";
 
 const metrics = [
   {
@@ -208,7 +134,7 @@ const MetricCard = ({ metric }: MetricCardProps) => {
           <motion.div
             animate={{ scale: isHovered ? 1.1 : 1 }}
             transition={{ duration: 0.3 }}
-            className={`w-16 h-16 flex items-center justify-center rounded-full bg-white border-2 ${metric.color.replace('text-', 'border-')}`}
+            className={`w-16 h-16 flex items-center justify-center rounded-full bg-white border-2 ${metric.color.replace("text-", "border-")}`}
           >
             <metric.icon
               className={`w-8 h-8 transition-colors duration-300 ${metric.color}`}
@@ -232,57 +158,130 @@ const MetricCard = ({ metric }: MetricCardProps) => {
   );
 };
 
-// Testimonial Card Component
-const TestimonialCard = ({
-  testimonial,
-}: {
-  testimonial: (typeof testimonials)[0];
-}) => {
+// Trustpilot Card Component
+const TrustpilotCard = ({ testimonial }: { testimonial: Testimonial }) => {
+  // Helper to get initials
+  const getInitials = (name: string) => {
+    return name
+      .split(" ")
+      .map((n) => n[0])
+      .join("")
+      .substring(0, 2)
+      .toUpperCase();
+  };
+
+  // Helper to format date
+  const formatDate = (dateString: string) => {
+    if (!dateString) return "";
+    const date = new Date(dateString);
+    return date.toLocaleDateString("en-US", {
+      month: "short",
+      day: "numeric",
+      year: "numeric",
+    });
+  };
+
+  const formatExperienceDate = (dateString: string) => {
+    if (!dateString) return "";
+    const date = new Date(dateString);
+    return date.toLocaleDateString("en-US", {
+      month: "long",
+      day: "numeric",
+      year: "numeric",
+    });
+  };
+
   return (
-    <div className="bg-white p-6 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 border border-gray-100 w-[300px] h-80 flex flex-col group mx-2 sm:mx-3">
-      {/* Quote Icon */}
-      <div className="mb-3">
-        <Quote className="w-8 h-8 text-orange-500 opacity-50" />
-      </div>
-
-      {/* Stars */}
-      <div className="flex gap-1 mb-3">
-        {[...Array(testimonial.rating)].map((_, i) => (
-          <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-        ))}
-      </div>
-
-      {/* Quote - fixed height with overflow handling */}
-      <blockquote className="text-gray-700 text-sm leading-relaxed mb-4 h-[120px] overflow-hidden">
-        &ldquo;{testimonial.quote}&rdquo;
-      </blockquote>
-
-      {/* Author - always at the same position */}
-      <div className="flex items-center gap-3 pt-4 border-t border-gray-200 mt-auto">
-        <div className="relative shrink-0">
-          <div className="w-12 h-12 rounded-full overflow-hidden ring-2 ring-orange-500 ring-offset-2">
-            <Image
-              src={testimonial.avatar}
-              alt={`${testimonial.author} avatar`}
-              width={48}
-              height={48}
-              className="w-full h-full object-cover"
-              loading="lazy"
-            />
+    <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-200 w-[450px] flex flex-col mx-4 relative font-sans h-[400px] pointer-events-none select-none">
+      {/* Header */}
+      <div className="flex items-start justify-between mb-4">
+        <div className="flex items-center gap-3">
+          {testimonial.avatar ? (
+            <div className="w-10 h-10 rounded-full overflow-hidden bg-green-100 relative shrink-0">
+              <Image
+                src={urlFor(testimonial.avatar).url()}
+                alt={testimonial.author}
+                fill
+                className="object-cover"
+              />
+            </div>
+          ) : (
+            <div className="w-10 h-10 rounded-full bg-[#dcfce7] flex items-center justify-center text-[#166534] font-medium text-sm shrink-0">
+              {getInitials(testimonial.author)}
+            </div>
+          )}
+          <div>
+            <h3 className="font-medium text-gray-900 text-sm">
+              {testimonial.author}
+            </h3>
+            <p className="text-xs text-gray-500">
+              {testimonial.role || "US • 1 review"}
+            </p>
           </div>
         </div>
-        <div className="min-w-0">
-          <p className="font-bold text-gray-900 text-sm truncate">
-            {testimonial.author}
-          </p>
-          <p className="text-xs text-gray-600 truncate">{testimonial.role}</p>
+        <div className="text-gray-400">
+          <X className="w-5 h-5" />
+        </div>
+      </div>
+
+      {/* Rating & Date */}
+      <div className="flex items-center justify-between mb-4">
+        <div className="flex gap-1">
+          {[...Array(5)].map((_, i) => (
+            <div
+              key={i}
+              className={`w-6 h-6 ${i < testimonial.rating ? "bg-[#00b67a]" : "bg-gray-200"} flex items-center justify-center rounded-[2px]`}
+            >
+              <Star className="w-4 h-4 fill-white text-white" />
+            </div>
+          ))}
+        </div>
+        <span className="text-gray-500 text-sm">
+          {formatDate(testimonial.date)}
+        </span>
+      </div>
+
+      {/* Content */}
+      <h4 className="font-medium text-gray-900 mb-2! text-base">
+        {testimonial.title}
+      </h4>
+      <p className="text-gray-700 text-sm leading-relaxed mb-4! line-clamp-4 overflow-hidden">
+        {testimonial.quote}
+      </p>
+
+      {/* Tags */}
+      <div className="flex flex-wrap gap-2 mb-6 mt-auto">
+        {testimonial.experienceDate && (
+          <span className="inline-block px-3! py-1! bg-gray-100 text-gray-600 text-xs font-medium rounded-md">
+            {formatExperienceDate(testimonial.experienceDate)}
+          </span>
+        )}
+        <span className="inline-block px-3! py-1! bg-gray-100 text-gray-600 text-xs font-medium rounded-md">
+          Unprompted review
+        </span>
+      </div>
+
+      {/* Footer Actions */}
+      <div className="flex items-center gap-4 pt-4 border-t border-gray-100">
+        <div className="flex items-center gap-2 text-sm font-medium text-gray-900">
+          <ThumbsUp className="w-4 h-4" />
+          Useful
+        </div>
+        <div className="text-gray-400 ml-auto">
+          <Flag className="w-4 h-4" />
         </div>
       </div>
     </div>
   );
 };
 
-const SocialProof = () => {
+const SocialProof = ({ data }: { data?: TestimonialsSection }) => {
+  const testimonials = data?.testimonials || [];
+
+  if (testimonials.length === 0) {
+    return null;
+  }
+
   return (
     <section
       className="w-full overflow-hidden pb-8 lg:pb-16"
@@ -318,7 +317,10 @@ const SocialProof = () => {
             grabCursor={true}
           >
             {testimonials.map((testimonial) => (
-              <TestimonialCard key={testimonial.id} testimonial={testimonial} />
+              <TrustpilotCard
+                key={testimonial._key}
+                testimonial={testimonial}
+              />
             ))}
           </SimpleMarquee>
         </div>

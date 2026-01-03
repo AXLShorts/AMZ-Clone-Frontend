@@ -178,18 +178,18 @@ const Footer = () => {
                 </li>
                 <li>
                   <Link
-                    href="/audit"
+                    href="/resources/roi-calculator"
                     className="text-gray-300 hover:text-brand-accent transition-colors"
                   >
-                    Free Audit
+                    ROI Calculator
                   </Link>
                 </li>
                 <li>
                   <Link
-                    href="/contact"
+                    href="/faq"
                     className="text-gray-300 hover:text-brand-accent transition-colors"
                   >
-                    Contact
+                    FAQ
                   </Link>
                 </li>
               </ul>
@@ -220,7 +220,7 @@ const Footer = () => {
                 <li className="flex items-start gap-3">
                   <MapPin className="w-5 h-5 text-brand-primary mt-0.5 shrink-0" />
                   <span className="text-gray-300">
-                    2 Ct Salford Algonquin, IL, 60102
+                    2 Salford Ct Algonquin, IL, 60102
                     <br />
                     United States
                   </span>
@@ -236,7 +236,8 @@ const Footer = () => {
         <div className="container mx-auto px-4 sm:px-6 py-6">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
             <p className="text-gray-400 text-sm text-center sm:text-left">
-              Merxpert LLC © {new Date().getFullYear()} | where merch meets experts
+              Merxpert LLC © {new Date().getFullYear()} | where merch meets
+              experts
             </p>
             <div className="flex items-center gap-6">
               <Link

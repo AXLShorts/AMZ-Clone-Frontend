@@ -20,48 +20,40 @@ interface SubMenuItem {
   description?: string;
 }
 
-// Mock CMS API function
-async function fetchServices(): Promise<SubMenuItem[]> {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve([
-        {
-          name: "Full Listing Optimization",
-          href: "/services/full-listing-optimization",
-          description: "Complete Amazon listing optimization",
-        },
-        {
-          name: "Keyword Ranking",
-          href: "/services/keyword-ranking",
-          description: "Improve your keyword visibility",
-        },
-        {
-          name: "A+/EBC Content",
-          href: "/services/a-ebc-content",
-          description: "Enhanced brand content creation",
-        },
-        {
-          name: "Account Management",
-          href: "/services/account-management",
-          description: "Full Amazon account management",
-        },
-        {
-          name: "PPC Management",
-          href: "/services/ppc-management",
-          description: "Advertising optimization",
-        },
-        {
-          name: "Brand Storefronts",
-          href: "/services/brand-storefronts",
-          description: "Build your Amazon storefront",
-        },
-      ]);
-    }, 300);
-  });
-}
+const services: SubMenuItem[] = [
+  {
+    name: "Full Listing Optimization",
+    href: "/services/full-listing-optimization",
+    description: "Complete Amazon listing optimization",
+  },
+  {
+    name: "Keyword Ranking",
+    href: "/services/keyword-ranking",
+    description: "Improve your keyword visibility",
+  },
+  {
+    name: "A+/EBC Content",
+    href: "/services/a-ebc-content",
+    description: "Enhanced brand content creation",
+  },
+  {
+    name: "Account Management",
+    href: "/services/account-management",
+    description: "Full Amazon account management",
+  },
+  {
+    name: "PPC Management",
+    href: "/services/ppc-management",
+    description: "Advertising optimization",
+  },
+  {
+    name: "Brand Storefronts",
+    href: "/services/brand-storefronts",
+    description: "Build your Amazon storefront",
+  },
+];
 
 const resourcesMenu: SubMenuItem[] = [
-  { name: "Blog", href: "/blog", description: "Latest insights and tips" },
   {
     name: "Case Studies",
     href: "/case-study",
@@ -77,15 +69,8 @@ const resourcesMenu: SubMenuItem[] = [
 
 export default function Navbar() {
   const pathname = usePathname();
-  const [services, setServices] = useState<SubMenuItem[]>([]);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-
-  useEffect(() => {
-    fetchServices().then((data) => {
-      setServices(data);
-    });
-  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -99,8 +84,7 @@ export default function Navbar() {
   const isActive = (href?: string, label?: string) => {
     if (href) return pathname === href;
     if (label === "Services") return pathname.startsWith("/services");
-    if (label === "Resources")
-      return pathname.startsWith("/blog") || pathname.startsWith("/faq");
+    if (label === "Resources") return pathname.startsWith("/faq");
     return false;
   };
 

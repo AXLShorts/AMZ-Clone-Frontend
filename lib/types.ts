@@ -93,8 +93,6 @@ export interface CaseStudy {
   seoDescription?: string;
 }
 
-
-
 // Service Types
 export interface ServiceStats {
   value: string;
@@ -114,7 +112,7 @@ export interface ServiceContentBlock {
   image: SanityImageAsset;
   quote?: string;
   quoteAuthor?: string;
-  gridItems?: { label: string, icon?: string; }[];
+  gridItems?: { label: string; icon?: string }[];
   listItems?: string[];
   overlayText?: string;
 }
@@ -220,6 +218,23 @@ export interface OfferSection {
   sliderImages: SliderImage[];
 }
 
+export interface Testimonial {
+  _key: string;
+  author: string;
+  role?: string;
+  rating: number;
+  title: string;
+  quote: string;
+  date: string;
+  experienceDate?: string;
+  isVerified?: boolean;
+  avatar?: SanityImageAsset;
+}
+
+export interface TestimonialsSection {
+  testimonials: Testimonial[];
+}
+
 export interface Homepage {
   _id: string;
   _type: "homepage";
@@ -241,4 +256,5 @@ export interface Homepage {
     transformationContentImage: SanityImageAsset;
   };
   offerSection: OfferSection;
+  testimonialsSection?: TestimonialsSection;
 }

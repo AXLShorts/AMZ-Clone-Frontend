@@ -21,8 +21,12 @@ interface TransformationContentProps {
   };
 }
 
-export default function TransformationContent({ data }: TransformationContentProps) {
-  const transformationContentImageUrl = data?.transformationContentImage ? urlFor(data.transformationContentImage).url() : null;
+export default function TransformationContent({
+  data,
+}: TransformationContentProps) {
+  const transformationContentImageUrl = data?.transformationContentImage
+    ? urlFor(data.transformationContentImage).url()
+    : null;
   return (
     <section className="w-full py-16 lg:py-24 bg-white">
       <div className="container mx-auto px-4 sm:px-6">
@@ -51,7 +55,7 @@ export default function TransformationContent({ data }: TransformationContentPro
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="absolute -bottom-6 -right-6 bg-brand-dark text-white p-6 rounded-xl shadow-2xl"
+              className="absolute -bottom-6 -right-3 sm:-right-6 bg-brand-dark text-white p-6 rounded-xl shadow-2xl"
             >
               <div className="text-4xl font-bold text-brand-accent">29%</div>
               <div className="text-sm text-gray-300">Higher Revenue</div>
@@ -93,7 +97,8 @@ export default function TransformationContent({ data }: TransformationContentPro
               <p className="text-base lg:text-lg text-gray-800 font-semibold">
                 &ldquo;On average, Merxpert partners see{" "}
                 <span className="text-emerald-600">29% higher revenue</span> and{" "}
-                <span className="text-blue-600">41% leaner ad spend</span>.&rdquo;
+                <span className="text-blue-600">41% leaner ad spend</span>
+                .&rdquo;
               </p>
             </div>
           </motion.div>
